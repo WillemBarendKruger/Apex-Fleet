@@ -6,7 +6,7 @@ echo ""
 ABP_HOST="abp/host"
 ABP_NG="abp/ng"
 
-cd ..
+cd .. || exit 1
 echo " Building docker image $ABP_HOST..."
 docker build -t $ABP_HOST .
 echo " Done. -- Building docker image $ABP_HOST..."
