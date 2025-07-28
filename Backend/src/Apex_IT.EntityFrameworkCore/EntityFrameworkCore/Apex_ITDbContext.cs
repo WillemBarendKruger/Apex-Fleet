@@ -1,0 +1,18 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Abp.Zero.EntityFrameworkCore;
+using Apex_IT.Authorization.Roles;
+using Apex_IT.Authorization.Users;
+using Apex_IT.MultiTenancy;
+
+namespace Apex_IT.EntityFrameworkCore
+{
+    public class Apex_ITDbContext : AbpZeroDbContext<Tenant, Role, User, Apex_ITDbContext>
+    {
+        /* Define a DbSet for each entity of the application */
+        
+        public Apex_ITDbContext(DbContextOptions<Apex_ITDbContext> options)
+            : base(options)
+        {
+        }
+    }
+}
