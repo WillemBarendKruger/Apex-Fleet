@@ -7,12 +7,12 @@ namespace Apex_IT.EntityFrameworkCore
     {
         public static void Configure(DbContextOptionsBuilder<Apex_ITDbContext> builder, string connectionString)
         {
-            builder.UseSqlServer(connectionString);
+            builder.UseNpgsql(connectionString);
         }
 
         public static void Configure(DbContextOptionsBuilder<Apex_ITDbContext> builder, DbConnection connection)
         {
-            builder.UseSqlServer(connection);
+            builder.UseNpgsql(connection);
         }
     }
 }

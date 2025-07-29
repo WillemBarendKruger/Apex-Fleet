@@ -12,6 +12,10 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Npgsql" Version="8.0.4" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Apex_IT.Core\Apex_IT.Core.csproj" />
   </ItemGroup>
 </Project>

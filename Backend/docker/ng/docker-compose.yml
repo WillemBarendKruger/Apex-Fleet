@@ -1,64 +1,51 @@
-# version: '3'
-
-# services:
-
-#   abp_host:
-#     image: abp/host
-#     environment:
-#       ASPNETCORE_ENVIRONMENT: "Staging"
-#       ConnectionStrings__Default: "Server=10.0.75.1; Database=Apex_ITDb; User=Apex_ITUser; Password=YourStrongPassword;TrustServerCertificate=True;"
-#       App__ServerRootAddress: "http://localhost:44311/"
-#       App__ClientRootAddress: "http://localhost:4200/"
-#       App__CorsOrigins: "http://localhost:4200"
-#       TZ: "America/Toronto"
-#       Kestrel__Endpoints__Http__Url: "http://+:80"
-#     ports:
-#       - "44311:80"
-#     volumes:
-#       - "./Host-Logs:/app/App_Data/Logs"
-#     restart: always
-
-#   abp_ng:
-#     image: abp/ng
-#     ports:
-#       - "4200:80"
-
-version: '3.9'
-
 services:
     abp_host:
         build:
             context: ../../
             dockerfile: src/Apex_IT.Web.Host/Dockerfile
-        image: healthfile
+        image: apex_it_host
         environment:
-            - PORT=80
-            - ASPNETCORE_ENVIRONMENT=Staging
-            - CONNECTION_STRING=Host=nozomi.proxy.rlwy.net;Port=26217;Database=railway;Username=postgres;Password=PeiDkRLAbgGrimdBuoTCnzYZAqFFJIhN;SSL Mode=Require;Trust Server Certificate=true;
-            - App__ServerRootAddress=http://localhost:44311/
-            - App__ClientRootAddress=http://localhost:4200/
-            - App__CorsOrigins=http://localhost:4200
-            - TZ=America/Toronto
-            - Kestrel__Endpoints__Http__Url=http://+:80
+            PORT: 80
+            ASPNETCORE_ENVIRONMENT: Staging
+            CONNECTION_STRING: Host=postgres;Database=railway;Username=postgres;Password=${POSTGRES_PASSWORD}
+            App__ServerRootAddress: http://localhost:44311/
+            App__ClientRootAddress: http://localhost:3000/
+            App__CorsOrigins: http://localhost:3000
+            TZ: Africa/Johannesburg
+            Kestrel__Endpoints__Http__Url: http://+:80
         ports:
             - "44311:80"
         volumes:
             - ../../dataProtectionKeys:/root/.aspnet/DataProtection-Keys
         depends_on:
-            - sqlserver
+            - postgres
         restart: always
-        # Confirm this part
-    sqlserver:
-        image: mcr.microsoft.com/mssql/server:2022-latest
-        container_name: sqlserver
+
+    postgres:
+        image: postgres:16
+        container_name: postgres
         environment:
-            - SA_PASSWORD=0305
-            - ACCEPT_EULA=Y
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+            POSTGRES_DB: railway
         ports:
-            - "1433:1433"
+            - "5432:5432"
         volumes:
-            - sql_data:/var/opt/mssql
+            - pg_data:/var/lib/postgresql/data
+        restart: always
+
+    frontend:
+        build:
+            context: ../../../Frontend
+            dockerfile: Dockerfile
+        image: apex-it-frontend
+        environment:
+            NODE_ENV: production
+        ports:
+            - "3000:3000"
+        depends_on:
+            - abp_host
+        restart: always
 
 volumes:
-    sql_data:
-
+    pg_data:

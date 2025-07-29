@@ -2,9 +2,9 @@ echo " Welcome to docker build"
 echo ""
 echo ""
 
-$ABP_HOST="abp/host"
-$ABP_HOST_DOCKERFILE_PATH="src/Apex_IT.Web.Host/Dockerfile"
-$ABP_NG="abp/ng"
+$ABP_HOST = "abp/host"
+$ABP_HOST_DOCKERFILE_PATH = "src/Apex_IT.Web.Host/Dockerfile"
+$ABP_NG = "abp/ng"
 
 cd ..
 echo " Building docker image $ABP_HOST..."
@@ -20,7 +20,7 @@ echo ""
 # echo ""
 
 cd ..
-cd angular/
+cd Frontend/
 echo " Building docker image $ABP_NG..."
 docker build -t $ABP_NG -f Dockerfile .
 echo " Done. -- Building docker image $ABP_NG..."

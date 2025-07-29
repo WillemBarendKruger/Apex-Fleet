@@ -19,8 +19,8 @@ echo ""
 # echo ""
 # echo ""
 
-cd ..
-cd angular/
+cd .. || exit 1
+cd Frontend/ || exit 1
 echo " Building docker image $ABP_NG..."
 docker build -t $ABP_NG -f Dockerfile .
 echo " Done. -- Building docker image $ABP_NG..."
