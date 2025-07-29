@@ -20,8 +20,7 @@ namespace Apex_IT.CRUDAppServices.EmployeeService
         {
             _userManager = userManager;
         }
-
-        public override async Task<EmployeeDto> CreateAsync(EmployeeDto input)
+        
 public override async Task<EmployeeDto> CreateAsync(EmployeeDto input)
 {
     if (input == null)
