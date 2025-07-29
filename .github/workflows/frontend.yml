@@ -1,0 +1,29 @@
+name: Build and Deploy Next.js
+
+on:
+  push:
+    paths:
+      - 'Frontend/**'
+      - '.github/workflows/frontend.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./Frontend
+
+      - name: Build
+        run: npm run build
+        working-directory: ./Frontend
+
+      # Optional: deploy to your server, or use `vercel --prod`

@@ -4,9 +4,9 @@
 .vs/
 obj/
 bin/
-aspnet-core/src/Apex_IT.Web.Host/App_Data/Logs/
-aspnet-core/src/Apex_IT.Web.Mvc/App_Data/Logs/
-aspnet-core/src/Apex_IT.Migrator/Logs/Logs.txt
-aspnet-core/build/outputs/
-aspnet-core/docker/mvc/Mvc-Logs/
+Backend/src/Apex_IT.Web.Host/App_Data/Logs/
+Backend/src/Apex_IT.Web.Mvc/App_Data/Logs/
+Backend/src/Apex_IT.Migrator/Logs/Logs.txt
+Backend/build/outputs/
+Backend/docker/mvc/Mvc-Logs/
 
