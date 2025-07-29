@@ -23,8 +23,12 @@ namespace Apex_IT.CRUDAppServices.SupervisorService
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            if (string.IsNullOrWhiteSpace(input.Password) || input.Password.Length < 6)
-                throw new UserFriendlyException("Password must be at least 6 characters long");
+            if (string.IsNullOrWhiteSpace(input.Password) || input.Password.Length < 8)
+                throw new UserFriendlyException("Password must be at least 8 characters long");
+
+            if (!input.Password.Any(char.IsUpper) || !input.Password.Any(char.IsDigit) ||
+                !input.Password.Any(ch => "!@#$%^&*()_+-=[]{}|;:,.<>?".Contains(ch)))
+                throw new UserFriendlyException("Password must contain at least one uppercase letter, one digit, and one special character");
 
             var supervisor = ObjectMapper.Map<User>(input);
             supervisor.IsActive = true;
