@@ -1,0 +1,29 @@
+name: Build and Test ASP.NET Core
+
+on:
+  push:
+    paths:
+      - 'Backend/**'
+      - '.github/workflows/backend.yml'
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x' # adjust to your version
+
+    - name: Restore dependencies
+      run: dotnet restore ./Backend/Apex_IT.sln
+
+    - name: Build
+      run: dotnet build ./Backend/Apex_IT.sln --no-restore --configuration Release
+
+    # - name: Run Tests
+    #   run: dotnet test ./Backend/Apex_IT.sln --no-build --verbosity normal

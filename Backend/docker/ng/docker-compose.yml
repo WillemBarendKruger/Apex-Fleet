@@ -1,0 +1,51 @@
+services:
+    abp_host:
+        build:
+            context: ../../
+            dockerfile: src/Apex_IT.Web.Host/Dockerfile
+        image: apex_it_host
+        environment:
+            PORT: 80
+            ASPNETCORE_ENVIRONMENT: Staging
+            CONNECTION_STRING: Host=postgres;Database=railway;Username=postgres;Password=${POSTGRES_PASSWORD}
+            App__ServerRootAddress: http://localhost:44311/
+            App__ClientRootAddress: http://localhost:3000/
+            App__CorsOrigins: http://localhost:3000
+            TZ: Africa/Johannesburg
+            Kestrel__Endpoints__Http__Url: http://+:80
+        ports:
+            - "44311:80"
+        volumes:
+            - ../../dataProtectionKeys:/root/.aspnet/DataProtection-Keys
+        depends_on:
+            - postgres
+        restart: always
+
+    postgres:
+        image: postgres:16
+        container_name: postgres
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+            POSTGRES_DB: railway
+        ports:
+            - "5432:5432"
+        volumes:
+            - pg_data:/var/lib/postgresql/data
+        restart: always
+
+    frontend:
+        build:
+            context: ../../../Frontend
+            dockerfile: Dockerfile
+        image: apex-it-frontend
+        environment:
+            NODE_ENV: production
+        ports:
+            - "3000:3000"
+        depends_on:
+            - abp_host
+        restart: always
+
+volumes:
+    pg_data:
