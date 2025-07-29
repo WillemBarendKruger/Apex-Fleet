@@ -23,7 +23,10 @@ namespace Apex_IT.CRUDAppServices.EmployeeService
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            if (string.IsNullOrWhiteSpace(input.Password) || input.Password.Length < 6)
+            if (string.IsNullOrWhiteSpace(input.Password) ||
+                input.Password.Length < 6 ||
+                !input.Password.Any(char.IsUpper) ||
+                !input.Password.Any(ch => !char.IsLetterOrDigit(ch)))
                 throw new UserFriendlyException("Password must be at least 6 characters long, have a special character and one uppercase character");
 
             var employee = ObjectMapper.Map<User>(input);
