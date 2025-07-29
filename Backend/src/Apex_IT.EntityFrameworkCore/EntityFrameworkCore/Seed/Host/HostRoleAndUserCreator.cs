@@ -26,6 +26,9 @@ namespace Apex_IT.EntityFrameworkCore.Seed.Host
             CreateHostRoleAndUsers();
         }
 
+        /// <summary>
+        /// Creates default host-level roles ("Admin", "Employee", "Supervisor") and an admin user if they do not already exist, and assigns all host permissions to the admin role.
+        /// </summary>
         private void CreateHostRoleAndUsers()
         {
             // Admin role for host

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -34,6 +34,9 @@ namespace Apex_IT
             _appConfiguration = env.GetAppConfiguration();
         }
 
+        /// <summary>
+        /// Configures core settings for the web module before initialization, including setting the global clock to UTC, establishing the default database connection, enabling database localization for language management, registering controllers for application services, and configuring JWT token authentication.
+        /// </summary>
         public override void PreInitialize()
         {
             Clock.Provider = ClockProviders.Utc;
