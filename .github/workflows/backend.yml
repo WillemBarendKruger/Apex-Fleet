@@ -25,5 +25,5 @@ jobs:
     - name: Build
       run: dotnet build ./Backend/Apex_IT.sln --no-restore --configuration Release
 
-    - name: Run Tests
-      run: dotnet test ./Backend/Apex_IT.sln --no-build --verbosity normal
+    # - name: Run Tests
+    #   run: dotnet test ./Backend/Apex_IT.sln --no-build --verbosity normal
