@@ -30,6 +30,7 @@ namespace Apex_IT.CRUDAppServices.EmployeeService.Dto
         public virtual string Surname { get; set; }
 
         [Required]
+        [RegularExpression("^(Employee|Supervisor|Admin)$", ErrorMessage = "Role must be Employee, Supervisor, or Admin")]
         public virtual string RoleName { get; set; }
     }
 }

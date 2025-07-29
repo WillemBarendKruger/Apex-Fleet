@@ -12,14 +12,14 @@ namespace Apex_IT.Authorization.Roles
             public const string Admin = "Admin";
         }
 
-        public static class Supervisor
+        public static class Supervisors
         {
-            public const string Admin = "Supervisor";
+            public const string Supervisor = "Supervisor";
         }
 
-        public static class Employee
+        public static class Employees
         {
-            public static string User = "Employee";
+            public const string Employee = "Employee";
         }
     }
 }

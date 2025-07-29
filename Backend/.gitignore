@@ -254,3 +254,6 @@ paket-files/
 src/Apex_IT.Web.Mvc/secrets.json
 src/Apex_IT.Web.Host/secrets.json
 src/Apex_IT.Migrator/secrets.json
+
+
+.env
