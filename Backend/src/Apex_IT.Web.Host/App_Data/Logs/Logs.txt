@@ -1,0 +1,396 @@
+DEBUG 2025-07-29 13:27:12,789 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2025-07-29 13:27:12,830 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2025-07-29 13:27:12,838 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Web.Host.Startup.Apex_ITWebHostModule, Apex_IT.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:27:12,839 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITWebCoreModule, Apex_IT.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:27:12,839 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITApplicationModule, Apex_IT.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:27:12,839 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITCoreModule, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:27:12,839 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:27:12,839 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:27:12,839 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:27:12,840 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:27:12,840 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.EntityFrameworkCore.Apex_ITEntityFrameworkModule, Apex_IT.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:27:12,840 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:27:12,840 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:27:12,840 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:27:12,840 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:27:12,841 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:27:12,841 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:27:12,841 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2025-07-29 13:27:12,878 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-29 13:27:12,878 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-29 13:27:12,878 [1    ] o.Configuration.LanguageManagementConfig - Converted Apex_IT (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-29 13:27:12,878 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-29 13:27:13,090 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Apex_IT.EntityFrameworkCore.Apex_ITDbContext, Apex_IT.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:27:13,167 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2025-07-29 13:27:13,188 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2025-07-29 13:27:13,193 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2025-07-29 13:27:13,196 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Apex_IT
+DEBUG 2025-07-29 13:27:13,198 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2025-07-29 13:27:13,203 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2025-07-29 13:27:13,209 [1    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[Apex_IT.MultiTenancy.Tenant, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Apex_IT.Authorization.Users.User, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+DEBUG 2025-07-29 13:27:13,219 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 9 classes define auto mapping attributes
+DEBUG 2025-07-29 13:27:13,219 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Users.Dto.CreateUserDto
+DEBUG 2025-07-29 13:27:13,221 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Users.Dto.UserDto
+DEBUG 2025-07-29 13:27:13,221 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2025-07-29 13:27:13,221 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Sessions.Dto.UserLoginInfoDto
+DEBUG 2025-07-29 13:27:13,221 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Roles.Dto.PermissionDto
+DEBUG 2025-07-29 13:27:13,221 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2025-07-29 13:27:13,221 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.MultiTenancy.Dto.TenantDto
+DEBUG 2025-07-29 13:27:13,221 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.SupervisorService.Dto.SupervisorDto
+DEBUG 2025-07-29 13:27:13,221 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto
+INFO  2025-07-29 13:27:28,138 [1    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,fa,ja,zh-Hans
+INFO  2025-07-29 13:27:28,691 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/ - - -
+INFO  2025-07-29 13:27:28,796 [1    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
+INFO  2025-07-29 13:27:28,799 [1    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
+INFO  2025-07-29 13:27:28,802 [1    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Users\Willem\Documents\Github\Apex-IT\Backend\src\Apex_IT.Web.Host
+INFO  2025-07-29 13:27:29,071 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host)'
+INFO  2025-07-29 13:27:29,195 [16   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Apex_IT.Web.Host.Controllers.HomeController (Apex_IT.Web.Host).
+INFO  2025-07-29 13:27:38,529 [16   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2025-07-29 13:27:38,556 [16   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host) in 9337.3204ms
+INFO  2025-07-29 13:27:38,567 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host)'
+INFO  2025-07-29 13:27:38,604 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/index.html - - -
+INFO  2025-07-29 13:27:38,618 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/ - 302 - - 9939.1333ms
+INFO  2025-07-29 13:27:38,735 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/index.html - 200 - text/html;charset=utf-8 135.8452ms
+INFO  2025-07-29 13:27:38,748 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - - -
+INFO  2025-07-29 13:27:38,755 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - 200 16517 application/javascript;+charset=utf-8 6.2290ms
+INFO  2025-07-29 13:27:38,765 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_vs/browserLink - - -
+INFO  2025-07-29 13:27:38,825 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 57.7214ms
+INFO  2025-07-29 13:27:38,855 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - - -
+INFO  2025-07-29 13:27:38,874 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - - -
+INFO  2025-07-29 13:27:39,407 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-07-29 13:27:39,432 [18   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "SetCookie", controller = "AntiForgery", area = ""}. Executing controller action with signature Void SetCookie() on controller Apex_IT.Web.Host.Controllers.AntiForgeryController (Apex_IT.Web.Host).
+INFO  2025-07-29 13:27:39,479 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 599.2569ms
+INFO  2025-07-29 13:27:40,460 [18   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-29 13:27:40,476 [18   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host) in 1040.7619ms
+INFO  2025-07-29 13:27:40,480 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-07-29 13:27:40,484 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - 200 - application/json;+charset=utf-8 1628.3573ms
+INFO  2025-07-29 13:28:20,712 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44311/api/services/app/Employee/Create - application/json 168
+INFO  2025-07-29 13:28:20,717 [18   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2025-07-29 13:28:20,719 [18   ] pNetCore.Cors.Infrastructure.CorsService - Request origin https://localhost:44311 does not have permission to access the resource.
+INFO  2025-07-29 13:28:20,728 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.CreateAsync (Apex_IT.Application)'
+INFO  2025-07-29 13:28:20,741 [18   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "Create", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto] CreateAsync(Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto) on controller Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService (Apex_IT.Application).
+ERROR 2025-07-29 13:28:21,379 [18   ] Microsoft.EntityFrameworkCore.Query      - An exception occurred while iterating over the results of a query for context type 'Apex_IT.EntityFrameworkCore.Apex_ITDbContext'.
+System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ERROR 2025-07-29 13:28:21,661 [23   ] oft.EntityFrameworkCore.Database.Command - Failed executing DbCommand (3ms) [Parameters=[@__ef_filter__p_0='?' (DbType = Boolean), @___sourceName_0='?', @__CultureInfo_Name_1='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."CreationTime", a."CreatorUserId", a."Key", a."LanguageName", a."LastModificationTime", a."LastModifierUserId", a."Source", a."TenantId", a."Value"
+FROM "AbpLanguageTexts" AS a
+WHERE (@__ef_filter__p_0 OR a."TenantId" IS NULL) AND a."Source" = @___sourceName_0 AND a."LanguageName" = @__CultureInfo_Name_1
+ERROR 2025-07-29 13:28:21,676 [23   ] Microsoft.EntityFrameworkCore.Query      - An exception occurred while iterating over the results of a query for context type 'Apex_IT.EntityFrameworkCore.Apex_ITDbContext'.
+Npgsql.NpgsqlOperationInProgressException (0x80004005): The connection is already in state 'Executing'
+   at Npgsql.ThrowHelper.ThrowNpgsqlOperationInProgressException(ConnectorState state)
+   at Npgsql.Internal.NpgsqlConnector.<StartUserAction>g__DoStartUserAction|280_0(ConnectorState newState, NpgsqlCommand command, CancellationToken cancellationToken, Boolean attemptPgCancellation)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.<>c.<MoveNext>b__21_0(DbContext _, Enumerator enumerator)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+Npgsql.NpgsqlOperationInProgressException (0x80004005): The connection is already in state 'Executing'
+   at Npgsql.ThrowHelper.ThrowNpgsqlOperationInProgressException(ConnectorState state)
+   at Npgsql.Internal.NpgsqlConnector.<StartUserAction>g__DoStartUserAction|280_0(ConnectorState newState, NpgsqlCommand command, CancellationToken cancellationToken, Boolean attemptPgCancellation)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.<>c.<MoveNext>b__21_0(DbContext _, Enumerator enumerator)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+WARN  2025-07-29 13:28:22,746 [18   ] Mvc.ExceptionHandling.AbpExceptionFilter - Something went wrong when creating an employee
+Abp.UI.UserFriendlyException: Something went wrong when creating an employee
+ ---> System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Abp.EntityFrameworkCore.Linq.EfCoreAsyncQueryableExecuter.ExecuteAsync[T,TResult](IQueryable`1 queryable, Func`3 executeMethod, CancellationToken cancellationToken)
+   at Abp.Authorization.Users.AbpUserStore`2.<>c__DisplayClass68_0.<<GetRolesAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Abp.Domain.Uow.UnitOfWorkManagerExtensions.WithUnitOfWorkAsync[TResult](IUnitOfWorkManager manager, Func`1 action, UnitOfWorkOptions options)
+   at Abp.Authorization.Users.AbpUserStore`2.GetRolesAsync(TUser user, CancellationToken cancellationToken)
+   at Abp.Authorization.Users.AbpUserStore`2.IsInRoleAsync(TUser user, String normalizedRoleName, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.UserManager`1.AddToRoleAsync(TUser user, String role)
+   at Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.CreateAsync(EmployeeDto input) in C:\Users\Willem\Documents\Github\Apex-IT\Backend\src\Apex_IT.Application\CRUDAppServices\EmployeeService\EmployeeAppService.cs:line 32
+   --- End of inner exception stack trace ---
+   at Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.CreateAsync(EmployeeDto input) in C:\Users\Willem\Documents\Github\Apex-IT\Backend\src\Apex_IT.Application\CRUDAppServices\EmployeeService\EmployeeAppService.cs:line 37
+   at lambda_method1717(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+INFO  2025-07-29 13:28:22,775 [18   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-29 13:28:22,782 [18   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.CreateAsync (Apex_IT.Application) in 2037.8104ms
+INFO  2025-07-29 13:28:22,784 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.CreateAsync (Apex_IT.Application)'
+INFO  2025-07-29 13:28:22,787 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44311/api/services/app/Employee/Create - 500 - application/json;+charset=utf-8 2074.8564ms
+DEBUG 2025-07-29 13:29:45,435 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2025-07-29 13:29:45,662 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2025-07-29 13:29:45,670 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Web.Host.Startup.Apex_ITWebHostModule, Apex_IT.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:29:45,671 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITWebCoreModule, Apex_IT.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:29:45,671 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITApplicationModule, Apex_IT.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:29:45,672 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITCoreModule, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:29:45,672 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:29:45,672 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:29:45,672 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:29:45,672 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:29:45,673 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.EntityFrameworkCore.Apex_ITEntityFrameworkModule, Apex_IT.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:29:45,673 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:29:45,673 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:29:45,673 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:29:45,673 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:29:45,674 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:29:45,674 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:29:45,674 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2025-07-29 13:29:45,715 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-29 13:29:45,715 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-29 13:29:45,715 [1    ] o.Configuration.LanguageManagementConfig - Converted Apex_IT (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-29 13:29:45,715 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-29 13:29:45,925 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Apex_IT.EntityFrameworkCore.Apex_ITDbContext, Apex_IT.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:29:46,019 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2025-07-29 13:29:46,038 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2025-07-29 13:29:46,043 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2025-07-29 13:29:46,047 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Apex_IT
+DEBUG 2025-07-29 13:29:46,049 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2025-07-29 13:29:46,054 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2025-07-29 13:29:46,058 [1    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[Apex_IT.MultiTenancy.Tenant, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Apex_IT.Authorization.Users.User, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+DEBUG 2025-07-29 13:29:46,069 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 9 classes define auto mapping attributes
+DEBUG 2025-07-29 13:29:46,069 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Users.Dto.CreateUserDto
+DEBUG 2025-07-29 13:29:46,071 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Users.Dto.UserDto
+DEBUG 2025-07-29 13:29:46,072 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2025-07-29 13:29:46,072 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Sessions.Dto.UserLoginInfoDto
+DEBUG 2025-07-29 13:29:46,072 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Roles.Dto.PermissionDto
+DEBUG 2025-07-29 13:29:46,072 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2025-07-29 13:29:46,072 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.MultiTenancy.Dto.TenantDto
+DEBUG 2025-07-29 13:29:46,072 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.SupervisorService.Dto.SupervisorDto
+DEBUG 2025-07-29 13:29:46,072 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto
+INFO  2025-07-29 13:29:58,602 [1    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,fa,ja,zh-Hans
+INFO  2025-07-29 13:29:59,162 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/ - - -
+INFO  2025-07-29 13:29:59,241 [1    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
+INFO  2025-07-29 13:29:59,246 [1    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
+INFO  2025-07-29 13:29:59,250 [1    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Users\Willem\Documents\Github\Apex-IT\Backend\src\Apex_IT.Web.Host
+INFO  2025-07-29 13:29:59,501 [10   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host)'
+INFO  2025-07-29 13:29:59,608 [10   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Apex_IT.Web.Host.Controllers.HomeController (Apex_IT.Web.Host).
+INFO  2025-07-29 13:30:00,730 [10   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2025-07-29 13:30:00,756 [10   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host) in 1129.5321ms
+INFO  2025-07-29 13:30:00,761 [10   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host)'
+INFO  2025-07-29 13:30:00,785 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/index.html - - -
+INFO  2025-07-29 13:30:00,793 [10   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/ - 302 - - 1639.4495ms
+INFO  2025-07-29 13:30:00,905 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/index.html - 200 - text/html;charset=utf-8 122.2923ms
+INFO  2025-07-29 13:30:00,924 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - - -
+INFO  2025-07-29 13:30:00,932 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_vs/browserLink - - -
+INFO  2025-07-29 13:30:00,940 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - 200 16517 application/javascript;+charset=utf-8 12.1440ms
+INFO  2025-07-29 13:30:00,990 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 57.9982ms
+INFO  2025-07-29 13:30:01,035 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - - -
+INFO  2025-07-29 13:30:01,060 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - - -
+INFO  2025-07-29 13:30:01,780 [11   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-07-29 13:30:01,801 [11   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "SetCookie", controller = "AntiForgery", area = ""}. Executing controller action with signature Void SetCookie() on controller Apex_IT.Web.Host.Controllers.AntiForgeryController (Apex_IT.Web.Host).
+INFO  2025-07-29 13:30:01,838 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 778.0890ms
+INFO  2025-07-29 13:30:02,950 [14   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-29 13:30:02,962 [14   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host) in 1158.4441ms
+INFO  2025-07-29 13:30:02,966 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-07-29 13:30:02,970 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - 200 - application/json;+charset=utf-8 1933.7113ms
+INFO  2025-07-29 13:30:48,531 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44311/api/services/app/Employee/Create - application/json 168
+INFO  2025-07-29 13:30:48,539 [14   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2025-07-29 13:30:48,542 [14   ] pNetCore.Cors.Infrastructure.CorsService - Request origin https://localhost:44311 does not have permission to access the resource.
+INFO  2025-07-29 13:30:48,554 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.CreateAsync (Apex_IT.Application)'
+INFO  2025-07-29 13:30:48,568 [14   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "Create", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto] CreateAsync(Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto) on controller Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService (Apex_IT.Application).
+WARN  2025-07-29 13:30:51,064 [24   ] Mvc.ExceptionHandling.AbpExceptionFilter - Something went wrong when creating an employee
+Abp.UI.UserFriendlyException: Something went wrong when creating an employee
+ ---> Abp.UI.UserFriendlyException: Username 'employee1' is already taken.
+   at Abp.Authorization.Users.AbpUserManager`2.CheckDuplicateUsernameOrEmailAddressAsync(Nullable`1 expectedUserId, String userName, String emailAddress)
+   at Abp.Authorization.Users.AbpUserManager`2.CreateAsync(TUser user)
+   at Microsoft.AspNetCore.Identity.UserManager`1.CreateAsync(TUser user, String password)
+   at Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.CreateAsync(EmployeeDto input) in C:\Users\Willem\Documents\Github\Apex-IT\Backend\src\Apex_IT.Application\CRUDAppServices\EmployeeService\EmployeeAppService.cs:line 31
+   --- End of inner exception stack trace ---
+   at Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.CreateAsync(EmployeeDto input) in C:\Users\Willem\Documents\Github\Apex-IT\Backend\src\Apex_IT.Application\CRUDAppServices\EmployeeService\EmployeeAppService.cs:line 37
+   at lambda_method1717(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+INFO  2025-07-29 13:30:51,074 [24   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-29 13:30:51,082 [24   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.CreateAsync (Apex_IT.Application) in 2508.1334ms
+INFO  2025-07-29 13:30:51,086 [24   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.CreateAsync (Apex_IT.Application)'
+INFO  2025-07-29 13:30:51,091 [24   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44311/api/services/app/Employee/Create - 500 - application/json;+charset=utf-8 2558.1884ms
+INFO  2025-07-29 13:33:36,585 [24   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44311/api/services/app/Employee/Create - application/json 168
+INFO  2025-07-29 13:33:36,588 [24   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2025-07-29 13:33:36,590 [24   ] pNetCore.Cors.Infrastructure.CorsService - Request origin https://localhost:44311 does not have permission to access the resource.
+INFO  2025-07-29 13:33:36,595 [24   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.CreateAsync (Apex_IT.Application)'
+INFO  2025-07-29 13:33:36,599 [24   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "Create", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto] CreateAsync(Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto) on controller Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService (Apex_IT.Application).
+INFO  2025-07-29 13:33:50,091 [26   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-29 13:33:50,097 [26   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.CreateAsync (Apex_IT.Application) in 13493.2006ms
+INFO  2025-07-29 13:33:50,110 [26   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.CreateAsync (Apex_IT.Application)'
+INFO  2025-07-29 13:33:50,114 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44311/api/services/app/Employee/Create - 200 - application/json;+charset=utf-8 13528.6391ms
+INFO  2025-07-29 13:34:26,302 [27   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/index.html - - -
+INFO  2025-07-29 13:34:26,318 [27   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/index.html - 200 - text/html;charset=utf-8 17.5019ms
+INFO  2025-07-29 13:34:26,342 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_vs/browserLink - - -
+INFO  2025-07-29 13:34:26,343 [24   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - - -
+INFO  2025-07-29 13:34:26,346 [24   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - 200 16517 application/javascript;+charset=utf-8 3.2956ms
+INFO  2025-07-29 13:34:26,363 [27   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 22.5837ms
+INFO  2025-07-29 13:34:26,400 [27   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - - -
+INFO  2025-07-29 13:34:26,402 [27   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-07-29 13:34:26,405 [27   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "SetCookie", controller = "AntiForgery", area = ""}. Executing controller action with signature Void SetCookie() on controller Apex_IT.Web.Host.Controllers.AntiForgeryController (Apex_IT.Web.Host).
+INFO  2025-07-29 13:34:26,419 [27   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - - -
+INFO  2025-07-29 13:34:26,433 [32   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 14.0775ms
+INFO  2025-07-29 13:34:32,309 [32   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-29 13:34:32,311 [32   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host) in 5904.3305ms
+INFO  2025-07-29 13:34:32,313 [32   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-07-29 13:34:32,314 [32   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - 200 - application/json;+charset=utf-8 5914.6496ms
+INFO  2025-07-29 13:34:44,928 [27   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44311/api/services/app/Employee/Create - application/json 168
+INFO  2025-07-29 13:34:44,930 [27   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2025-07-29 13:34:44,931 [27   ] pNetCore.Cors.Infrastructure.CorsService - Request origin https://localhost:44311 does not have permission to access the resource.
+INFO  2025-07-29 13:34:44,933 [27   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.CreateAsync (Apex_IT.Application)'
+INFO  2025-07-29 13:34:44,935 [27   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "Create", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto] CreateAsync(Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto) on controller Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService (Apex_IT.Application).
+INFO  2025-07-29 13:34:52,931 [32   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-29 13:34:52,937 [32   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.CreateAsync (Apex_IT.Application) in 7997.2293ms
+INFO  2025-07-29 13:34:52,940 [32   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.CreateAsync (Apex_IT.Application)'
+INFO  2025-07-29 13:34:52,944 [32   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44311/api/services/app/Employee/Create - 200 - application/json;+charset=utf-8 8015.1002ms
+DEBUG 2025-07-29 13:35:36,833 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2025-07-29 13:35:36,871 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2025-07-29 13:35:36,878 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Web.Host.Startup.Apex_ITWebHostModule, Apex_IT.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:35:36,879 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITWebCoreModule, Apex_IT.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:35:36,879 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITApplicationModule, Apex_IT.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:35:36,880 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITCoreModule, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:35:36,880 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:35:36,880 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:35:36,880 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:35:36,880 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:35:36,881 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.EntityFrameworkCore.Apex_ITEntityFrameworkModule, Apex_IT.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:35:36,881 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:35:36,881 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:35:36,881 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:35:36,881 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:35:36,881 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:35:36,881 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:35:36,882 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2025-07-29 13:35:36,920 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-29 13:35:36,920 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-29 13:35:36,920 [1    ] o.Configuration.LanguageManagementConfig - Converted Apex_IT (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-29 13:35:36,920 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-29 13:35:37,132 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Apex_IT.EntityFrameworkCore.Apex_ITDbContext, Apex_IT.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-29 13:35:37,213 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2025-07-29 13:35:37,231 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2025-07-29 13:35:37,236 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2025-07-29 13:35:37,239 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Apex_IT
+DEBUG 2025-07-29 13:35:37,242 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2025-07-29 13:35:37,246 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2025-07-29 13:35:37,251 [1    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[Apex_IT.MultiTenancy.Tenant, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Apex_IT.Authorization.Users.User, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+DEBUG 2025-07-29 13:35:37,261 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 9 classes define auto mapping attributes
+DEBUG 2025-07-29 13:35:37,261 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Users.Dto.CreateUserDto
+DEBUG 2025-07-29 13:35:37,263 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Users.Dto.UserDto
+DEBUG 2025-07-29 13:35:37,263 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2025-07-29 13:35:37,263 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Sessions.Dto.UserLoginInfoDto
+DEBUG 2025-07-29 13:35:37,263 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Roles.Dto.PermissionDto
+DEBUG 2025-07-29 13:35:37,263 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2025-07-29 13:35:37,263 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.MultiTenancy.Dto.TenantDto
+DEBUG 2025-07-29 13:35:37,263 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.SupervisorService.Dto.SupervisorDto
+DEBUG 2025-07-29 13:35:37,264 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto
+INFO  2025-07-29 13:35:50,956 [1    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,fa,ja,zh-Hans
+INFO  2025-07-29 13:35:51,154 [10   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/ - - -
+INFO  2025-07-29 13:35:51,198 [1    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
+INFO  2025-07-29 13:35:51,200 [1    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
+INFO  2025-07-29 13:35:51,202 [1    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Users\Willem\Documents\Github\Apex-IT\Backend\src\Apex_IT.Web.Host
+INFO  2025-07-29 13:35:51,304 [10   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host)'
+INFO  2025-07-29 13:35:51,338 [10   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Apex_IT.Web.Host.Controllers.HomeController (Apex_IT.Web.Host).
+INFO  2025-07-29 13:35:52,395 [11   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2025-07-29 13:35:52,405 [11   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host) in 1058.6576ms
+INFO  2025-07-29 13:35:52,406 [11   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host)'
+INFO  2025-07-29 13:35:52,418 [19   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/index.html - - -
+INFO  2025-07-29 13:35:52,422 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/ - 302 - - 1271.5267ms
+INFO  2025-07-29 13:35:52,462 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/index.html - 200 - text/html;charset=utf-8 43.9761ms
+INFO  2025-07-29 13:35:52,480 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - - -
+INFO  2025-07-29 13:35:52,485 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - 200 16517 application/javascript;+charset=utf-8 6.2590ms
+INFO  2025-07-29 13:35:52,502 [19   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_vs/browserLink - - -
+INFO  2025-07-29 13:35:52,542 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 40.4873ms
+INFO  2025-07-29 13:35:52,573 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - - -
+INFO  2025-07-29 13:35:52,576 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-07-29 13:35:52,583 [16   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "SetCookie", controller = "AntiForgery", area = ""}. Executing controller action with signature Void SetCookie() on controller Apex_IT.Web.Host.Controllers.AntiForgeryController (Apex_IT.Web.Host).
+INFO  2025-07-29 13:35:52,593 [19   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - - -
+INFO  2025-07-29 13:35:52,628 [7    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 35.0655ms
+INFO  2025-07-29 13:35:53,598 [7    ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-29 13:35:53,605 [7    ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host) in 1019.6807ms
+INFO  2025-07-29 13:35:53,606 [7    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-07-29 13:35:53,608 [7    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - 200 - application/json;+charset=utf-8 1037.2688ms
+INFO  2025-07-29 13:36:39,480 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 PUT https://localhost:44311/api/services/app/Employee/Update - application/json 175
+INFO  2025-07-29 13:36:39,485 [16   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2025-07-29 13:36:39,487 [16   ] pNetCore.Cors.Infrastructure.CorsService - Request origin https://localhost:44311 does not have permission to access the resource.
+INFO  2025-07-29 13:36:39,490 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.UpdateAsync (Apex_IT.Application)'
+INFO  2025-07-29 13:36:39,498 [16   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "Update", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto] UpdateAsync(Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto) on controller Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService (Apex_IT.Application).
+ERROR 2025-07-29 13:36:41,028 [28   ] Mvc.ExceptionHandling.AbpExceptionFilter - There is no such an entity. Entity type: Apex_IT.Authorization.Users.User, id: 0
+Abp.Domain.Entities.EntityNotFoundException: There is no such an entity. Entity type: Apex_IT.Authorization.Users.User, id: 0
+   at Abp.Domain.Repositories.AbpRepositoryBase`2.GetAsync(TPrimaryKey id)
+   at Abp.Application.Services.AsyncCrudAppService`8.UpdateAsync(TUpdateInput input)
+   at lambda_method1713(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+INFO  2025-07-29 13:36:41,540 [28   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-29 13:36:41,544 [28   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.UpdateAsync (Apex_IT.Application) in 2043.0036ms
+INFO  2025-07-29 13:36:41,545 [28   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.UpdateAsync (Apex_IT.Application)'
+INFO  2025-07-29 13:36:41,547 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 PUT https://localhost:44311/api/services/app/Employee/Update - 404 - application/json;+charset=utf-8 2068.2063ms
+INFO  2025-07-29 13:37:05,344 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 PUT https://localhost:44311/api/services/app/Employee/Update - application/json 183
+INFO  2025-07-29 13:37:05,346 [28   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2025-07-29 13:37:05,348 [28   ] pNetCore.Cors.Infrastructure.CorsService - Request origin https://localhost:44311 does not have permission to access the resource.
+INFO  2025-07-29 13:37:05,352 [28   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.UpdateAsync (Apex_IT.Application)'
+INFO  2025-07-29 13:37:05,355 [28   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "Update", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto] UpdateAsync(Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto) on controller Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService (Apex_IT.Application).
+INFO  2025-07-29 13:37:08,675 [10   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-29 13:37:08,681 [10   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.UpdateAsync (Apex_IT.Application) in 3323.5702ms
+INFO  2025-07-29 13:37:08,683 [10   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.UpdateAsync (Apex_IT.Application)'
+INFO  2025-07-29 13:37:08,685 [10   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 PUT https://localhost:44311/api/services/app/Employee/Update - 200 - application/json;+charset=utf-8 3342.1209ms
+INFO  2025-07-29 13:38:09,654 [29   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 DELETE https://localhost:44311/api/services/app/Employee/Delete?Id=3 - - -
+INFO  2025-07-29 13:38:09,656 [29   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2025-07-29 13:38:09,658 [29   ] pNetCore.Cors.Infrastructure.CorsService - Request origin https://localhost:44311 does not have permission to access the resource.
+INFO  2025-07-29 13:38:09,663 [29   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.DeleteAsync (Apex_IT.Application)'
+INFO  2025-07-29 13:38:09,670 [29   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "Delete", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task DeleteAsync(Abp.Application.Services.Dto.EntityDto`1[System.Int64]) on controller Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService (Apex_IT.Application).
+INFO  2025-07-29 13:38:22,096 [28   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-29 13:38:22,101 [28   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.DeleteAsync (Apex_IT.Application) in 12427.6385ms
+INFO  2025-07-29 13:38:22,104 [28   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.DeleteAsync (Apex_IT.Application)'
+INFO  2025-07-29 13:38:22,107 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 DELETE https://localhost:44311/api/services/app/Employee/Delete?Id=3 - 200 - application/json;+charset=utf-8 12453.2665ms
+INFO  2025-07-29 14:09:09,444 [29   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44311/api/TokenAuth/Authenticate - application/json 95
+INFO  2025-07-29 14:09:09,448 [29   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2025-07-29 14:09:09,449 [29   ] pNetCore.Cors.Infrastructure.CorsService - Request origin https://localhost:44311 does not have permission to access the resource.
+INFO  2025-07-29 14:09:09,451 [29   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Controllers.TokenAuthController.Authenticate (Apex_IT.Web.Core)'
+INFO  2025-07-29 14:09:09,456 [29   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Authenticate", controller = "TokenAuth", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Apex_IT.Models.TokenAuth.AuthenticateResultModel] Authenticate(Apex_IT.Models.TokenAuth.AuthenticateModel) on controller Apex_IT.Controllers.TokenAuthController (Apex_IT.Web.Core).
+WARN  2025-07-29 14:09:15,224 [32   ] Mvc.ExceptionHandling.AbpExceptionFilter - Login failed!
+Abp.UI.UserFriendlyException: Login failed!
+   at Apex_IT.Controllers.TokenAuthController.GetLoginResultAsync(String usernameOrEmailAddress, String password, String tenancyName) in C:\Users\Willem\Documents\Github\Apex-IT\Backend\src\Apex_IT.Web.Core\Controllers\TokenAuthController.cs:line 79
+   at Apex_IT.Controllers.TokenAuthController.Authenticate(AuthenticateModel model) in C:\Users\Willem\Documents\Github\Apex-IT\Backend\src\Apex_IT.Web.Core\Controllers\TokenAuthController.cs:line 43
+   at lambda_method1901(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+INFO  2025-07-29 14:09:15,231 [32   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-29 14:09:15,235 [32   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Controllers.TokenAuthController.Authenticate (Apex_IT.Web.Core) in 5776.1803ms
+INFO  2025-07-29 14:09:15,237 [32   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Controllers.TokenAuthController.Authenticate (Apex_IT.Web.Core)'
+INFO  2025-07-29 14:09:15,246 [32   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44311/api/TokenAuth/Authenticate - 500 - application/json;+charset=utf-8 5795.7899ms
+INFO  2025-07-29 14:09:26,092 [29   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44311/api/TokenAuth/Authenticate - application/json 96
+INFO  2025-07-29 14:09:26,095 [29   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2025-07-29 14:09:26,098 [29   ] pNetCore.Cors.Infrastructure.CorsService - Request origin https://localhost:44311 does not have permission to access the resource.
+INFO  2025-07-29 14:09:26,100 [29   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Controllers.TokenAuthController.Authenticate (Apex_IT.Web.Core)'
+INFO  2025-07-29 14:09:26,103 [29   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Authenticate", controller = "TokenAuth", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Apex_IT.Models.TokenAuth.AuthenticateResultModel] Authenticate(Apex_IT.Models.TokenAuth.AuthenticateModel) on controller Apex_IT.Controllers.TokenAuthController (Apex_IT.Web.Core).
+INFO  2025-07-29 14:09:29,561 [32   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-29 14:09:29,564 [32   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Controllers.TokenAuthController.Authenticate (Apex_IT.Web.Core) in 3459.1661ms
+INFO  2025-07-29 14:09:29,566 [32   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Controllers.TokenAuthController.Authenticate (Apex_IT.Web.Core)'
+INFO  2025-07-29 14:09:29,568 [32   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44311/api/TokenAuth/Authenticate - 200 - application/json;+charset=utf-8 3483.7489ms
