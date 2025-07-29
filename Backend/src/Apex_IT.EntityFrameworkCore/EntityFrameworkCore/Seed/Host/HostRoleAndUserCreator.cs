@@ -33,7 +33,25 @@ namespace Apex_IT.EntityFrameworkCore.Seed.Host
             var adminRoleForHost = _context.Roles.IgnoreQueryFilters().FirstOrDefault(r => r.TenantId == null && r.Name == StaticRoleNames.Host.Admin);
             if (adminRoleForHost == null)
             {
-                adminRoleForHost = _context.Roles.Add(new Role(null, StaticRoleNames.Host.Admin, StaticRoleNames.Host.Admin) { IsStatic = true, IsDefault = true }).Entity;
+                adminRoleForHost = _context.Roles.Add(new Role(null, StaticRoleNames.Host.Admin, StaticRoleNames.Host.Admin) { IsStatic = true}).Entity;
+                _context.SaveChanges();
+            }
+
+            // Employee role
+
+            var EmployeeRole = _context.Roles.IgnoreQueryFilters().FirstOrDefault(r => r.TenantId == null && r.Name == StaticRoleNames.Employee.User);
+            if (EmployeeRole == null)
+            {
+                EmployeeRole = _context.Roles.Add(new Role(null, StaticRoleNames.Employee.User, StaticRoleNames.Employee.User) { IsStatic = true}).Entity;
+                _context.SaveChanges();
+            }
+
+            // Supervisor role
+
+            var SupervisorRole = _context.Roles.IgnoreQueryFilters().FirstOrDefault(r => r.TenantId == null && r.Name == StaticRoleNames.Supervisor.Admin);
+            if (SupervisorRole == null)
+            {
+                SupervisorRole = _context.Roles.Add(new Role(null, StaticRoleNames.Supervisor.Admin, StaticRoleNames.Supervisor.Admin) { IsStatic = true, IsDefault = true }).Entity;
                 _context.SaveChanges();
             }
 

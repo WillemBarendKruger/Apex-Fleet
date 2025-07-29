@@ -13,6 +13,7 @@ using Apex_IT.Authentication.JwtBearer;
 using Apex_IT.Configuration;
 using Apex_IT.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using Abp.Timing;
 
 namespace Apex_IT
 {
@@ -35,6 +36,8 @@ namespace Apex_IT
 
         public override void PreInitialize()
         {
+            Clock.Provider = ClockProviders.Utc;
+
             Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(
                 Apex_ITConsts.ConnectionStringName
             );

@@ -11,5 +11,15 @@ namespace Apex_IT.Authorization.Roles
         {
             public const string Admin = "Admin";
         }
+
+        public static class Supervisor
+        {
+            public const string Admin = "Supervisor";
+        }
+
+        public static class Employee
+        {
+            public static string User = "Employee";
+        }
     }
 }
