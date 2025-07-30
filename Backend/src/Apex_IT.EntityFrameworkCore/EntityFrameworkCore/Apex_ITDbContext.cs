@@ -5,6 +5,7 @@ using Apex_IT.Authorization.Users;
 using Apex_IT.MultiTenancy;
 using Apex_IT.Entities.EquimentItem;
 using Apex_IT.Entities.Categories;
+using Apex_IT.Entities.AccessRequests;
 
 namespace Apex_IT.EntityFrameworkCore
 {
@@ -13,6 +14,7 @@ namespace Apex_IT.EntityFrameworkCore
         /* Define a DbSet for each entity of the application */
         public DbSet<Equipment> EquipmentSet { get; set; }
         public DbSet<Category> Category { get; set; }
+        public DbSet<AccessRequest> AccessRequests { get; set; }
 
         public Apex_ITDbContext(DbContextOptions<Apex_ITDbContext> options)
             : base(options)
