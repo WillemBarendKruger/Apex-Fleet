@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace Apex_IT.CRUDAppServices.EquipmentService
 {
+    [AbpAuthorize("Supervisor")]
     public class EquipmentAppService : AsyncCrudAppService<Equipment, EquipmentDto, Guid>
     {
         private readonly IRepository<Equipment, Guid> _equipmentRepository;
@@ -42,11 +43,16 @@ namespace Apex_IT.CRUDAppServices.EquipmentService
 
         public async Task<Guid> GetCategoryIdByNameAsync(string name)
         {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new UserFriendlyException("Category name cannot be empty");
+            }
+
             var category = await _categoryRepository.FirstOrDefaultAsync(
                 c => c.Type.ToLower() == name.ToLower()
             );
-
-            if (category == null && name != "")
+  
+            if (category == null)
             {
                 Logger.Error($"Could not find category {name}");
 
@@ -61,9 +67,9 @@ namespace Apex_IT.CRUDAppServices.EquipmentService
                     category.CreatorUserId = null;
                     await _categoryRepository.InsertAsync(category);
                 }
-                catch(Exception e)
+                catch(Exception)
                 {
-                    throw new UserFriendlyException("Category not found");
+                    throw new UserFriendlyException("Failed to create category");
                 }
             }
             return category.Id;

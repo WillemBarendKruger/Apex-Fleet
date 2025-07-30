@@ -11,7 +11,7 @@ namespace Apex_IT.Entities.EquimentItem
     {
         public virtual string Name { get; set; }
         public virtual string SerialNumber { get; set; }
-        public virtual int MaintanacePeriod { get; set; }
+        public virtual int MaintenancePeriod { get; set; }
         public virtual string Status { get; set; }
 
         public virtual Guid CategoryId { get; set; }
