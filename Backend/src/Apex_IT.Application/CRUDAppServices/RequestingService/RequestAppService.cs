@@ -45,7 +45,7 @@ namespace Apex_IT.CRUDAppServices.RequestingService
 
             if (equipment == null)
             {
-                Logger.Error($"Equipment with name '{equipment}' not found.");
+                Logger.Error($"Equipment with name '{name}' not found.");
                 throw new UserFriendlyException("Equipment not found");
             }
 
