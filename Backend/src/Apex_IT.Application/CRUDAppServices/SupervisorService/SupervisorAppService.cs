@@ -23,8 +23,8 @@ namespace Apex_IT.CRUDAppServices.SupervisorService
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            if (string.IsNullOrWhiteSpace(input.Password) || input.Password.Length < 8)
-                throw new UserFriendlyException("Password must be at least 8 characters long");
+            if (string.IsNullOrWhiteSpace(input.Password) || input.Password.Length < 6)
+                throw new UserFriendlyException("Password must be at least 6 characters long");
 
             if (!input.Password.Any(char.IsUpper) || !input.Password.Any(char.IsDigit) ||
                 !input.Password.Any(ch => "!@#$%^&*()_+-=[]{}|;:,.<>?".Contains(ch)))
@@ -42,7 +42,7 @@ namespace Apex_IT.CRUDAppServices.SupervisorService
                     throw new UserFriendlyException($"Failed to create user: {errors}");
                 }
 
-                await _userManager.AddToRoleAsync(supervisor, input.RoleName);
+                await _userManager.AddToRoleAsync(supervisor, "Supervisor");
             }
             catch (Exception ex)
             {
