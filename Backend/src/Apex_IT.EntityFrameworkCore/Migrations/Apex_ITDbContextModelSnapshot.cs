@@ -1714,6 +1714,57 @@ namespace Apex_IT.Migrations
                     b.ToTable("EquipmentSet");
                 });
 
+            modelBuilder.Entity("Apex_IT.Entities.Reports.ConditionReport", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("EquipmentId")
+                        .HasColumnType("uuid");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Priority")
+                        .HasColumnType("text");
+
+                    b.Property<long>("ReportingEmployeeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("ReportingEmployeeName")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EquipmentId");
+
+                    b.HasIndex("ReportingEmployeeId");
+
+                    b.ToTable("ConditionReports");
+                });
+
             modelBuilder.Entity("Apex_IT.MultiTenancy.Tenant", b =>
                 {
                     b.Property<int>("Id")
@@ -2032,6 +2083,25 @@ namespace Apex_IT.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("Handler");
+                });
+
+            modelBuilder.Entity("Apex_IT.Entities.Reports.ConditionReport", b =>
+                {
+                    b.HasOne("Apex_IT.Entities.EquimentItem.Equipment", "Equipment")
+                        .WithMany()
+                        .HasForeignKey("EquipmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Apex_IT.Authorization.Users.User", "ReportingEmployee")
+                        .WithMany()
+                        .HasForeignKey("ReportingEmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Equipment");
+
+                    b.Navigation("ReportingEmployee");
                 });
 
             modelBuilder.Entity("Apex_IT.MultiTenancy.Tenant", b =>

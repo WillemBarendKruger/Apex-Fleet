@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Apex_IT.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial_Create : Migration
+    public partial class ReCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -450,6 +450,25 @@ namespace Apex_IT.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Category",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Type = table.Column<string>(type: "text", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Category", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AbpDynamicEntityProperties",
                 columns: table => new
                 {
@@ -769,6 +788,42 @@ namespace Apex_IT.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EquipmentSet",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    SerialNumber = table.Column<string>(type: "text", nullable: true),
+                    MaintenancePeriod = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<string>(type: "text", nullable: true),
+                    CategoryId = table.Column<Guid>(type: "uuid", nullable: false),
+                    HandlerId = table.Column<long>(type: "bigint", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EquipmentSet", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EquipmentSet_AbpUsers_HandlerId",
+                        column: x => x.HandlerId,
+                        principalTable: "AbpUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EquipmentSet_Category_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Category",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AbpDynamicEntityPropertyValues",
                 columns: table => new
                 {
@@ -868,6 +923,74 @@ namespace Apex_IT.Migrations
                         name: "FK_AbpRoleClaims_AbpRoles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "AbpRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AccessRequests",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Status = table.Column<string>(type: "text", nullable: true),
+                    EquipmentId = table.Column<Guid>(type: "uuid", nullable: false),
+                    RequestingEmployeeId = table.Column<long>(type: "bigint", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AccessRequests", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AccessRequests_AbpUsers_RequestingEmployeeId",
+                        column: x => x.RequestingEmployeeId,
+                        principalTable: "AbpUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AccessRequests_EquipmentSet_EquipmentId",
+                        column: x => x.EquipmentId,
+                        principalTable: "EquipmentSet",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ConditionReports",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    Priority = table.Column<string>(type: "text", nullable: true),
+                    EquipmentId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ReportingEmployeeName = table.Column<string>(type: "text", nullable: true),
+                    ReportingEmployeeId = table.Column<long>(type: "bigint", nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ConditionReports", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ConditionReports_AbpUsers_ReportingEmployeeId",
+                        column: x => x.ReportingEmployeeId,
+                        principalTable: "AbpUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ConditionReports_EquipmentSet_EquipmentId",
+                        column: x => x.EquipmentId,
+                        principalTable: "EquipmentSet",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -1220,6 +1343,36 @@ namespace Apex_IT.Migrations
                 name: "IX_AbpWebhookSendAttempts_WebhookEventId",
                 table: "AbpWebhookSendAttempts",
                 column: "WebhookEventId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AccessRequests_EquipmentId",
+                table: "AccessRequests",
+                column: "EquipmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AccessRequests_RequestingEmployeeId",
+                table: "AccessRequests",
+                column: "RequestingEmployeeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ConditionReports_EquipmentId",
+                table: "ConditionReports",
+                column: "EquipmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ConditionReports_ReportingEmployeeId",
+                table: "ConditionReports",
+                column: "ReportingEmployeeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EquipmentSet_CategoryId",
+                table: "EquipmentSet",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EquipmentSet_HandlerId",
+                table: "EquipmentSet",
+                column: "HandlerId");
         }
 
         /// <inheritdoc />
@@ -1307,6 +1460,12 @@ namespace Apex_IT.Migrations
                 name: "AbpWebhookSubscriptions");
 
             migrationBuilder.DropTable(
+                name: "AccessRequests");
+
+            migrationBuilder.DropTable(
+                name: "ConditionReports");
+
+            migrationBuilder.DropTable(
                 name: "AbpDynamicEntityProperties");
 
             migrationBuilder.DropTable(
@@ -1322,6 +1481,9 @@ namespace Apex_IT.Migrations
                 name: "AbpWebhookEvents");
 
             migrationBuilder.DropTable(
+                name: "EquipmentSet");
+
+            migrationBuilder.DropTable(
                 name: "AbpDynamicProperties");
 
             migrationBuilder.DropTable(
@@ -1329,6 +1491,9 @@ namespace Apex_IT.Migrations
 
             migrationBuilder.DropTable(
                 name: "AbpUsers");
+
+            migrationBuilder.DropTable(
+                name: "Category");
         }
     }
 }
