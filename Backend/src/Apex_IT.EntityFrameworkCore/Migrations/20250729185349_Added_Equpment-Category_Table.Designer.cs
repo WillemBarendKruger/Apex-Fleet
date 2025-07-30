@@ -3,6 +3,7 @@ using System;
 using Apex_IT.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Apex_IT.Migrations
 {
     [DbContext(typeof(Apex_ITDbContext))]
-    partial class Apex_ITDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250729185349_Added_Equpment-Category_Table")]
+    partial class Added_EqupmentCategory_Table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1484,6 +1487,11 @@ namespace Apex_IT.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("character varying(8)");
+
                     b.Property<string>("EmailAddress")
                         .IsRequired()
                         .HasMaxLength(256)
@@ -1578,6 +1586,10 @@ namespace Apex_IT.Migrations
                     b.HasIndex("TenantId", "NormalizedUserName");
 
                     b.ToTable("AbpUsers");
+
+                    b.HasDiscriminator().HasValue("User");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Apex_IT.Entities.Categories.Category", b =>
@@ -1621,9 +1633,6 @@ namespace Apex_IT.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("uuid");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp with time zone");
 
@@ -1660,11 +1669,14 @@ namespace Apex_IT.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("text");
 
+                    b.Property<Guid?>("categoryId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
                     b.HasIndex("HandlerId");
+
+                    b.HasIndex("categoryId");
 
                     b.ToTable("EquipmentSet");
                 });
@@ -1784,6 +1796,15 @@ namespace Apex_IT.Migrations
                     b.ToTable("AbpPermissions");
 
                     b.HasDiscriminator().HasValue("UserPermissionSetting");
+                });
+
+            modelBuilder.Entity("Apex_IT.Entities.Employees.Employee", b =>
+                {
+                    b.HasBaseType("Apex_IT.Authorization.Users.User");
+
+                    b.ToTable("AbpUsers");
+
+                    b.HasDiscriminator().HasValue("Employee");
                 });
 
             modelBuilder.Entity("Abp.Authorization.Roles.RoleClaim", b =>
@@ -1953,21 +1974,19 @@ namespace Apex_IT.Migrations
 
             modelBuilder.Entity("Apex_IT.Entities.EquimentItem.Equipment", b =>
                 {
-                    b.HasOne("Apex_IT.Entities.Categories.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Apex_IT.Authorization.Users.User", "Handler")
+                    b.HasOne("Apex_IT.Entities.Employees.Employee", "Handler")
                         .WithMany()
                         .HasForeignKey("HandlerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
+                    b.HasOne("Apex_IT.Entities.Categories.Category", "category")
+                        .WithMany()
+                        .HasForeignKey("categoryId");
 
                     b.Navigation("Handler");
+
+                    b.Navigation("category");
                 });
 
             modelBuilder.Entity("Apex_IT.MultiTenancy.Tenant", b =>
