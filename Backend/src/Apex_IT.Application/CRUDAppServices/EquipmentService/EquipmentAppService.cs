@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Apex_IT.CRUDAppServices.EquipmentService
 {
-    [AbpAuthorize("Supervisor")]
+    //[AbpAuthorize("Supervisor")]
     public class EquipmentAppService : AsyncCrudAppService<Equipment, EquipmentDto, Guid>
     {
         private readonly IRepository<Equipment, Guid> _equipmentRepository;
