@@ -3,6 +3,7 @@ using System;
 using Apex_IT.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Apex_IT.Migrations
 {
     [DbContext(typeof(Apex_ITDbContext))]
-    partial class Apex_ITDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250730110924_Added_AccessRequest_Table")]
+    partial class Added_AccessRequest_Table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1598,6 +1601,9 @@ namespace Apex_IT.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<long?>("EmployeeId")
+                        .HasColumnType("bigint");
+
                     b.Property<Guid>("EquipmentId")
                         .HasColumnType("uuid");
 
@@ -1618,10 +1624,10 @@ namespace Apex_IT.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EmployeeId");
+
                     b.HasIndex("EquipmentId");
 
-                    b.HasIndex("RequestingEmployeeId");
-                    
                     b.ToTable("AccessRequests");
                 });
 
@@ -1998,15 +2004,9 @@ namespace Apex_IT.Migrations
 
             modelBuilder.Entity("Apex_IT.Entities.AccessRequests.AccessRequest", b =>
                 {
-                    b.HasOne("Apex_IT.Entities.EquimentItem.Equipment", "Equipment")
-                        .WithMany()
-                        .HasForeignKey("EquipmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Apex_IT.Authorization.Users.User", "RequestingEmployee")
                         .WithMany()
-                        .HasForeignKey("RequestingEmployeeId")
+                        .HasForeignKey("EmployeeId");
 
                     b.HasOne("Apex_IT.Entities.EquimentItem.Equipment", "Equipment")
                         .WithMany()

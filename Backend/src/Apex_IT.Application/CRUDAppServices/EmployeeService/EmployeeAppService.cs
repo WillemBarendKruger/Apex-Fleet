@@ -41,7 +41,7 @@ namespace Apex_IT.CRUDAppServices.EmployeeService
                     throw new UserFriendlyException($"Failed to create user: {errors}");
                 }
 
-                await _userManager.AddToRoleAsync(employee, input.RoleName);
+                await _userManager.AddToRoleAsync(employee, "Employee");
             }
             catch (Exception ex)
             {

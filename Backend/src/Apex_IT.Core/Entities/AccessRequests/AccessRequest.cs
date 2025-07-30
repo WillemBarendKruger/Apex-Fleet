@@ -15,6 +15,7 @@ namespace Apex_IT.Entities.AccessRequests
         public virtual Equipment Equipment { get; set; }
 
         public virtual long RequestingEmployeeId { get; set; }
+
         [ForeignKey("RequestingEmployeeId")]
         public virtual User RequestingEmployee { get; set; }
     }
