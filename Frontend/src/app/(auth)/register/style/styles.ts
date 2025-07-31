@@ -138,11 +138,11 @@ export const useStyles = createStyles({
     }
 
     @media (max-width: 480px) {
-      width: 300px;
+      width: 300px !important;
     }
 
     @media (max-width: 360px) {
-      width: 200px;
+      width: 200px !important;
     }
   `,
   select: css`
