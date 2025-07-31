@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { useStyles } from "./style/styles";
 import Typography from "antd/es/typography";
-import { useRouter } from "next/navigation";
 import { Button, Divider, Flex, Form, FormProps, Input, Spin, message } from "antd";
 import "@ant-design/v5-patch-for-react-19";
 import Image from "next/image";
@@ -14,6 +13,7 @@ import {
     MailOutlined,
 } from "@ant-design/icons";
 import { useAuthActions } from "@/providers/auth-provider";
+import Loader from "@/components/loader/loader";
 
 type FieldType = {
     email?: string;
@@ -23,7 +23,6 @@ type FieldType = {
 const Login = () => {
     const { styles } = useStyles();
     const { Title } = Typography;
-    const router = useRouter();
     const { login } = useAuthActions();
     const [loading, setLoading] = useState(false);
 
@@ -37,18 +36,6 @@ const Login = () => {
             };
             await login(payload);
             setLoading(false);
-            const user = sessionStorage.getItem("role") || "";
-
-            if (user === "Superviser") {
-                message.success("Login successfully!");
-                router.push("/supervisor/dashboard");
-            } else if (user === "Employee") {
-                message.success("Login successfully!");
-                router.push("/employee/dashboard");
-            } else {
-                message.success("Could not find user");
-                router.push("/login");
-            }
         } catch (error) {
             setLoading(false);
             console.error(error);
@@ -61,27 +48,21 @@ const Login = () => {
         <>
             {loading ? (
                 <div>
-                    <Flex
-                        justify="center"
-                        align="center"
-                        style={{ marginBottom: 20, width: "100%", height: "100vh" }}
-                    >
-                        <Spin size="large" />
-                    </Flex>
+                    <Loader />
                 </div>
             ) : (
                 <>
                     <div className={styles.splitLeft}>
                         <div className={styles.centered}>
                             <Image
-                                src="/AppLogo-TransparentWhite.png"
+                                src="/Apex-IT-Logo-orange.png"
                                 alt="Profile"
                                 width={300}
                                 height={300}
                             ></Image>
-                            <Title> Welcome to Potholio</Title>
+                            <Title> Welcome to Apex IT</Title>
                             <h2 className={styles.subHeading}>
-                                Help make the roads safer by a simple tap of a button
+                                Never Lose Track of What Keeps You Working.
                             </h2>
                         </div>
                     </div>
@@ -89,10 +70,10 @@ const Login = () => {
                         <div className={styles.page}>
                             <div className={styles.mobileLogo}>
                                 <Image
-                                    src="/AppLogo-Small.png"
+                                    src="/Apex-IT-Logo-orange-name.png"
                                     alt="Potholio Logo"
-                                    width={200}
-                                    height={200}
+                                    width={300}
+                                    height={300}
                                     className={styles.logoImage}
                                 />
                             </div>
@@ -124,7 +105,16 @@ const Login = () => {
                                                 required: true,
                                                 message: "Please input your Password!",
                                             },
+                                            {
+                                                pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
+                                                min: 6,
+                                                message:
+                                                    "Password must include atleast 6 characters\n, uppercase, lowercase, number, and special character!",
+                                            },
                                         ]}
+                                        style={{
+                                            width: "300px",
+                                        }}
                                     >
                                         <Input.Password
                                             className={styles.input}
@@ -162,7 +152,8 @@ const Login = () => {
                         </div>
                     </div>
                 </>
-            )}
+            )
+            }
         </>
     );
 };
