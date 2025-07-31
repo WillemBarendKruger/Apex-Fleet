@@ -12,7 +12,7 @@ export const useStyles = createStyles({
   `,
   left: css`
     left: 0;
-    background-color: 0B192C;
+    background-color: #0b192c;
   `,
   right: css`
     right: 0;
