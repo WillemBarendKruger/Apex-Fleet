@@ -27,19 +27,34 @@ export const useStyles = createStyles({
     overflow-x: hidden;
     padding-top: 20px;
     left: 0;
-    background-image: linear-gradient(
-        rgba(181, 179, 179, 0.6),
-        rgba(8, 8, 8, 0.8)
-      ),
-      url("/Landingpage.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: #7AB2D3;
+   clip-path: polygon(0% 0%, 65% 0%, 100% 100%, 0% 100%);
 
     @media (max-width: 768px) {
-      display: none;
+      width: 100%;
+      right: 0;
+      left: 0;
+      clip-path: none;
     }
   `,
+  Left: css`
+  height: 100%;
+  width: 35%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  left: 0;
+  background-color: transparent;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    left: 0;
+    right: 0;
+    clip-path: none; /* Remove angle on mobile for simplicity */
+  }
+`,
   splitRight: css`
     height: 100%;
     width: 50%;
@@ -49,12 +64,10 @@ export const useStyles = createStyles({
     overflow-x: hidden;
     padding-top: 20px;
     right: 0;
-    background-color: #0b192c;
+    background-color: transparent;
 
     @media (max-width: 768px) {
-      width: 100%;
-      right: 0;
-      left: 0;
+      display: none;
     }
   `,
   centered: css`
@@ -100,7 +113,7 @@ export const useStyles = createStyles({
   input: css`
     width: 300px;
     border-color: #ff6500;
-    background: #0b192c;
+    background: #0B192C;
     &:hover {
       background-color: #0B192C !important;
     }
@@ -124,12 +137,12 @@ export const useStyles = createStyles({
     align: center;
   `,
   link: css`
-    color: #ff6500;
+    color: #0b192c;
   `,
   mobileLogo: css`
     display: none;
     text-align: center;
-    background-color: #0b192c;
+    background-color: transparent;
 
     @media (max-width: 768px) {
       display: block;

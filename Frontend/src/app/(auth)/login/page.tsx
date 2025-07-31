@@ -53,6 +53,93 @@ const Login = () => {
             ) : (
                 <>
                     <div className={styles.splitLeft}>
+                        <div className={styles.Left}>
+                            <div className={styles.page}>
+                                <div className={styles.mobileLogo}>
+                                    <Image
+                                        src="/Apex-IT-Logo.png"
+                                        alt="Potholio Logo"
+                                        width={300}
+                                        height={300}
+                                        className={styles.logoImage}
+                                    />
+                                </div>
+                                <div className={styles.form}>
+                                    <Form
+                                        name="login"
+                                        initialValues={{ remember: true }}
+                                        className={styles.formContent}
+                                        onFinish={onFinish}
+                                    >
+                                        <h2 className={styles.heading}>Login</h2>
+                                        <Form.Item
+                                            name="email"
+                                            rules={[
+                                                { required: true, message: "Please input your Email!" },
+                                            ]}
+                                        >
+                                            <Input
+                                                size="large"
+                                                placeholder="Email or Username"
+                                                prefix={<MailOutlined />}
+                                                className={styles.input}
+                                            />
+                                        </Form.Item>
+                                        <Form.Item
+                                            name="password"
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                    message: "Please input your Password!",
+                                                },
+                                                {
+                                                    pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
+                                                    min: 6,
+                                                    message:
+                                                        "Wrong password requirments",
+                                                },
+                                            ]}
+                                            style={{
+                                                width: "300px",
+                                            }}
+                                        >
+                                            <Input.Password
+                                                className={styles.input}
+                                                size="large"
+                                                placeholder="Password"
+                                                prefix={<LockOutlined />}
+                                                iconRender={(visible) =>
+                                                    visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                                                }
+                                            />
+                                        </Form.Item>
+                                        <Form.Item>
+                                            <Button
+                                                block
+                                                type="primary"
+                                                htmlType="submit"
+                                                style={{
+                                                    width: "300px",
+                                                    fontWeight: "bold",
+                                                }}
+                                                size="large"
+                                            >
+                                                Log in
+                                            </Button>
+                                        </Form.Item>
+                                        <Divider plain>
+                                            Don&#39;t have an account?
+                                            <a href="/register" className={styles.link}>
+                                                {" "}
+                                                Register
+                                            </a>
+                                        </Divider>
+                                    </Form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.splitRight}>
                         <div className={styles.centered}>
                             <Image
                                 src="/Apex-IT-Logo-orange.png"
@@ -64,91 +151,6 @@ const Login = () => {
                             <h2 className={styles.subHeading}>
                                 Never Lose Track of What Keeps You Working.
                             </h2>
-                        </div>
-                    </div>
-                    <div className={styles.splitRight}>
-                        <div className={styles.page}>
-                            <div className={styles.mobileLogo}>
-                                <Image
-                                    src="/Apex-IT-Logo-orange-name.png"
-                                    alt="Potholio Logo"
-                                    width={300}
-                                    height={300}
-                                    className={styles.logoImage}
-                                />
-                            </div>
-                            <div className={styles.form}>
-                                <Form
-                                    name="login"
-                                    initialValues={{ remember: true }}
-                                    className={styles.formContent}
-                                    onFinish={onFinish}
-                                >
-                                    <h2 className={styles.heading}>Login</h2>
-                                    <Form.Item
-                                        name="email"
-                                        rules={[
-                                            { required: true, message: "Please input your Email!" },
-                                        ]}
-                                    >
-                                        <Input
-                                            size="large"
-                                            placeholder="Email or Username"
-                                            prefix={<MailOutlined />}
-                                            className={styles.input}
-                                        />
-                                    </Form.Item>
-                                    <Form.Item
-                                        name="password"
-                                        rules={[
-                                            {
-                                                required: true,
-                                                message: "Please input your Password!",
-                                            },
-                                            {
-                                                pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
-                                                min: 6,
-                                                message:
-                                                    "Password must include atleast 6 characters\n, uppercase, lowercase, number, and special character!",
-                                            },
-                                        ]}
-                                        style={{
-                                            width: "300px",
-                                        }}
-                                    >
-                                        <Input.Password
-                                            className={styles.input}
-                                            size="large"
-                                            placeholder="Password"
-                                            prefix={<LockOutlined />}
-                                            iconRender={(visible) =>
-                                                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                                            }
-                                        />
-                                    </Form.Item>
-                                    <Form.Item>
-                                        <Button
-                                            block
-                                            type="primary"
-                                            htmlType="submit"
-                                            style={{
-                                                width: "300px",
-                                                fontWeight: "bold",
-                                            }}
-                                            size="large"
-                                        >
-                                            Log in
-                                        </Button>
-                                    </Form.Item>
-                                    <Divider plain>
-                                        Don&#39;t have an account?
-                                        <a href="/register" className={styles.link}>
-                                            {" "}
-                                            Register
-                                        </a>
-                                    </Divider>
-                                </Form>
-                            </div>
                         </div>
                     </div>
                 </>
