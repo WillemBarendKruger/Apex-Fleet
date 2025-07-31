@@ -53,8 +53,12 @@ namespace Apex_IT.CRUDAppServices.ConditionReportService
 
         public override async Task<ConditionReportDto> CreateAsync(ConditionReportDto input)
         {
-            var EmployeeId = await GetEmployeeIdByEmailAsync(input.ReportingEmployeeEmail);
-            input.ReportingEmployeeId = EmployeeId;
+            var employeeId = await GetEmployeeIdByEmailAsync(input.ReportingEmployeeEmail);
+            input.ReportingEmployeeId = employeeId;
+
+            // Set the employee name for consistency with the entity design
+            var employee = await _userRepository.GetAsync(employeeId);
+            input.ReportingEmployeeName = $"{employee.Name} {employee.Surname}";
 
             var equipmentId = await GetEquipmentIdByNameAsync(input.EquipmentName);
             input.EquipmentId = equipmentId;
