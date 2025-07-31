@@ -22,11 +22,8 @@ type FieldType = {
     accessToken?: string;
     emailAddress: string;
     password: string;
-    roleName: string;
     name: string;
     surname: string;
-    address: string;
-    contactNumber: number;
     userName: string;
 };
 
