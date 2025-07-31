@@ -1,7 +1,7 @@
 import { createStyles, css } from "antd-style";
 
 export const useStyles = createStyles({
-    split: css`
+  split: css`
     height: 100%;
     width: 50%;
     position: fixed;
@@ -10,15 +10,15 @@ export const useStyles = createStyles({
     overflow-x: hidden;
     padding-top: 20px;
   `,
-    left: css`
+  left: css`
     left: 0;
     background-color: 0B192C;
   `,
-    right: css`
+  right: css`
     right: 0;
     background-color: #0b192c;
   `,
-    splitLeft: css`
+  splitLeft: css`
     height: 100%;
     width: 50%;
     position: fixed;
@@ -40,7 +40,7 @@ export const useStyles = createStyles({
       display: none;
     }
   `,
-    splitRight: css`
+  splitRight: css`
     height: 100%;
     width: 50%;
     position: fixed;
@@ -57,32 +57,32 @@ export const useStyles = createStyles({
       left: 0;
     }
   `,
-    centered: css`
+  centered: css`
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
   `,
-    subHeading: css`
+  subHeading: css`
     color: #ff6500;
   `,
-    page: css`
+  page: css`
     height: 100%;
     width: 100%;
     align-content: center;
   `,
-    form: css`
+  form: css`
     align-items: center;
     justify-items: center;
     justify-content: center;
   `,
-    formContent: css`
+  formContent: css`
     align-items: center;
     justify-items: center;
     justify-content: center;
   `,
-    heading: css`
+  heading: css`
     justify-content: center;
     align-items: center;
     font-size: 30px;
@@ -97,9 +97,9 @@ export const useStyles = createStyles({
       font-size: 20px;
     }
   `,
-    input: css`
+  input: css`
     width: 300px;
-    border-color: grey;
+    border-color: #ff6500;
     background: #0b192c;
     &:hover {
       background-color: #0B192C !important;
@@ -119,30 +119,29 @@ export const useStyles = createStyles({
       width: 200px;
     }
   `,
-    flex: css`
+  flex: css`
     justify: space-between;
     align: center;
   `,
-    link: css`
+  link: css`
     color: #ff6500;
   `,
-    mobileLogo: css`
+  mobileLogo: css`
     display: none;
     text-align: center;
-    padding: 20px 0;
     background-color: #0b192c;
 
     @media (max-width: 768px) {
       display: block;
-      margin-bottom: 20px;
+      margin-bottom: -50px;
     }
   `,
-    logoImage: css`
-    max-height: 170px;
+  logoImage: css`
+    max-height: 400px;
     width: auto;
 
     @media (max-width: 480px) {
-      max-height: 120px;
+      max-height: 320px;
     }
 
     @media (max-width: 360px) {
@@ -150,7 +149,7 @@ export const useStyles = createStyles({
     }
   `,
 
-    logoText: css`
+  logoText: css`
     color: #ff6500;
     font-size: 24px;
     font-weight: bold;

@@ -24,19 +24,19 @@ export const useStyles = createStyles({
   logo: css`
     margin-bottom: 20px;
     img {
-      max-height: 150px;
+      max-height: 200px;
       width: auto;
     }
 
     @media (max-width: 768px) {
       img {
-        max-height: 120px;
+        max-height: 220px;
       }
     }
 
     @media (max-width: 480px) {
       img {
-        max-height: 90px;
+        max-height: 190px;
       }
     }
   `,
@@ -45,13 +45,12 @@ export const useStyles = createStyles({
     font-size: 14px;
     color: #d1d5db;
     margin-top: 5px;
-    margin-bottom: 20px;
   `,
 
   heading: css`
     font-size: 32px;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 
     @media (max-width: 768px) {
       font-size: 28px;
@@ -65,7 +64,7 @@ export const useStyles = createStyles({
   subHeading: css`
     font-size: 18px;
     max-width: 500px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     color: #e5e7eb;
 
     @media (max-width: 480px) {
@@ -81,7 +80,8 @@ export const useStyles = createStyles({
     margin-bottom: 20px;
 
     &:hover {
-      background-color: #e55c00 !important;
+      background-color: transparent !important;
+      border: soldi 2px #ff6500;
     }
   `,
 

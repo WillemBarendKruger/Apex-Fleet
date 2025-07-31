@@ -31,21 +31,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 sessionStorage.setItem("role", userRole);
                 sessionStorage.setItem("userId", userId);
 
-                getCurrentUser();
-                dispatch(logInSuccess(token));
-                message.success("Login successfully!");
-
-                const { role } = decodeToken(token);
-
-                if (role === "Supervisor") {
+                if (userRole === "Supervisor") {
                     router.replace(`/supervisor/dashboard`);
-                } else if (((role === "Employee"))) {
+                    message.success("Login successfully!");
+                } else if (((userRole === "Employee"))) {
                     router.replace(`/employee/dashboard`);
+                    message.success("Login successfully!");
                 }
                 else {
                     router.replace(`/login`)
                     message.error("Login failed. Please check your credentials.");
                 }
+                getCurrentUser();
             })
             .catch((error) => {
                 console.error(error);
@@ -86,16 +83,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         await instance
             .get(endpoint)
             .then((response) => {
-                const result = response.data.result.user;
-                const user = result || "";
-                sessionStorage.setItem("user", user);
-
-                // const result2 = response.data.result.user.name;
-
-                // const serviceProviderName = result2 || "";
-
-                // sessionStorage.setItem("serviceProviderName", serviceProviderName);
-
                 sessionStorage.setItem(
                     "currentUser",
                     JSON.stringify(response.data.result.user.id)
@@ -112,7 +99,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const logOut = () => {
         try {
             dispatch(logOutPending());
-            sessionStorage.removeItem("token");
+            sessionStorage.clear();
             dispatch(logOutSuccess());
             router.replace("/auth/login");
             message.success("Logged out successfully!");

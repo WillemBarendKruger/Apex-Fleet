@@ -1,5 +1,6 @@
 import { AuthProvider } from "@/providers/auth-provider";
 import { ConfigProvider, theme } from "antd";
+import "./globals.css";
 
 export default function RootLayout({
   children,
