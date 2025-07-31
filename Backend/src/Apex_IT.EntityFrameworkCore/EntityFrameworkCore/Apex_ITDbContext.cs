@@ -6,6 +6,7 @@ using Apex_IT.MultiTenancy;
 using Apex_IT.Entities.EquimentItem;
 using Apex_IT.Entities.Categories;
 using Apex_IT.Entities.AccessRequests;
+using Apex_IT.Entities.Reports;
 
 namespace Apex_IT.EntityFrameworkCore
 {
@@ -15,6 +16,7 @@ namespace Apex_IT.EntityFrameworkCore
         public DbSet<Equipment> EquipmentSet { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<AccessRequest> AccessRequests { get; set; }
+        public DbSet<ConditionReport> ConditionReports { get; set; }
 
         public Apex_ITDbContext(DbContextOptions<Apex_ITDbContext> options)
             : base(options)
