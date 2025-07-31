@@ -53,10 +53,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     const register = async (user: IUser) => {
         dispatch(registerPending());
-        const endpoint =
-            user.roleName === "Supervisor"
-                ? `services/app/Employee/Create`
-                : `services/app/Supervisor/Create`;
+        const endpoint = `services/app/supervisor/Create`;
         await instance
             .post(endpoint, user)
             .then((response) => {
@@ -66,7 +63,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 sessionStorage.setItem("role", JSON.stringify(decoded));
                 dispatch(registerSuccess(user));
                 message.success("Registration successfull!");
-                // dispatch(logOutSuccess());
+                dispatch(logOutSuccess());
             })
             .catch((error) => {
                 dispatch(registerError());
