@@ -163,7 +163,7 @@ const RegistrationForm = () => {
                                                 {
 
                                                     pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
-                                                    message: "Password must include at least 6 characters\n, uppercase, lowercase, number, and special character!",
+                                                    message: "Password must include at least 6 characters, uppercase, lowercase, number, and special character!",
                                                 },
                                             ]}
                                             hasFeedback
