@@ -9,14 +9,14 @@ import { useRouter } from "next/navigation";
 import { decodeToken, AbpTokenProperies } from "@/utils/jwt";
 import { getCurrentUserError, getCurrentUserPending, getCurrentUserSuccess, logInError, logInPending, logInSuccess, logOutError, logOutPending, logOutSuccess, registerError, registerPending, registerSuccess } from "./actions";
 import { jwtDecode } from "jwt-decode";
-import { message } from "antd";
+import { message } from "antd/es";
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
     const instance = getAxiosInstance();
     const router = useRouter();
 
-    const logIn = async (user: ILogin) => {
+    const login = async (user: ILogin) => {
         dispatch(logInPending());
         const endpoint = `/TokenAuth/Authenticate`;
         await instance
@@ -31,9 +31,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 sessionStorage.setItem("role", userRole);
                 sessionStorage.setItem("userId", userId);
 
-                // currentUser();
+                getCurrentUser();
                 dispatch(logInSuccess(token));
-                message.success;
+                message.success("Login successfully!");
 
                 const { role } = decodeToken(token);
 
@@ -44,11 +44,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 }
                 else {
                     router.replace(`/login`)
+                    message.error("Login failed. Please check your credentials.");
                 }
             })
             .catch((error) => {
                 console.error(error);
-                message.error;
+                message.error("Login failed. Please check your credentials.");
                 dispatch(logInError());
             });
     };
@@ -67,12 +68,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 sessionStorage.setItem("token", token);
                 sessionStorage.setItem("role", JSON.stringify(decoded));
                 dispatch(registerSuccess(user));
-                message.success;
+                message.success("Registration successfull!");
                 // dispatch(logOutSuccess());
             })
             .catch((error) => {
                 dispatch(registerError());
-                message.error;
+                message.error("Register failed. Please check your inputs.");
                 console.error(error);
             });
     };
@@ -114,6 +115,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             sessionStorage.removeItem("token");
             dispatch(logOutSuccess());
             router.replace("/auth/login");
+            message.success("Logged out successfully!");
         } catch {
             dispatch(logOutError());
         }
@@ -123,7 +125,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         <AuthStateContext.Provider value={state}>
             <AuthActionContext.Provider
                 value={{
-                    logIn,
+                    login,
                     register,
                     getCurrentUser,
                     logOut,

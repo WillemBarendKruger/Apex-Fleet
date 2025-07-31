@@ -4,8 +4,7 @@ import React, { useState } from "react";
 import { useStyles } from "./style/styles";
 import Typography from "antd/es/typography";
 import { useRouter } from "next/navigation";
-import { Button, Divider, Flex, Form, FormProps, Input, Spin } from "antd/es";
-import message from "antd/es/message";
+import { Button, Divider, Flex, Form, FormProps, Input, Spin, message } from "antd";
 import "@ant-design/v5-patch-for-react-19";
 import Image from "next/image";
 import {
@@ -14,7 +13,7 @@ import {
     LockOutlined,
     MailOutlined,
 } from "@ant-design/icons";
-import { useAuthLoginActions } from "@/providers/auth-provider";
+import { useAuthActions } from "@/providers/auth-provider";
 
 type FieldType = {
     email?: string;
@@ -25,7 +24,7 @@ const Login = () => {
     const { styles } = useStyles();
     const { Title } = Typography;
     const router = useRouter();
-    const { userLogin } = useUserLoginActions();
+    const { login } = useAuthActions();
     const [loading, setLoading] = useState(false);
 
     const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
@@ -36,7 +35,7 @@ const Login = () => {
                 password: values.password || "",
                 rememberClient: true,
             };
-            await userLogin(payload);
+            await login(payload);
             setLoading(false);
             const user = sessionStorage.getItem("role") || "";
 

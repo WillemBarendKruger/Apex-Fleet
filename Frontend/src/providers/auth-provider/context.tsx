@@ -9,7 +9,7 @@ export interface IAuthStateContext {
 }
 
 export interface IAuthActionsContext {
-    logIn: (user: ILogin) => Promise<void>;
+    login: (user: ILogin) => Promise<void>;
     register: (user: IRegister) => Promise<void>;
     getCurrentUser: () => void;
     logOut: () => void;
