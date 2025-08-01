@@ -13,7 +13,7 @@ const EmployeesPage = () => {
   const { styles } = useStyles();
   const { Employees } = useEmployeeState();
   const { Equipments } = useEquipmentState();
-  const { register } = useAuthActions();
+  const { registerEmployee } = useAuthActions();
   const { getEmployees } = useEmployeeActions();
   const { getEquipments } = useEquipmentActions();
 
@@ -24,10 +24,15 @@ const EmployeesPage = () => {
   const [selectedEmployee, setSelectedEmployee] = useState<IEmployee | null>(null);
   const [profileModalVisible, setProfileModalVisible] = useState(false);
 
+  const refresh = async () => {
+    await getEmployees();
+    await getEquipments();
+
+  }
+
   useEffect(() => {
     // Fetch logic if needed
-    getEmployees();
-    getEquipments();
+    refresh();
   }, []);
 
   const handleAddEmployee = async () => {
@@ -44,10 +49,11 @@ const EmployeesPage = () => {
         roleName: "Employee",
       };
 
-      await register(payload);
+      await registerEmployee(payload);
       setModalVisible(false);
       form.resetFields();
       message.success(`Added employee ${values.name}`);
+      await refresh();
     } catch (error) {
       console.error("Error adding employee:", error);
       message.error("Failed to add employee");

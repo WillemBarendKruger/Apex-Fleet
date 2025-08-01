@@ -72,6 +72,27 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             });
     };
 
+    const registerEmployee = async (user: IUser) => {
+        dispatch(registerPending());
+        const endpoint = `services/app/employee/Create`;
+        await instance
+            .post(endpoint, user)
+            .then((response) => {
+                const token = response.data.result.accessToken;
+                const decoded = jwtDecode(token);
+                sessionStorage.setItem("token", token);
+                sessionStorage.setItem("role", JSON.stringify(decoded));
+                dispatch(registerSuccess(user));
+                message.success("Registration successfull!");
+                dispatch(logOutSuccess());
+            })
+            .catch((error) => {
+                dispatch(registerError());
+                message.error("Register failed. Please check your inputs.");
+                console.error(error);
+            });
+    };
+
     const getCurrentUser = async () => {
         dispatch(getCurrentUserPending());
         const endpoint = `services/app/Session/GetCurrentLoginInformations`;
@@ -111,6 +132,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 value={{
                     login,
                     register,
+                    registerEmployee,
                     getCurrentUser,
                     logOut,
                 }}
