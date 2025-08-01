@@ -1,0 +1,256 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { Table, Button, Modal, Form, Input, Space, message, Select } from "antd";
+import { useStyles } from "./style/styles";
+import { IEmployee } from "@/providers/employee-provider/models";
+import { IEquipment } from "@/providers/equipment-provider/models";
+import Loader from "@/components/loader/loader";
+import { useEmployeeState, useEmployeeActions } from "@/providers/employee-provider";
+import { useEquipmentState, useEquipmentActions } from "@/providers/equipment-provider";
+import { useCategoryActions, useCategoryState } from "@/providers/category-provider"
+
+const EquipmentPage = () => {
+    const { styles } = useStyles();
+    const { Employees } = useEmployeeState();
+    const { Equipments } = useEquipmentState();
+    const { getEmployees } = useEmployeeActions();
+    const { getEquipments, createEquipment } = useEquipmentActions();
+    const { getCategories } = useCategoryActions();
+    const { Categories } = useCategoryState();
+
+    const [modalVisible, setModalVisible] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [form] = Form.useForm();
+
+    const [selectedHandler, setSelectedHandler] = useState<IEmployee | null>(null);
+    const [handlerModalVisible, setHandlerModalVisible] = useState(false);
+
+    useEffect(() => {
+        getEmployees();
+        getCategories();
+        getEquipments();
+    }, []);
+
+    const handleAddEquipment = async () => {
+        setLoading(true);
+        try {
+            const values = await form.validateFields();
+
+            const payload: IEquipment = {
+                name: values.name,
+                serialNumber: values.serialNumber,
+                maintenancePeriod: values.maintenancePeriod,
+                status: "inventory",
+                categoryName: values.categoryName,
+                handlerEmail: values.handlerEmail,
+            };
+
+            await createEquipment(payload);
+            setModalVisible(false);
+            form.resetFields();
+            message.success(`Added equipment ${values.name}`);
+        } catch (error) {
+            console.error("Error adding equipment:", error);
+            message.error("Failed to add equipment");
+        }
+        setLoading(false);
+    };
+
+    const columns = [
+        {
+            title: "Name",
+            dataIndex: "name",
+            key: "name",
+        },
+        {
+            title: "Serial Number",
+            dataIndex: "serialNumber",
+            key: "serialNumber",
+        },
+        {
+            title: "Maintenance Period",
+            dataIndex: "maintenancePeriod",
+            key: "maintenancePeriod",
+        },
+        {
+            title: "Status",
+            dataIndex: "status",
+            key: "status",
+        },
+        {
+            title: "Category",
+            dataIndex: "categoryName",
+            key: "category",
+        },
+        {
+            title: "Handler",
+            key: "handler",
+            render: (_: IEquipment, record: IEquipment) => {
+                const handler = Employees?.find(emp => emp.emailAddress === record.handlerEmail);
+                return handler ? (
+                    <Button
+                        type="link"
+                        onClick={() => {
+                            setSelectedHandler(handler);
+                            setHandlerModalVisible(true);
+                        }}
+                    >
+                        View Handler
+                    </Button>
+                ) : (
+                    <span>Unassigned</span>
+                );
+            },
+        },
+    ];
+
+    return (
+        <>
+            {loading ? (
+                <Loader />
+            ) : (
+                <div className={styles.serviceProviderContainer}>
+                    <div
+                        style={{
+                            width: "100%",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            marginBottom: "16px",
+                        }}
+                    >
+                        <h2 style={{ margin: 0 }}>Equipment List</h2>
+                        <Button type="primary" onClick={() => setModalVisible(true)}>
+                            Add Equipment
+                        </Button>
+                    </div>
+
+                    <Table
+                        columns={columns}
+                        dataSource={Equipments}
+                        className={styles.serviceProviderTable}
+                        rowKey={(record) => record.id || 0}
+                        pagination={{ pageSize: 5 }}
+                        scroll={{ x: "max-content" }}
+                    />
+
+                    {/* Add Equipment Modal */}
+                    <Modal
+                        title="Add Equipment"
+                        open={modalVisible}
+                        onCancel={() => setModalVisible(false)}
+                        footer={
+                            <Space>
+                                <Button onClick={() => setModalVisible(false)}>Cancel</Button>
+                                <Button type="primary" onClick={handleAddEquipment}>
+                                    Add
+                                </Button>
+                            </Space>
+                        }
+                    >
+                        <Form form={form} layout="vertical">
+                            <Form.Item
+                                name="name"
+                                label="Name"
+                                rules={[{ required: true, message: "Please enter equipment name" }]}
+                            >
+                                <Input />
+                            </Form.Item>
+                            <Form.Item
+                                name="serialNumber"
+                                label="Serial Number"
+                                rules={[{ required: true, message: "Please enter serial number" }]}
+                            >
+                                <Input />
+                            </Form.Item>
+                            <Form.Item
+                                name="maintenancePeriod"
+                                label="Maintenance Period"
+                                rules={[{ required: true, message: "Please enter maintenance period" }]}
+                            >
+                                <Input />
+                            </Form.Item>
+                            <Form.Item
+                                name="categoryName"
+                                label="Category"
+                                rules={[{ required: true, message: "Please select or enter a category" }]}
+                            >
+                                <Select
+                                    showSearch
+                                    placeholder="Select or type a category"
+                                    optionFilterProp="label"
+                                    filterOption={(input, option) =>
+                                        typeof option?.label === "string" &&
+                                        option.label.toLowerCase().includes(input.toLowerCase())
+                                    }
+                                    allowClear
+                                    popupRender={(menu) => (
+                                        <>
+                                            {menu}
+                                            <div style={{ padding: "8px", textAlign: "center", color: "#999" }}>
+                                                Type to create new category
+                                            </div>
+                                        </>
+                                    )}
+                                >
+                                    {Categories?.map((cat) => (
+                                        <Select.Option key={cat.type} value={cat.type} label={cat.type}>
+                                            {cat.type}
+                                        </Select.Option>
+                                    ))}
+                                </Select>
+                            </Form.Item>
+                            <Form.Item
+                                name="handlerEmail"
+                                label="Assign to Handler"
+                                rules={[{ required: true, message: "Please select a handler" }]}
+                            >
+                                <Select
+                                    showSearch
+                                    placeholder="Select an employee"
+                                    optionFilterProp="children"
+                                    filterOption={(input, option) =>
+                                        typeof option?.label === "string" &&
+                                        option.label.toLowerCase().includes(input.toLowerCase())
+                                    }
+                                >
+                                    {Employees?.map((emp) => (
+                                        <Select.Option key={emp.emailAddress} value={emp.emailAddress}>
+                                            {emp.name} {emp.surname} ({emp.emailAddress})
+                                        </Select.Option>
+                                    ))}
+                                </Select>
+                            </Form.Item>
+
+                        </Form>
+                    </Modal>
+
+                    {/* Handler Info Modal */}
+                    <Modal
+                        title="Handler Profile"
+                        open={handlerModalVisible}
+                        onCancel={() => setHandlerModalVisible(false)}
+                        footer={[
+                            <Button key="close" onClick={() => setHandlerModalVisible(false)}>
+                                Close
+                            </Button>,
+                        ]}
+                    >
+                        {selectedHandler ? (
+                            <div>
+                                <p><strong>Name:</strong> {selectedHandler.name} {selectedHandler.surname}</p>
+                                <p><strong>Email:</strong> {selectedHandler.emailAddress}</p>
+                                <p><strong>Username:</strong> {selectedHandler.userName}</p>
+                                <p><strong>Role:</strong> {selectedHandler.roleName}</p>
+                            </div>
+                        ) : (
+                            <p>No handler selected.</p>
+                        )}
+                    </Modal>
+                </div>
+            )}
+        </>
+    );
+};
+
+export default EquipmentPage;

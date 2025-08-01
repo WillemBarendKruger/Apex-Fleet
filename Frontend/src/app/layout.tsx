@@ -1,6 +1,9 @@
 import { AuthProvider } from "@/providers/auth-provider";
 import { ConfigProvider, theme } from "antd";
 import "./globals.css";
+import { EmployeeProvider } from "@/providers/employee-provider";
+import { EquipmentsProvider } from "@/providers/equipment-provider";
+import { CategoriesProvider } from "@/providers/category-provider";
 
 export default function RootLayout({
   children,
@@ -15,11 +18,11 @@ export default function RootLayout({
       <ConfigProvider
         theme={{
           token: {
-            colorPrimary: "#ff6500",
-            colorInfo: "#ff6500",
+            colorPrimary: "#13c2c2",
+            colorInfo: "#E55C00",
             colorTextBase: "#ffffff",
-            colorBgBase: "#1e3e62",
-            fontSize: 14,
+            colorBgBase: "#374151",
+            fontSize: 15,
           },
           components: {
             Input: {
@@ -31,7 +34,13 @@ export default function RootLayout({
       >
         <body>
           <AuthProvider>
-            {children}
+            <EmployeeProvider>
+              <CategoriesProvider>
+                <EquipmentsProvider>
+                  {children}
+                </EquipmentsProvider>
+              </CategoriesProvider>
+            </EmployeeProvider>
           </AuthProvider>
         </body>
       </ConfigProvider>
