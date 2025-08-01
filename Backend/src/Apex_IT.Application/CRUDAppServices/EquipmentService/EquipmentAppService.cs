@@ -1,4 +1,5 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.UI;
@@ -7,6 +8,7 @@ using Apex_IT.CRUDAppServices.EquipmentService.Dto;
 using Apex_IT.Entities.Categories;
 using Apex_IT.Entities.EquimentItem;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 
@@ -95,6 +97,13 @@ namespace Apex_IT.CRUDAppServices.EquipmentService
             input.CategoryId = catergoryId;
 
             return await base.UpdateAsync(input);
+        }
+
+        public override async Task<PagedResultDto<EquipmentDto>> GetAllAsync(PagedAndSortedResultRequestDto input)
+        {
+            var categories = await _equipmentRepository
+                .GetAllIncluding(cat => cat.Category).ToListAsync();
+            return await base.GetAllAsync(input);
         }
     }
 }

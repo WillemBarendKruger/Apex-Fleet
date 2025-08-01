@@ -26,14 +26,19 @@ const EquipmentPage = () => {
     const [selectedHandler, setSelectedHandler] = useState<IEmployee | null>(null);
     const [handlerModalVisible, setHandlerModalVisible] = useState(false);
 
+    const refresh = async () => {
+        await getEmployees();
+        await getCategories();
+        await getEquipments();
+    }
+
     useEffect(() => {
-        getEmployees();
-        getCategories();
-        getEquipments();
+        refresh();
     }, []);
 
     const handleAddEquipment = async () => {
         setLoading(true);
+
         try {
             const values = await form.validateFields();
 
@@ -50,6 +55,7 @@ const EquipmentPage = () => {
             setModalVisible(false);
             form.resetFields();
             message.success(`Added equipment ${values.name}`);
+            await refresh();
         } catch (error) {
             console.error("Error adding equipment:", error);
             message.error("Failed to add equipment");
@@ -110,7 +116,7 @@ const EquipmentPage = () => {
             {loading ? (
                 <Loader />
             ) : (
-                <div className={styles.serviceProviderContainer}>
+                <div className={styles.equipmentContainer}>
                     <div
                         style={{
                             width: "100%",
@@ -128,7 +134,7 @@ const EquipmentPage = () => {
                     <Table
                         columns={columns}
                         dataSource={Equipments}
-                        className={styles.serviceProviderTable}
+                        className={styles.equipmentTable}
                         rowKey={(record) => record.id || 0}
                         pagination={{ pageSize: 5 }}
                         scroll={{ x: "max-content" }}
@@ -171,30 +177,22 @@ const EquipmentPage = () => {
                                 <Input />
                             </Form.Item>
                             <Form.Item
-                                name="categoryName"
                                 label="Category"
-                                rules={[{ required: true, message: "Please select or enter a category" }]}
+                                name="categoryName"
+                                rules={[{ required: true, message: "Please select or create a category" }]}
                             >
                                 <Select
-                                    showSearch
-                                    placeholder="Select or type a category"
-                                    optionFilterProp="label"
-                                    filterOption={(input, option) =>
-                                        typeof option?.label === "string" &&
-                                        option.label.toLowerCase().includes(input.toLowerCase())
-                                    }
-                                    allowClear
-                                    popupRender={(menu) => (
-                                        <>
-                                            {menu}
-                                            <div style={{ padding: "8px", textAlign: "center", color: "#999" }}>
-                                                Type to create new category
-                                            </div>
-                                        </>
-                                    )}
+                                    mode="tags"
+                                    placeholder="Select or create a category"
+                                    tokenSeparators={[',']}
+                                    style={{ width: '100%' }}
+                                    onChange={(value) => {
+                                        const lastValue = value[value.length - 1];
+                                        form.setFieldsValue({ categoryName: lastValue });
+                                    }}
                                 >
                                     {Categories?.map((cat) => (
-                                        <Select.Option key={cat.type} value={cat.type} label={cat.type}>
+                                        <Select.Option key={cat.type} value={cat.type}>
                                             {cat.type}
                                         </Select.Option>
                                     ))}

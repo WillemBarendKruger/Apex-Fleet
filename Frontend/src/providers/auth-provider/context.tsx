@@ -11,6 +11,7 @@ export interface IAuthStateContext {
 export interface IAuthActionsContext {
     login: (user: ILogin) => Promise<void>;
     register: (user: IRegister) => Promise<void>;
+    registerEmployee: (user: IRegister) => Promise<void>;
     getCurrentUser: () => void;
     logOut: () => void;
 }

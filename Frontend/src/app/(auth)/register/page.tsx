@@ -38,33 +38,29 @@ const RegistrationForm = () => {
     const handleRegister: FormProps<FieldType>["onFinish"] = async (values) => {
         setLoading(true);
         try {
-            let payload = {
-                emailAddress: "",
-                password: "null",
-                roleName: "",
-                userName: "",
-                name: "",
-                surname: "",
+            if (values.accessToken !== "Apex Supervisor321") {
+                message.error("You don't have permission to access register");
+                setLoading(false);
+                return;
+            }
+
+            const payload = {
+                emailAddress: values.emailAddress,
+                password: values.password,
+                roleName: "Supervisor",
+                userName: values.userName,
+                name: values.name,
+                surname: values.surname,
             };
-            if (values.accessToken === "Apex Supervisor321") {
-                payload = {
-                    emailAddress: values.emailAddress,
-                    password: values.password,
-                    roleName: "Supervisor",
-                    userName: values.userName,
-                    name: values.name,
-                    surname: values.surname,
-                };
-            }
-            else {
-                message.error("You dont't have permission to access register")
-            }
+
             await register(payload);
             message.success("Registered successfully!");
             router.replace("/login");
         } catch (error) {
             console.error(error);
             message.error("Register failed. Please try again.");
+        } finally {
+            setLoading(false);
         }
         setLoading(false);
         return router.push("/login");
