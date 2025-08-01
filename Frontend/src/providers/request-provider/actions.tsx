@@ -31,11 +31,11 @@ export const getRequestsPending = createAction<IRequestStateContext>(
 
 export const getRequestsSuccess = createAction<IRequestStateContext, IRequest[]>(
     RequestActionsEnum.getRequestsSuccess,
-    (requests: IRequest[]) => ({
+    (Requests: IRequest[]) => ({
         isPending: false,
         isSuccess: true,
         isError: false,
-        requests,
+        Requests,
     })
 );
 

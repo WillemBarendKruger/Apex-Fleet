@@ -1,11 +1,12 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Abp.UI;
 using Apex_IT.Authorization.Users;
-using Apex_IT.CRUDAppServices.EquipmentService.Dto;
 using Apex_IT.CRUDAppServices.RequestingService.Dto;
 using Apex_IT.Entities.AccessRequests;
 using Apex_IT.Entities.EquimentItem;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 
@@ -15,11 +16,13 @@ namespace Apex_IT.CRUDAppServices.RequestingService
     {
         private readonly IRepository<User, long> _userRepository;
         private readonly IRepository<Equipment, Guid> _equipmentRepository;
+        private readonly IRepository<AccessRequest, Guid> _requestRepository;
 
-        public RequestAppService(IRepository<AccessRequest, Guid> repository, IRepository<User, long> userRepository, IRepository<Equipment, Guid> equipmentRepository) : base(repository)
+        public RequestAppService(IRepository<AccessRequest, Guid> repository, IRepository<User, long> userRepository, IRepository<Equipment, Guid> equipmentRepository, IRepository<AccessRequest, Guid> requestRepository) : base(repository)
         {
             _userRepository = userRepository;
             _equipmentRepository = equipmentRepository;
+            _requestRepository = requestRepository;
         }
 
         public async Task<long> GetEmployeeIdByEmailAsync(string email)
@@ -61,6 +64,13 @@ namespace Apex_IT.CRUDAppServices.RequestingService
             input.EquipmentId = equipmentId;
 
             return await base.CreateAsync(input);
+        }
+
+        public override async Task<PagedResultDto<RequestDto>> GetAllAsync(PagedAndSortedResultRequestDto input)
+        {
+            var requests = await _requestRepository
+                .GetAllIncluding(eq => eq.Equipment).ToListAsync();
+            return await base.GetAllAsync(input);
         }
     }
 }
