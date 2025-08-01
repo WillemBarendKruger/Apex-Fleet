@@ -6,7 +6,7 @@ export interface ICategoryStateContext {
     isSuccess: boolean;
     isError: boolean;
     Category?: ICategory;
-    Categorys?: ICategory[];
+    Categories?: ICategory[];
 }
 
 export interface ICategoryActionsContext {
@@ -19,7 +19,7 @@ export const INITIAL_STATE: ICategoryStateContext = {
     isPending: false,
     isSuccess: false,
     isError: false,
-    Categorys: [],
+    Categories: [],
 };
 
 export const CategoryStateContext = createContext<ICategoryStateContext>(INITIAL_STATE);

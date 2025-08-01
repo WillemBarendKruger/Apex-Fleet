@@ -31,6 +31,7 @@ export const CategoriesProvider = ({ children }: { children: React.ReactNode }) 
             .get(endpoint)
             .then((response) => {
                 const filteredData = response.data.result.items.map((Category: ICategory) => ({
+                    id: Category.id,
                     type: Category.type
                 }));
                 dispatch(getCategoriesSuccess(filteredData));

@@ -19,6 +19,7 @@ export const EmployeeProvider = ({ children }: { children: React.ReactNode }) =>
         try {
             const response = await instance.get(endpoint);
             const filteredData = response.data.result.items.map((user: IEmployee) => ({
+                id: user.id || "",
                 name: user.name || "",
                 userName: user.userName || "",
                 surname: user.surname || "",

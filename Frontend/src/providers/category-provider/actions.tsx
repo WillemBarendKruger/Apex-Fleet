@@ -23,11 +23,11 @@ export const getCategoriesPending = createAction<ICategoryStateContext>(
 
 export const getCategoriesSuccess = createAction<ICategoryStateContext, ICategory[]>(
     CategoryActionsEnum.getCategoriesSuccess,
-    (Categorys: ICategory[]) => ({
+    (Categories: ICategory[]) => ({
         isPending: false,
         isSuccess: true,
         isError: false,
-        Categorys,
+        Categories,
     })
 );
 
