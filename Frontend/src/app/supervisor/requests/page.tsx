@@ -1,8 +1,113 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { Table, Button, Space, message } from "antd";
+import { useStyles } from "./style/styles";
+import { IEmployee } from "@/providers/employee-provider/models";
+import Loader from "@/components/loader/loader";
+import { useEmployeeState, useEmployeeActions } from "@/providers/employee-provider";
+import { useCategoryActions } from "@/providers/category-provider";
+import { useRequestState, useRequestActions } from "@/providers/request-provider";
+import { IRequest } from "@/providers/request-provider/models";
+
 const RequestListPage = () => {
+    const { styles } = useStyles();
+    const { Employees } = useEmployeeState();
+    const { getEmployees } = useEmployeeActions();
+    const { getCategories } = useCategoryActions();
+    const { Requests } = useRequestState();
+    const { getRequests, updateRequest } = useRequestActions();
+
+    const [loading, setLoading] = useState(false);
+
+    const refresh = async () => {
+        setLoading(true);
+        await Promise.all([getRequests(), getEmployees(), getCategories()]);
+        setLoading(false);
+    };
+
+    useEffect(() => {
+        refresh();
+    }, []);
+
+    const columns = [
+        {
+            title: "Equipment",
+            dataIndex: "equipmentName",
+            key: "equipmentName",
+        },
+        {
+            title: "Requester",
+            key: "requester",
+            render: (_: IRequest, record: IRequest) => {
+                const employee = Employees?.find(emp => emp.id === record.requestingEmployeeId);
+                return employee ? `${employee.name} ${employee.surname}` : record.requestingEmployeeEmail;
+            },
+        },
+        {
+            title: "Status",
+            dataIndex: "status",
+            key: "status",
+        },
+        {
+            title: "Actions",
+            key: "actions",
+            render: (_: IRequest, record: IRequest) => (
+                <Space>
+                    <Button
+                        type="primary"
+                        onClick={async () => {
+                            await updateRequest({ ...record, status: "approved" });
+                            message.success("Request approved");
+                            refresh();
+                        }}
+                    >
+                        Approve
+                    </Button>
+                    <Button
+                        danger
+                        onClick={async () => {
+                            await updateRequest({ ...record, status: "declined" });
+                            message.info("Request declined");
+                            await refresh();
+                        }}
+                    >
+                        Decline
+                    </Button>
+                </Space>
+            ),
+        },
+    ];
+
     return (
-        // <IncidentList />
-        <div>Requests</div>
-    )
-}
+        <>
+            {loading ? (
+                <Loader />
+            ) : (
+                <div className={styles.equipmentContainer}>
+                    <div
+                        style={{
+                            width: "100%",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            marginBottom: "16px",
+                        }}
+                    >
+                        <h2 style={{ margin: 0 }}>Requests List</h2>
+                    </div>
+
+                    <Table
+                        columns={columns}
+                        dataSource={Requests}
+                        className={styles.equipmentTable}
+                        rowKey={(record) => record.id || 0}
+                        pagination={{ pageSize: 5 }}
+                        scroll={{ x: "max-content" }}
+                    />
+                </div>
+            )}
+        </>
+    );
+};
 
 export default RequestListPage;

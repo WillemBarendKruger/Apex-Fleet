@@ -4,6 +4,7 @@ import "./globals.css";
 import { EmployeeProvider } from "@/providers/employee-provider";
 import { EquipmentsProvider } from "@/providers/equipment-provider";
 import { CategoriesProvider } from "@/providers/category-provider";
+import { RequestsProvider } from "@/providers/request-provider";
 
 export default function RootLayout({
   children,
@@ -37,7 +38,9 @@ export default function RootLayout({
             <EmployeeProvider>
               <CategoriesProvider>
                 <EquipmentsProvider>
-                  {children}
+                  <RequestsProvider>
+                    {children}
+                  </RequestsProvider>
                 </EquipmentsProvider>
               </CategoriesProvider>
             </EmployeeProvider>
