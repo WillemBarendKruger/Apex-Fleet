@@ -6,6 +6,6 @@ export interface IEmployee {
     name: string,
     surname: string,
     roleName: string,
-    isActive: boolean
+    isActive?: boolean
     equipmentCount?: number
 }
