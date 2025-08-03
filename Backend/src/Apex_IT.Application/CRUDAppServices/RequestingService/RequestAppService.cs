@@ -8,7 +8,10 @@ using Apex_IT.Entities.AccessRequests;
 using Apex_IT.Entities.EquimentItem;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Apex_IT.CRUDAppServices.RequestingService
 {
@@ -68,9 +71,17 @@ namespace Apex_IT.CRUDAppServices.RequestingService
 
         public override async Task<PagedResultDto<RequestDto>> GetAllAsync(PagedAndSortedResultRequestDto input)
         {
-            var requests = await _requestRepository
-                .GetAllIncluding(eq => eq.Equipment).ToListAsync();
-            return await base.GetAllAsync(input);
+            var query = _requestRepository.GetAllIncluding(eq => eq.Equipment);
+
+            var totalCount = await query.CountAsync();
+            var requests = await query
+                    .Skip(input.SkipCount)
+                    .Take(input.MaxResultCount)
+                    .ToListAsync();
+
+            var requestDtos = ObjectMapper.Map<List<RequestDto>>(requests);
+
+            return new PagedResultDto<RequestDto>(totalCount, requestDtos);
         }
     }
 }
