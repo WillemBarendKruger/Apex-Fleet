@@ -5,6 +5,7 @@ export interface IEmployee {
     password: string,
     name: string,
     surname: string,
-    roleName: string
+    roleName: string,
+    isActive: boolean
     equipmentCount?: number
 }
