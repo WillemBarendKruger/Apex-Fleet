@@ -31,7 +31,7 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
     const getSelectedKey = () => {
         if (pathname.includes("/dashboard")) return "1";
         if (pathname.includes("/equipment")) return "2";
-        if (pathname.includes("/employee")) return "3";
+        if (pathname.includes("/settings")) return "3";
         if (pathname.includes("/requests")) return "4";
         if (pathname.includes("/reports")) return "5";
         return "1";
