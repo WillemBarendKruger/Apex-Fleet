@@ -103,7 +103,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             .then((response) => {
                 sessionStorage.setItem(
                     "currentUser",
-                    JSON.stringify(response.data.result.user.id)
+                    JSON.stringify(response.data.result.user.name)
                 );
                 dispatch(getCurrentUserSuccess(response.data.result.user));
             })

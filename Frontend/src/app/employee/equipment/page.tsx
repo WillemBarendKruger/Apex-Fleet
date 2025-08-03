@@ -1,64 +1,82 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Table, Button, Modal, Form, Input, Space, message, Select } from "antd";
+import { Table, Button, Modal, Form, Space, message, Select } from "antd";
 import { useStyles } from "./style/styles";
 import { IEmployee } from "@/providers/employee-provider/models";
 import { IEquipment } from "@/providers/equipment-provider/models";
 import Loader from "@/components/loader/loader";
 import { useEmployeeState, useEmployeeActions } from "@/providers/employee-provider";
 import { useEquipmentState, useEquipmentActions } from "@/providers/equipment-provider";
-import { useCategoryActions, useCategoryState } from "@/providers/category-provider"
+import { useCategoryActions, useCategoryState } from "@/providers/category-provider";
+import { useRequestActions, useRequestState } from "@/providers/request-provider";
+import { IRequest } from "@/providers/request-provider/models";
 
 const EquipmentPage = () => {
     const { styles } = useStyles();
     const { Employees } = useEmployeeState();
     const { Equipments } = useEquipmentState();
     const { getEmployees } = useEmployeeActions();
-    const { getEquipments, createEquipment } = useEquipmentActions();
+    const { getEquipments } = useEquipmentActions();
     const { getCategories } = useCategoryActions();
     const { Categories } = useCategoryState();
+    const { getRequests, createRequest } = useRequestActions();
+    const { Requests } = useRequestState();
 
     const [modalVisible, setModalVisible] = useState(false);
     const [loading, setLoading] = useState(false);
     const [form] = Form.useForm();
-
-    const [selectedHandler, setSelectedHandler] = useState<IEmployee | null>(null);
-    const [handlerModalVisible, setHandlerModalVisible] = useState(false);
-
-    const refresh = async () => {
-        await getEmployees();
-        await getCategories();
-        await getEquipments();
-    }
+    const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+    const [userId, setUserId] = useState<number | null>(null);
 
     useEffect(() => {
+        const storedId = sessionStorage.getItem("userId");
+        if (storedId && !isNaN(parseInt(storedId))) {
+            setUserId(parseInt(storedId));
+        }
         refresh();
     }, []);
 
-    const handleAddEquipment = async () => {
-        setLoading(true);
+    const refresh = async () => {
+        await Promise.all([getEmployees(), getCategories(), getEquipments(), getRequests()]);
+    };
 
+    const handleAddRequest = async () => {
+        setLoading(true);
         try {
             const values = await form.validateFields();
+            const requester = Employees?.find(emp => emp.id === userId);
 
-            const payload: IEquipment = {
-                name: values.name,
-                serialNumber: values.serialNumber,
-                maintenancePeriod: values.maintenancePeriod,
-                status: "inventory",
-                categoryName: values.categoryName,
-                handlerEmail: values.handlerEmail,
+            if (!requester) {
+                message.error("Logged-in user not found");
+                return;
+            }
+
+            const selectedEquipment = Equipments?.find(eq => eq.id === values.equipmentId);
+
+            if (!selectedEquipment || selectedEquipment.status !== "inventory") {
+                message.error("Selected equipment is not available");
+                return;
+            }
+
+            const requestPayload: IRequest = {
+                status: "pending",
+                equipmentId: selectedEquipment.id,
+                equipmentName: selectedEquipment.name,
+                requestingEmployeeEmail: requester.emailAddress,
+                requestingEmployeeId: parseInt(sessionStorage.getItem("userId") || "0"),
+
             };
 
-            await createEquipment(payload);
+            await createRequest(requestPayload);
+
             setModalVisible(false);
             form.resetFields();
-            message.success(`Added equipment ${values.name}`);
+            message.success(`Request submitted for ${selectedEquipment.name}`);
             await refresh();
         } catch (error) {
-            console.error("Error adding equipment:", error);
-            message.error("Failed to add equipment");
+            console.error("Error creating request:", error);
+            message.error("Failed to submit request");
         }
         setLoading(false);
     };
@@ -90,26 +108,29 @@ const EquipmentPage = () => {
             key: "category",
         },
         {
-            title: "Handler",
-            key: "handler",
+            title: "Actions",
+            key: "actions",
             render: (_: IEquipment, record: IEquipment) => {
                 const handler = Employees?.find(emp => emp.emailAddress === record.handlerEmail);
                 return handler ? (
-                    <Button
-                        type="link"
-                        onClick={() => {
-                            setSelectedHandler(handler);
-                            setHandlerModalVisible(true);
-                        }}
-                    >
-                        View Handler
-                    </Button>
+                    <Space>
+                        <Button type="primary" onClick={() => { /* Return logic */ }}>
+                            Return
+                        </Button>
+                        <Button onClick={() => { /* Extension logic */ }}>
+                            Request Extension
+                        </Button>
+                    </Space>
                 ) : (
                     <span>Unassigned</span>
                 );
             },
         },
     ];
+
+    const filteredEquipments = Equipments?.filter(eq =>
+        eq.handlerId == userId
+    );
 
     return (
         <>
@@ -125,70 +146,45 @@ const EquipmentPage = () => {
                             marginBottom: "16px",
                         }}
                     >
-                        <h2 style={{ margin: 0 }}>Equipment List</h2>
+                        <h2 style={{ margin: 0 }}>My Assigned Equipment</h2>
                         <Button type="primary" onClick={() => setModalVisible(true)}>
-                            Add Equipment
+                            Request Equipment
                         </Button>
                     </div>
 
                     <Table
                         columns={columns}
-                        dataSource={Equipments}
+                        dataSource={filteredEquipments}
                         className={styles.equipmentTable}
                         rowKey={(record) => record.id?.toString() || `temp-${record.serialNumber}`}
                         pagination={{ pageSize: 5 }}
                         scroll={{ x: "max-content" }}
                     />
 
-                    {/* Add Equipment Modal */}
                     <Modal
-                        title="Add Equipment"
+                        title="Request Equipment"
                         open={modalVisible}
                         onCancel={() => setModalVisible(false)}
                         footer={
                             <Space>
                                 <Button onClick={() => setModalVisible(false)}>Cancel</Button>
-                                <Button type="primary" onClick={handleAddEquipment}>
-                                    Add
+                                <Button type="primary" onClick={handleAddRequest}>
+                                    Submit Request
                                 </Button>
                             </Space>
                         }
                     >
                         <Form form={form} layout="vertical">
                             <Form.Item
-                                name="name"
-                                label="Name"
-                                rules={[{ required: true, message: "Please enter equipment name" }]}
-                            >
-                                <Input />
-                            </Form.Item>
-                            <Form.Item
-                                name="serialNumber"
-                                label="Serial Number"
-                                rules={[{ required: true, message: "Please enter serial number" }]}
-                            >
-                                <Input />
-                            </Form.Item>
-                            <Form.Item
-                                name="maintenancePeriod"
-                                label="Maintenance Period"
-                                rules={[{ required: true, message: "Please enter maintenance period" }]}
-                            >
-                                <Input />
-                            </Form.Item>
-                            <Form.Item
                                 label="Category"
                                 name="categoryName"
-                                rules={[{ required: true, message: "Please select or create a category" }]}
+                                rules={[{ required: true, message: "Please select a category" }]}
                             >
                                 <Select
-                                    mode="tags"
-                                    placeholder="Select or create a category"
-                                    tokenSeparators={[',']}
-                                    style={{ width: '100%' }}
+                                    placeholder="Select a category"
                                     onChange={(value) => {
-                                        const lastValue = value[value.length - 1];
-                                        form.setFieldsValue({ categoryName: lastValue });
+                                        setSelectedCategory(value);
+                                        form.setFieldsValue({ categoryName: value });
                                     }}
                                 >
                                     {Categories?.map((cat) => (
@@ -198,52 +194,32 @@ const EquipmentPage = () => {
                                     ))}
                                 </Select>
                             </Form.Item>
+
                             <Form.Item
-                                name="handlerEmail"
-                                label="Assign to Handler"
-                                rules={[{ required: true, message: "Please select a handler" }]}
+                                name="equipmentId"
+                                label="Select Equipment"
+                                rules={[{ required: true, message: "Please select available equipment" }]}
                             >
                                 <Select
                                     showSearch
-                                    placeholder="Select an employee"
+                                    placeholder="Choose equipment from inventory"
                                     optionFilterProp="children"
                                     filterOption={(input, option) =>
-                                        typeof option?.label === "string" &&
-                                        option.label.toLowerCase().includes(input.toLowerCase())
+                                        typeof option?.children === "string" &&
+                                        (option.children as string).toLowerCase().includes(input.toLowerCase())
                                     }
                                 >
-                                    {Employees?.map((emp) => (
-                                        <Select.Option key={emp.emailAddress} value={emp.emailAddress}>
-                                            {emp.name} {emp.surname} ({emp.emailAddress})
+                                    {Equipments?.filter(eq =>
+                                        eq.status === "inventory" &&
+                                        eq.categoryName === selectedCategory
+                                    ).map(eq => (
+                                        <Select.Option key={eq.id} value={eq.id}>
+                                            {eq.name} ({eq.serialNumber})
                                         </Select.Option>
                                     ))}
                                 </Select>
                             </Form.Item>
-
                         </Form>
-                    </Modal>
-
-                    {/* Handler Info Modal */}
-                    <Modal
-                        title="Handler Profile"
-                        open={handlerModalVisible}
-                        onCancel={() => setHandlerModalVisible(false)}
-                        footer={[
-                            <Button key="close" onClick={() => setHandlerModalVisible(false)}>
-                                Close
-                            </Button>,
-                        ]}
-                    >
-                        {selectedHandler ? (
-                            <div>
-                                <p><strong>Name:</strong> {selectedHandler.name} {selectedHandler.surname}</p>
-                                <p><strong>Email:</strong> {selectedHandler.emailAddress}</p>
-                                <p><strong>Username:</strong> {selectedHandler.userName}</p>
-                                <p><strong>Role:</strong> {selectedHandler.roleName}</p>
-                            </div>
-                        ) : (
-                            <p>No handler selected.</p>
-                        )}
                     </Modal>
                 </div>
             )}
