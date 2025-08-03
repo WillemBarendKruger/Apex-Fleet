@@ -12,7 +12,7 @@ export const useStyles = createStyles({
   `,
     image: css`
      transition: all 0.3s ease;
-     objectfit: contain;
+     object-fit: contain;
  `,
     headerTitle: css`
      padding: 0;
