@@ -1,11 +1,16 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Abp.UI;
 using Apex_IT.Authorization.Users;
 using Apex_IT.CRUDAppServices.ConditionReportService.Dto;
+using Apex_IT.CRUDAppServices.RequestingService.Dto;
 using Apex_IT.Entities.EquimentItem;
 using Apex_IT.Entities.Reports;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Apex_IT.CRUDAppServices.ConditionReportService
@@ -14,11 +19,13 @@ namespace Apex_IT.CRUDAppServices.ConditionReportService
     {
         private readonly IRepository<Equipment, Guid> _equipmentRepository;
         private readonly IRepository<User, long> _userRepository;
+        private readonly IRepository<ConditionReport, Guid> _reportsRepository;
 
         public ConditionReportAppService(IRepository<ConditionReport, Guid> repository, IRepository<Equipment, Guid> equipmentRepository, IRepository<User, long> userrepository) : base(repository)
         {
             _equipmentRepository = equipmentRepository;
             _userRepository = userrepository;
+            _reportsRepository = repository;
         }
 
         public async Task<Guid> GetEquipmentIdByNameAsync(string name)
@@ -64,6 +71,21 @@ namespace Apex_IT.CRUDAppServices.ConditionReportService
             input.EquipmentId = equipmentId;
 
             return await base.CreateAsync(input);
+        }
+
+        public override async Task<PagedResultDto<ConditionReportDto>> GetAllAsync(PagedAndSortedResultRequestDto input)
+        {
+            var query = _reportsRepository.GetAllIncluding(eq => eq.Equipment, emp => emp.ReportingEmployee);
+            
+            var totalCount = await query.CountAsync();
+            var requests = await query
+                    .Skip(input.SkipCount)
+                    .Take(input.MaxResultCount)
+                    .ToListAsync();
+            
+            var conditionReports = ObjectMapper.Map<List<ConditionReportDto>>(requests);
+            
+                return new PagedResultDto<ConditionReportDto>(totalCount, conditionReports);
         }
     }
 }

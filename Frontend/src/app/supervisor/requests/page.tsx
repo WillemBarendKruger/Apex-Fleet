@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Table, Button, Space, message } from "antd";
 import { useStyles } from "./style/styles";
 import { IEmployee } from "@/providers/employee-provider/models";
@@ -25,6 +25,28 @@ const RequestListPage = () => {
         await Promise.all([getRequests(), getEmployees(), getCategories()]);
         setLoading(false);
     };
+
+    const handleApprove = useCallback(async (record: IRequest) => {
+        try {
+            await updateRequest({ ...record, status: "approved" });
+            message.success("Request approved");
+            await refresh();
+        } catch (error) {
+            message.error("Failed to approve request");
+            console.error("Error approving request:", error);
+        }
+    }, [updateRequest, refresh]);
+
+    const handleDecline = useCallback(async (record: IRequest) => {
+        try {
+            await updateRequest({ ...record, status: "declined" });
+            message.info("Request declined");
+            await refresh();
+        } catch (error) {
+            message.error("Failed to decline request");
+            console.error("Error declining request:", error);
+        }
+    }, [updateRequest, refresh]);
 
     useEffect(() => {
         refresh();
@@ -56,21 +78,13 @@ const RequestListPage = () => {
                 <Space>
                     <Button
                         type="primary"
-                        onClick={async () => {
-                            await updateRequest({ ...record, status: "approved" });
-                            message.success("Request approved");
-                            refresh();
-                        }}
+                        onClick={() => handleApprove(record)}
                     >
                         Approve
                     </Button>
                     <Button
                         danger
-                        onClick={async () => {
-                            await updateRequest({ ...record, status: "declined" });
-                            message.info("Request declined");
-                            await refresh();
-                        }}
+                        onClick={() => handleDecline(record)}
                     >
                         Decline
                     </Button>

@@ -5,11 +5,14 @@ using Abp.Domain.Repositories;
 using Abp.UI;
 using Apex_IT.Authorization.Users;
 using Apex_IT.CRUDAppServices.EquipmentService.Dto;
+using Apex_IT.CRUDAppServices.RequestingService.Dto;
 using Apex_IT.Entities.Categories;
 using Apex_IT.Entities.EquimentItem;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Apex_IT.CRUDAppServices.EquipmentService
@@ -101,9 +104,17 @@ namespace Apex_IT.CRUDAppServices.EquipmentService
 
         public override async Task<PagedResultDto<EquipmentDto>> GetAllAsync(PagedAndSortedResultRequestDto input)
         {
-            var categories = await _equipmentRepository
-                .GetAllIncluding(cat => cat.Category).ToListAsync();
-            return await base.GetAllAsync(input);
+            var query = _equipmentRepository.GetAllIncluding(eq => eq.Category, hlr => hlr.Handler);
+
+            var totalCount = await query.CountAsync();
+            var requests = await query
+                    .Skip(input.SkipCount)
+                    .Take(input.MaxResultCount)
+                    .ToListAsync();
+
+            var equipmentDtos = ObjectMapper.Map<List<EquipmentDto>>(requests);
+
+            return new PagedResultDto<EquipmentDto>(totalCount, equipmentDtos);
         }
     }
 }

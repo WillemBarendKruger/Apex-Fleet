@@ -69,7 +69,7 @@ export const ConditionReportsProvider = ({ children }: { children: React.ReactNo
         const endpoint = `services/app/ConditionReport/Update`;
 
         await instance
-            .post(endpoint, ConditionReport)
+            .put(endpoint, ConditionReport)
             .then((response) => {
                 dispatch(updateConditionReportSuccess(response.data));
                 getConditionReports();
