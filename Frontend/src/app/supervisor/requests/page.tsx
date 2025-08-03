@@ -100,7 +100,7 @@ const RequestListPage = () => {
                         columns={columns}
                         dataSource={Requests}
                         className={styles.equipmentTable}
-                        rowKey={(record) => record.id || 0}
+                        rowKey={(record, index) => record.id?.toString() || `temp-${index}`}
                         pagination={{ pageSize: 5 }}
                         scroll={{ x: "max-content" }}
                     />
