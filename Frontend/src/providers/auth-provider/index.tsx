@@ -105,8 +105,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             .get(endpoint)
             .then((response) => {
                 sessionStorage.setItem(
-                    "UserInfo", response.data.result.user
-                );
+sessionStorage.setItem(
+    "UserInfo", JSON.stringify(response.data.result.user)
+);
                 dispatch(getCurrentUserSuccess(response.data.result.user));
             })
             .catch((error) => {
