@@ -12,7 +12,7 @@ export interface IAuthActionsContext {
     login: (user: ILogin) => Promise<void>;
     register: (user: IRegister) => Promise<void>;
     registerEmployee: (user: IRegister) => Promise<void>;
-    getCurrentUser: () => void;
+    getCurrentUser: () => Promise<void>;
     logOut: () => void;
 }
 

@@ -4,14 +4,11 @@ import { INITIAL_STATE, SupervisorStateContext, SupervisorActionContext } from "
 import { ISupervisor } from "./models";
 import { SupervisorReducer } from "./reducer";
 import { useContext, useReducer } from "react";
-import { useRouter } from "next/navigation";
-import { decodeToken } from "@/utils/jwt";
 import { createSupervisorError, createSupervisorPending, createSupervisorSuccess, deleteSupervisorError, deleteSupervisorPending, deleteSupervisorSuccess, getSupervisorError, getSupervisorPending, getSupervisorsError, getSupervisorsPending, getSupervisorsSuccess, getSupervisorSuccess, updateSupervisorError, updateSupervisorPending, updateSupervisorSuccess } from "./actions";
 
 export const SupervisorProvider = ({ children }: { children: React.ReactNode }) => {
     const [state, dispatch] = useReducer(SupervisorReducer, INITIAL_STATE);
     const instance = getAxiosInstance();
-    const router = useRouter();
 
     const getSupervisors = async () => {
         dispatch(getSupervisorsPending());
@@ -48,7 +45,6 @@ export const SupervisorProvider = ({ children }: { children: React.ReactNode }) 
     };
 
     const createSupervisor = async (Supervisor: ISupervisor) => {
-        const token = sessionStorage.getItem("token")?.trim();
         dispatch(createSupervisorPending());
         const endpoint = `services/app/Supervisor/Create`;
         await instance

@@ -34,13 +34,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 if (userRole === "Supervisor") {
                     router.replace(`/supervisor/dashboard`);
                     message.success("Login successfully!");
+                    dispatch(logInSuccess(response.data.result.user));
                 } else if (((userRole === "Employee"))) {
                     router.replace(`/employee/dashboard`);
                     message.success("Login successfully!");
+                    dispatch(logInSuccess(response.data.result.user));
                 }
                 else {
                     router.replace(`/login`)
                     message.error("Login failed. Please check your credentials.");
+                    dispatch(logInError());
                 }
                 getCurrentUser();
             })
@@ -96,8 +99,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const getCurrentUser = async () => {
         dispatch(getCurrentUserPending());
         const endpoint = `services/app/Session/GetCurrentLoginInformations`;
-        await instance
-            .get(endpoint)
+
         await instance
             .get(endpoint)
             .then((response) => {

@@ -36,15 +36,19 @@ const ReportsListPage = () => {
             message.error("Equipment not found");
             return;
         }
-
-        await Promise.all([
-            updateConditionReport({ ...report, priority: "maintenance" }),
-            updateEquipment({ ...equipment, status: "maintenance" }),
-        ]);
-
-        message.success("Sent for maintenance");
-        refresh();
+        try {
+            await Promise.all([
+                updateConditionReport({ ...report, status: "maintenance" }),
+                updateEquipment({ ...equipment, status: "maintenance" }),
+            ]);
+            message.success("Sent for maintenance");
+            await refresh();
+        } catch (error) {
+            message.error("Failed to update report status");
+            console.error("Error updating report:", error);
+        }
     };
+
 
     const handleDecline = async (report: IConditionReport) => {
         const equipment = Equipments?.find(eq => eq.name === report.equipmentName);
@@ -54,7 +58,7 @@ const ReportsListPage = () => {
         }
 
         await Promise.all([
-            updateConditionReport({ ...report, priority: "declined" }),
+            updateConditionReport({ ...report, status: "declined" }),
             updateEquipment({ ...equipment, status: "inventory" }),
         ]);
 
@@ -89,11 +93,11 @@ const ReportsListPage = () => {
             },
         },
         {
-            title: "Priority",
-            dataIndex: "priority",
-            key: "priority",
-            render: (priority: string) => {
-                return <Tag color={priority === "extreme" ? "volcano" : priority === "high" ? "red" : "blue"}>{priority.toUpperCase()}</Tag>;
+            title: "Status",
+            dataIndex: "status",
+            key: "status",
+            render: (status: string) => {
+                return <Tag color={status === "pending" ? "orange" : status === "declined" ? "red" : "green"}>{status.toUpperCase()}</Tag>;
             },
         },
         {

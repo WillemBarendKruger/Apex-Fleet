@@ -1,7 +1,6 @@
 import { createAction } from "redux-actions";
 import { IEquipment } from "../equipment-provider/models";
 import { IEquipmentStateContext } from "../equipment-provider/context";
-import { IEmployee } from "../employee-provider/models";
 
 export enum EquipmentActionsEnum {
     getEquipmentsPending = "GET_EQUIPMENTS_PENDING",

@@ -9,7 +9,7 @@ namespace Apex_IT.CRUDAppServices.ConditionReportService.Dto
     public class ConditionReportDto : EntityDto<Guid>
     {
         public virtual string Description { get; set; }
-        public virtual string Priority { get; set; }
+        public virtual string Status { get; set; }
 
         public virtual string EquipmentName { get; set; }
 

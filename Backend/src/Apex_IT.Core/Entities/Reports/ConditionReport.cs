@@ -9,7 +9,7 @@ namespace Apex_IT.Entities.Reports
     public class ConditionReport : FullAuditedEntity<Guid>
     {
         public virtual string Description { get; set; }
-        public virtual string Priority { get; set; }
+        public virtual string Status { get; set; }
 
         public virtual Guid EquipmentId { get; set; }
         [ForeignKey("EquipmentId")]
