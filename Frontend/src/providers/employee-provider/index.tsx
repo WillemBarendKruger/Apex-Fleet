@@ -4,14 +4,11 @@ import { INITIAL_STATE, EmployeeStateContext, EmployeeActionContext } from "./co
 import { IEmployee } from "./models";
 import { EmployeeReducer } from "./reducer";
 import { useContext, useReducer } from "react";
-import { useRouter } from "next/navigation";
-import { decodeToken } from "@/utils/jwt";
 import { createEmployeeError, createEmployeePending, createEmployeeSuccess, deleteEmployeeError, deleteEmployeePending, deleteEmployeeSuccess, getEmployeeError, getEmployeePending, getEmployeesError, getEmployeesPending, getEmployeesSuccess, getEmployeeSuccess, updateEmployeeError, updateEmployeePending, updateEmployeeSuccess } from "./actions";
 
 export const EmployeeProvider = ({ children }: { children: React.ReactNode }) => {
     const [state, dispatch] = useReducer(EmployeeReducer, INITIAL_STATE);
     const instance = getAxiosInstance();
-    const router = useRouter();
 
     const getEmployees = async () => {
         dispatch(getEmployeesPending());
@@ -49,7 +46,6 @@ export const EmployeeProvider = ({ children }: { children: React.ReactNode }) =>
     };
 
     const createEmployee = async (employee: IEmployee) => {
-        const token = sessionStorage.getItem("token")?.trim();
         dispatch(createEmployeePending());
         const endpoint = `services/app/Employee/Create`;
         await instance

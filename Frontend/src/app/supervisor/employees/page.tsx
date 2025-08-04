@@ -31,7 +31,6 @@ const EmployeesPage = () => {
   }
 
   useEffect(() => {
-    // Fetch logic if needed
     refresh();
   }, []);
 

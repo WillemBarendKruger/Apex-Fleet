@@ -12,6 +12,7 @@ import { useRequestActions, useRequestState } from "@/providers/request-provider
 import { useConditionReportActions, useConditionReportState } from "@/providers/condition-report-provider";
 import { IRequest } from "@/providers/request-provider/models";
 import { IConditionReport } from "@/providers/condition-report-provider/models";
+import GeminiImageAnalysis from "@/components/Gemini/gemini";
 
 const EquipmentPage = () => {
     const { styles } = useStyles();
@@ -115,6 +116,7 @@ const EquipmentPage = () => {
         setReportModalVisible(true);
     };
     const handleReportCondition = async () => {
+        setLoading(true);
         try {
             const values = await form.validateFields();
 
@@ -123,12 +125,19 @@ const EquipmentPage = () => {
                 return;
             }
 
+            const currentEmployee = Employees?.find(emp => emp.id === userId);
+            if (!currentEmployee) {
+                message.error("Current user information not found");
+                return;
+            }
+
+
             const reportPayload: IConditionReport = {
                 equipmentId: selectedEquipmentForReport.id,
                 equipmentName: selectedEquipmentForReport.name,
                 reportingEmployeeEmail: Employees?.find(emp => emp.id === userId)?.emailAddress || "",
                 description: values.description,
-                priority: "pending",
+                status: "pending",
             };
 
             await createConditionReport(reportPayload);
@@ -138,6 +147,8 @@ const EquipmentPage = () => {
         } catch (error) {
             console.error("Error submitting condition report:", error);
             message.error("Failed to submit report");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -307,11 +318,13 @@ const EquipmentPage = () => {
                                     placeholder="Describe the condition of the equipment"
                                 />
                             </Form.Item>
-                            <Button type="dashed" onClick={() => {/* trigger AI image analysis */ }}>
-                                Analyze Image with AI
-                            </Button>
-
-                            {/* Add AI report write according to picture */}
+                            <Form.Item name="picture" label="Picture">
+                                <GeminiImageAnalysis
+                                    onDescriptionGenerated={(desc) => {
+                                        form.setFieldsValue({ description: desc });
+                                    }}
+                                />
+                            </Form.Item>
                         </Form>
                     </Modal>
                 </div>

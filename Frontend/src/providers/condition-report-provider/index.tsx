@@ -33,7 +33,7 @@ export const ConditionReportsProvider = ({ children }: { children: React.ReactNo
                 const filteredData = response.data.result.items.map((ConditionReport: IConditionReport) => ({
                     id: ConditionReport.id,
                     description: ConditionReport.description,
-                    priority: ConditionReport.priority,
+                    status: ConditionReport.status,
                     equipmentName: ConditionReport.equipmentName,
                     equipmentId: ConditionReport.equipmentId,
                     reportingEmployeeName: ConditionReport.reportingEmployeeName,
