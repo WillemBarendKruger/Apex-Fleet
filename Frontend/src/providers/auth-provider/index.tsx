@@ -104,10 +104,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         await instance
             .get(endpoint)
             .then((response) => {
-                sessionStorage.setItem(
-sessionStorage.setItem(
-    "UserInfo", JSON.stringify(response.data.result.user)
-);
+                sessionStorage.setItem("UserInfo", JSON.stringify(response.data.result.user));
                 dispatch(getCurrentUserSuccess(response.data.result.user));
             })
             .catch((error) => {
