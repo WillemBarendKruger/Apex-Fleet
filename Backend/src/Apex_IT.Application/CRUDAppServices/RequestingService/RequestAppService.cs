@@ -71,15 +71,16 @@ namespace Apex_IT.CRUDAppServices.RequestingService
 
         public override async Task<PagedResultDto<RequestDto>> GetAllAsync(PagedAndSortedResultRequestDto input)
         {
-            var query = _requestRepository.GetAllIncluding(eq => eq.Equipment);
+            var query = _requestRepository.GetAllIncluding(eq => eq.Equipment, emp => emp.RequestingEmployee);
 
             var totalCount = await query.CountAsync();
-            var requests = await query
-                    .Skip(input.SkipCount)
-                    .Take(input.MaxResultCount)
-                    .ToListAsync();
+            var accessRequests = await query
+                               .OrderBy(r => r.CreationTime)
+                                 .Skip(input.SkipCount)
+                                 .Take(input.MaxResultCount)
+                                 .ToListAsync();
 
-            var requestDtos = ObjectMapper.Map<List<RequestDto>>(requests);
+            var requestDtos = ObjectMapper.Map<List<RequestDto>>(accessRequests);
 
             return new PagedResultDto<RequestDto>(totalCount, requestDtos);
         }

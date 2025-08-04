@@ -1,0 +1,478 @@
+DEBUG 2025-08-04 10:02:54,046 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2025-08-04 10:02:54,944 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2025-08-04 10:02:54,974 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Web.Host.Startup.Apex_ITWebHostModule, Apex_IT.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:02:54,977 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITWebCoreModule, Apex_IT.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:02:54,977 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITApplicationModule, Apex_IT.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:02:54,978 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITCoreModule, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:02:54,979 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:02:54,979 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:02:54,980 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:02:54,983 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:02:54,983 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.EntityFrameworkCore.Apex_ITEntityFrameworkModule, Apex_IT.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:02:54,984 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:02:54,984 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:02:54,985 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:02:54,986 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:02:54,986 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:02:54,987 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:02:54,989 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2025-08-04 10:02:55,368 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:02:55,368 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:02:55,369 [1    ] o.Configuration.LanguageManagementConfig - Converted Apex_IT (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:02:55,369 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:02:56,015 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Apex_IT.EntityFrameworkCore.Apex_ITDbContext, Apex_IT.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:02:56,399 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2025-08-04 10:02:56,486 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2025-08-04 10:02:56,506 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2025-08-04 10:02:56,522 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Apex_IT
+DEBUG 2025-08-04 10:02:56,530 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2025-08-04 10:02:56,544 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2025-08-04 10:02:56,560 [1    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[Apex_IT.MultiTenancy.Tenant, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Apex_IT.Authorization.Users.User, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+DEBUG 2025-08-04 10:02:56,588 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2025-08-04 10:02:56,589 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Users.Dto.CreateUserDto
+DEBUG 2025-08-04 10:02:56,593 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Users.Dto.UserDto
+DEBUG 2025-08-04 10:02:56,594 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2025-08-04 10:02:56,594 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Sessions.Dto.UserLoginInfoDto
+DEBUG 2025-08-04 10:02:56,594 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Roles.Dto.PermissionDto
+DEBUG 2025-08-04 10:02:56,594 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2025-08-04 10:02:56,594 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.MultiTenancy.Dto.TenantDto
+DEBUG 2025-08-04 10:02:56,595 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.SupervisorService.Dto.SupervisorDto
+DEBUG 2025-08-04 10:02:56,595 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.RequestingService.Dto.RequestDto
+DEBUG 2025-08-04 10:02:56,595 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.EquipmentService.Dto.EquipmentDto
+DEBUG 2025-08-04 10:02:56,596 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto
+DEBUG 2025-08-04 10:02:56,596 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.ConditionReportService.Dto.ConditionReportDto
+DEBUG 2025-08-04 10:02:56,596 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.CategoryService.Dto.CategoryDto
+INFO  2025-08-04 10:03:11,851 [1    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,fa,ja,zh-Hans
+INFO  2025-08-04 10:03:12,439 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/ - - -
+INFO  2025-08-04 10:03:12,529 [1    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
+INFO  2025-08-04 10:03:12,535 [1    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
+INFO  2025-08-04 10:03:12,538 [1    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Users\Willem\Documents\Github\Apex-IT\Backend\src\Apex_IT.Web.Host
+INFO  2025-08-04 10:03:12,838 [10   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:03:12,941 [10   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Apex_IT.Web.Host.Controllers.HomeController (Apex_IT.Web.Host).
+INFO  2025-08-04 10:03:32,749 [18   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2025-08-04 10:03:32,798 [18   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host) in 19819.5853ms
+INFO  2025-08-04 10:03:32,805 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:03:32,838 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/index.html - - -
+INFO  2025-08-04 10:03:32,875 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/ - 302 - - 20434.7546ms
+INFO  2025-08-04 10:03:32,991 [7    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/index.html - 200 - text/html;charset=utf-8 154.3102ms
+INFO  2025-08-04 10:03:33,002 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - - -
+INFO  2025-08-04 10:03:33,009 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - 200 16517 application/javascript;+charset=utf-8 5.8105ms
+INFO  2025-08-04 10:03:33,020 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_vs/browserLink - - -
+INFO  2025-08-04 10:03:33,089 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 68.3760ms
+INFO  2025-08-04 10:03:33,116 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - - -
+INFO  2025-08-04 10:03:33,122 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:03:33,141 [18   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "SetCookie", controller = "AntiForgery", area = ""}. Executing controller action with signature Void SetCookie() on controller Apex_IT.Web.Host.Controllers.AntiForgeryController (Apex_IT.Web.Host).
+INFO  2025-08-04 10:03:33,144 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - - -
+INFO  2025-08-04 10:03:33,190 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 46.9865ms
+INFO  2025-08-04 10:03:34,212 [16   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-08-04 10:03:34,230 [16   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host) in 1085.5522ms
+INFO  2025-08-04 10:03:34,234 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:03:34,238 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - 200 - application/json;+charset=utf-8 1121.9691ms
+INFO  2025-08-04 10:03:40,893 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/api/services/app/ConditionReport/GetAll - - -
+INFO  2025-08-04 10:03:40,899 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.CRUDAppServices.ConditionReportService.ConditionReportAppService.GetAllAsync (Apex_IT.Application)'
+INFO  2025-08-04 10:03:40,920 [16   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "ConditionReport"}. Executing controller action with signature System.Threading.Tasks.Task`1[Abp.Application.Services.Dto.PagedResultDto`1[Apex_IT.CRUDAppServices.ConditionReportService.Dto.ConditionReportDto]] GetAllAsync(Abp.Application.Services.Dto.PagedAndSortedResultRequestDto) on controller Apex_IT.CRUDAppServices.ConditionReportService.ConditionReportAppService (Apex_IT.Application).
+INFO  2025-08-04 10:03:51,952 [16   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-08-04 10:03:51,973 [16   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.CRUDAppServices.ConditionReportService.ConditionReportAppService.GetAllAsync (Apex_IT.Application) in 11050.8533ms
+INFO  2025-08-04 10:03:51,976 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.CRUDAppServices.ConditionReportService.ConditionReportAppService.GetAllAsync (Apex_IT.Application)'
+INFO  2025-08-04 10:03:51,980 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/api/services/app/ConditionReport/GetAll - 200 - application/json;+charset=utf-8 11088.9137ms
+INFO  2025-08-04 10:04:25,207 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/api/services/app/Equipment/GetAll - - -
+INFO  2025-08-04 10:04:25,213 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.CRUDAppServices.EquipmentService.EquipmentAppService.GetAllAsync (Apex_IT.Application)'
+INFO  2025-08-04 10:04:25,225 [18   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "Equipment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Abp.Application.Services.Dto.PagedResultDto`1[Apex_IT.CRUDAppServices.EquipmentService.Dto.EquipmentDto]] GetAllAsync(Abp.Application.Services.Dto.PagedAndSortedResultRequestDto) on controller Apex_IT.CRUDAppServices.EquipmentService.EquipmentAppService (Apex_IT.Application).
+WARN  2025-08-04 10:04:25,593 [18   ] Microsoft.EntityFrameworkCore.Query      - The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+WARN  2025-08-04 10:04:25,598 [18   ] Microsoft.EntityFrameworkCore.Query      - The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+INFO  2025-08-04 10:04:27,525 [18   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-08-04 10:04:27,583 [18   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.CRUDAppServices.EquipmentService.EquipmentAppService.GetAllAsync (Apex_IT.Application) in 2349.6796ms
+INFO  2025-08-04 10:04:27,590 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.CRUDAppServices.EquipmentService.EquipmentAppService.GetAllAsync (Apex_IT.Application)'
+INFO  2025-08-04 10:04:27,594 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/api/services/app/Equipment/GetAll - 200 - application/json;+charset=utf-8 2389.6080ms
+INFO  2025-08-04 10:04:59,899 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/api/services/app/Request/GetAll - - -
+INFO  2025-08-04 10:04:59,902 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.CRUDAppServices.RequestingService.RequestAppService.GetAllAsync (Apex_IT.Application)'
+INFO  2025-08-04 10:04:59,915 [16   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "Request"}. Executing controller action with signature System.Threading.Tasks.Task`1[Abp.Application.Services.Dto.PagedResultDto`1[Apex_IT.CRUDAppServices.RequestingService.Dto.RequestDto]] GetAllAsync(Abp.Application.Services.Dto.PagedAndSortedResultRequestDto) on controller Apex_IT.CRUDAppServices.RequestingService.RequestAppService (Apex_IT.Application).
+INFO  2025-08-04 10:05:08,159 [16   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-08-04 10:05:08,166 [16   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.CRUDAppServices.RequestingService.RequestAppService.GetAllAsync (Apex_IT.Application) in 8248.2543ms
+INFO  2025-08-04 10:05:08,167 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.CRUDAppServices.RequestingService.RequestAppService.GetAllAsync (Apex_IT.Application)'
+INFO  2025-08-04 10:05:08,173 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/api/services/app/Request/GetAll - 200 - application/json;+charset=utf-8 8273.0812ms
+DEBUG 2025-08-04 10:07:03,104 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2025-08-04 10:07:03,313 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2025-08-04 10:07:03,328 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Web.Host.Startup.Apex_ITWebHostModule, Apex_IT.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:07:03,330 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITWebCoreModule, Apex_IT.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:07:03,331 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITApplicationModule, Apex_IT.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:07:03,331 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITCoreModule, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:07:03,331 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:07:03,332 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:07:03,332 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:07:03,334 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:07:03,334 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.EntityFrameworkCore.Apex_ITEntityFrameworkModule, Apex_IT.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:07:03,335 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:07:03,335 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:07:03,335 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:07:03,335 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:07:03,335 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:07:03,335 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:07:03,337 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2025-08-04 10:07:03,399 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:07:03,399 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:07:03,399 [1    ] o.Configuration.LanguageManagementConfig - Converted Apex_IT (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:07:03,399 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:07:03,685 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Apex_IT.EntityFrameworkCore.Apex_ITDbContext, Apex_IT.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:07:03,802 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2025-08-04 10:07:03,821 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2025-08-04 10:07:03,826 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2025-08-04 10:07:03,830 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Apex_IT
+DEBUG 2025-08-04 10:07:03,832 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2025-08-04 10:07:03,837 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2025-08-04 10:07:03,843 [1    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[Apex_IT.MultiTenancy.Tenant, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Apex_IT.Authorization.Users.User, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+DEBUG 2025-08-04 10:07:03,855 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2025-08-04 10:07:03,855 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Users.Dto.CreateUserDto
+DEBUG 2025-08-04 10:07:03,858 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Users.Dto.UserDto
+DEBUG 2025-08-04 10:07:03,858 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2025-08-04 10:07:03,858 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Sessions.Dto.UserLoginInfoDto
+DEBUG 2025-08-04 10:07:03,858 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Roles.Dto.PermissionDto
+DEBUG 2025-08-04 10:07:03,858 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2025-08-04 10:07:03,858 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.MultiTenancy.Dto.TenantDto
+DEBUG 2025-08-04 10:07:03,858 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.SupervisorService.Dto.SupervisorDto
+DEBUG 2025-08-04 10:07:03,859 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.RequestingService.Dto.RequestDto
+DEBUG 2025-08-04 10:07:03,859 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.EquipmentService.Dto.EquipmentDto
+DEBUG 2025-08-04 10:07:03,859 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto
+DEBUG 2025-08-04 10:07:03,859 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.ConditionReportService.Dto.ConditionReportDto
+DEBUG 2025-08-04 10:07:03,859 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.CategoryService.Dto.CategoryDto
+INFO  2025-08-04 10:07:15,661 [1    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,fa,ja,zh-Hans
+INFO  2025-08-04 10:07:16,444 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/ - - -
+INFO  2025-08-04 10:07:16,537 [1    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
+INFO  2025-08-04 10:07:16,540 [1    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
+INFO  2025-08-04 10:07:16,544 [1    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Users\Willem\Documents\Github\Apex-IT\Backend\src\Apex_IT.Web.Host
+INFO  2025-08-04 10:07:16,799 [5    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:07:16,927 [5    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Apex_IT.Web.Host.Controllers.HomeController (Apex_IT.Web.Host).
+INFO  2025-08-04 10:07:18,483 [16   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2025-08-04 10:07:18,509 [16   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host) in 1561.8637ms
+INFO  2025-08-04 10:07:18,514 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:07:18,534 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/index.html - - -
+INFO  2025-08-04 10:07:18,546 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/ - 302 - - 2115.6982ms
+INFO  2025-08-04 10:07:18,664 [10   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/index.html - 200 - text/html;charset=utf-8 130.1874ms
+INFO  2025-08-04 10:07:18,676 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - - -
+INFO  2025-08-04 10:07:18,683 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - 200 16517 application/javascript;+charset=utf-8 6.4314ms
+INFO  2025-08-04 10:07:18,695 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_vs/browserLink - - -
+INFO  2025-08-04 10:07:18,747 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 52.2142ms
+INFO  2025-08-04 10:07:18,774 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - - -
+INFO  2025-08-04 10:07:18,780 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:07:18,793 [16   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "SetCookie", controller = "AntiForgery", area = ""}. Executing controller action with signature Void SetCookie() on controller Apex_IT.Web.Host.Controllers.AntiForgeryController (Apex_IT.Web.Host).
+INFO  2025-08-04 10:07:18,799 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - - -
+INFO  2025-08-04 10:07:18,853 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 54.3639ms
+INFO  2025-08-04 10:07:19,669 [16   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-08-04 10:07:19,690 [16   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host) in 891.584ms
+INFO  2025-08-04 10:07:19,695 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:07:19,700 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - 200 - application/json;+charset=utf-8 925.3074ms
+INFO  2025-08-04 10:07:25,591 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/api/services/app/Request/GetAll - - -
+INFO  2025-08-04 10:07:25,608 [11   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.CRUDAppServices.RequestingService.RequestAppService.GetAllAsync (Apex_IT.Application)'
+INFO  2025-08-04 10:07:25,625 [11   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "Request"}. Executing controller action with signature System.Threading.Tasks.Task`1[Abp.Application.Services.Dto.PagedResultDto`1[Apex_IT.CRUDAppServices.RequestingService.Dto.RequestDto]] GetAllAsync(Abp.Application.Services.Dto.PagedAndSortedResultRequestDto) on controller Apex_IT.CRUDAppServices.RequestingService.RequestAppService (Apex_IT.Application).
+INFO  2025-08-04 10:07:27,788 [16   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-08-04 10:07:27,820 [16   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.CRUDAppServices.RequestingService.RequestAppService.GetAllAsync (Apex_IT.Application) in 2191.2349ms
+INFO  2025-08-04 10:07:27,829 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.CRUDAppServices.RequestingService.RequestAppService.GetAllAsync (Apex_IT.Application)'
+INFO  2025-08-04 10:07:27,834 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/api/services/app/Request/GetAll - 200 - application/json;+charset=utf-8 2243.1468ms
+DEBUG 2025-08-04 10:08:26,216 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2025-08-04 10:08:26,441 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2025-08-04 10:08:26,450 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Web.Host.Startup.Apex_ITWebHostModule, Apex_IT.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:08:26,451 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITWebCoreModule, Apex_IT.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:08:26,451 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITApplicationModule, Apex_IT.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:08:26,451 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITCoreModule, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:08:26,452 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:08:26,452 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:08:26,452 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:08:26,452 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:08:26,453 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.EntityFrameworkCore.Apex_ITEntityFrameworkModule, Apex_IT.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:08:26,453 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:08:26,453 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:08:26,453 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:08:26,453 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:08:26,453 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:08:26,453 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:08:26,454 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2025-08-04 10:08:26,498 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:08:26,498 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:08:26,498 [1    ] o.Configuration.LanguageManagementConfig - Converted Apex_IT (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:08:26,498 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:08:26,729 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Apex_IT.EntityFrameworkCore.Apex_ITDbContext, Apex_IT.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:08:26,836 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2025-08-04 10:08:26,856 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2025-08-04 10:08:26,862 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2025-08-04 10:08:26,866 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Apex_IT
+DEBUG 2025-08-04 10:08:26,868 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2025-08-04 10:08:26,873 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2025-08-04 10:08:26,879 [1    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[Apex_IT.MultiTenancy.Tenant, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Apex_IT.Authorization.Users.User, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+DEBUG 2025-08-04 10:08:26,890 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2025-08-04 10:08:26,890 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Users.Dto.CreateUserDto
+DEBUG 2025-08-04 10:08:26,892 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Users.Dto.UserDto
+DEBUG 2025-08-04 10:08:26,893 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2025-08-04 10:08:26,893 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Sessions.Dto.UserLoginInfoDto
+DEBUG 2025-08-04 10:08:26,893 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Roles.Dto.PermissionDto
+DEBUG 2025-08-04 10:08:26,893 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2025-08-04 10:08:26,893 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.MultiTenancy.Dto.TenantDto
+DEBUG 2025-08-04 10:08:26,893 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.SupervisorService.Dto.SupervisorDto
+DEBUG 2025-08-04 10:08:26,893 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.RequestingService.Dto.RequestDto
+DEBUG 2025-08-04 10:08:26,893 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.EquipmentService.Dto.EquipmentDto
+DEBUG 2025-08-04 10:08:26,893 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto
+DEBUG 2025-08-04 10:08:26,893 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.ConditionReportService.Dto.ConditionReportDto
+DEBUG 2025-08-04 10:08:26,893 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.CategoryService.Dto.CategoryDto
+INFO  2025-08-04 10:08:39,672 [1    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,fa,ja,zh-Hans
+INFO  2025-08-04 10:08:40,384 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/ - - -
+INFO  2025-08-04 10:08:40,496 [1    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
+INFO  2025-08-04 10:08:40,502 [1    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
+INFO  2025-08-04 10:08:40,505 [1    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Users\Willem\Documents\Github\Apex-IT\Backend\src\Apex_IT.Web.Host
+INFO  2025-08-04 10:08:40,798 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:08:40,864 [14   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Apex_IT.Web.Host.Controllers.HomeController (Apex_IT.Web.Host).
+INFO  2025-08-04 10:08:42,403 [14   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2025-08-04 10:08:42,433 [14   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host) in 1545.036ms
+INFO  2025-08-04 10:08:42,444 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:08:42,489 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/index.html - - -
+INFO  2025-08-04 10:08:42,512 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/ - 302 - - 2134.3480ms
+INFO  2025-08-04 10:08:42,623 [7    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/index.html - 200 - text/html;charset=utf-8 136.8262ms
+INFO  2025-08-04 10:08:42,632 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - - -
+INFO  2025-08-04 10:08:42,641 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - 200 16517 application/javascript;+charset=utf-8 7.7662ms
+INFO  2025-08-04 10:08:42,654 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_vs/browserLink - - -
+INFO  2025-08-04 10:08:42,716 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 65.0376ms
+INFO  2025-08-04 10:08:42,750 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - - -
+INFO  2025-08-04 10:08:42,756 [17   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:08:42,768 [17   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "SetCookie", controller = "AntiForgery", area = ""}. Executing controller action with signature Void SetCookie() on controller Apex_IT.Web.Host.Controllers.AntiForgeryController (Apex_IT.Web.Host).
+INFO  2025-08-04 10:08:42,774 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - - -
+INFO  2025-08-04 10:08:42,825 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 51.1381ms
+INFO  2025-08-04 10:08:43,730 [14   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-08-04 10:08:43,743 [14   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host) in 971.8595ms
+INFO  2025-08-04 10:08:43,746 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:08:43,748 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - 200 - application/json;+charset=utf-8 998.1704ms
+INFO  2025-08-04 10:08:49,753 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/api/services/app/Request/GetAll - - -
+INFO  2025-08-04 10:08:49,760 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.CRUDAppServices.RequestingService.RequestAppService.GetAllAsync (Apex_IT.Application)'
+INFO  2025-08-04 10:08:49,789 [14   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "Request"}. Executing controller action with signature System.Threading.Tasks.Task`1[Abp.Application.Services.Dto.PagedResultDto`1[Apex_IT.CRUDAppServices.RequestingService.Dto.RequestDto]] GetAllAsync(Abp.Application.Services.Dto.PagedAndSortedResultRequestDto) on controller Apex_IT.CRUDAppServices.RequestingService.RequestAppService (Apex_IT.Application).
+INFO  2025-08-04 10:08:52,191 [11   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-08-04 10:08:52,248 [11   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.CRUDAppServices.RequestingService.RequestAppService.GetAllAsync (Apex_IT.Application) in 2456.1698ms
+INFO  2025-08-04 10:08:52,255 [11   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.CRUDAppServices.RequestingService.RequestAppService.GetAllAsync (Apex_IT.Application)'
+INFO  2025-08-04 10:08:52,259 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/api/services/app/Request/GetAll - 200 - application/json;+charset=utf-8 2507.5082ms
+DEBUG 2025-08-04 10:10:42,328 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2025-08-04 10:10:42,486 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2025-08-04 10:10:42,494 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Web.Host.Startup.Apex_ITWebHostModule, Apex_IT.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:10:42,495 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITWebCoreModule, Apex_IT.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:10:42,495 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITApplicationModule, Apex_IT.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:10:42,495 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITCoreModule, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:10:42,495 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:10:42,496 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:10:42,496 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:10:42,496 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:10:42,496 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.EntityFrameworkCore.Apex_ITEntityFrameworkModule, Apex_IT.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:10:42,496 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:10:42,497 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:10:42,497 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:10:42,497 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:10:42,497 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:10:42,497 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:10:42,499 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2025-08-04 10:10:42,540 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:10:42,540 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:10:42,540 [1    ] o.Configuration.LanguageManagementConfig - Converted Apex_IT (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:10:42,540 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:10:42,768 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Apex_IT.EntityFrameworkCore.Apex_ITDbContext, Apex_IT.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:10:42,858 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2025-08-04 10:10:42,882 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2025-08-04 10:10:42,887 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2025-08-04 10:10:42,890 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Apex_IT
+DEBUG 2025-08-04 10:10:42,892 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2025-08-04 10:10:42,897 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2025-08-04 10:10:42,902 [1    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[Apex_IT.MultiTenancy.Tenant, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Apex_IT.Authorization.Users.User, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+DEBUG 2025-08-04 10:10:42,913 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2025-08-04 10:10:42,913 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Users.Dto.CreateUserDto
+DEBUG 2025-08-04 10:10:42,915 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Users.Dto.UserDto
+DEBUG 2025-08-04 10:10:42,915 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2025-08-04 10:10:42,915 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Sessions.Dto.UserLoginInfoDto
+DEBUG 2025-08-04 10:10:42,915 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Roles.Dto.PermissionDto
+DEBUG 2025-08-04 10:10:42,915 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2025-08-04 10:10:42,915 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.MultiTenancy.Dto.TenantDto
+DEBUG 2025-08-04 10:10:42,915 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.SupervisorService.Dto.SupervisorDto
+DEBUG 2025-08-04 10:10:42,916 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.RequestingService.Dto.RequestDto
+DEBUG 2025-08-04 10:10:42,916 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.EquipmentService.Dto.EquipmentDto
+DEBUG 2025-08-04 10:10:42,916 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto
+DEBUG 2025-08-04 10:10:42,916 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.ConditionReportService.Dto.ConditionReportDto
+DEBUG 2025-08-04 10:10:42,916 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.CategoryService.Dto.CategoryDto
+INFO  2025-08-04 10:10:56,596 [1    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,fa,ja,zh-Hans
+INFO  2025-08-04 10:10:57,259 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/ - - -
+INFO  2025-08-04 10:10:57,363 [1    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
+INFO  2025-08-04 10:10:57,370 [1    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
+INFO  2025-08-04 10:10:57,379 [1    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Users\Willem\Documents\Github\Apex-IT\Backend\src\Apex_IT.Web.Host
+INFO  2025-08-04 10:10:57,633 [11   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:10:57,721 [11   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Apex_IT.Web.Host.Controllers.HomeController (Apex_IT.Web.Host).
+INFO  2025-08-04 10:11:00,694 [11   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2025-08-04 10:11:00,729 [11   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host) in 2981.8395ms
+INFO  2025-08-04 10:11:00,733 [11   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:11:00,762 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/index.html - - -
+INFO  2025-08-04 10:11:00,768 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/ - 302 - - 3515.8582ms
+INFO  2025-08-04 10:11:00,896 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/index.html - 200 - text/html;charset=utf-8 134.4435ms
+INFO  2025-08-04 10:11:00,913 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - - -
+INFO  2025-08-04 10:11:00,927 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - 200 16517 application/javascript;+charset=utf-8 10.4029ms
+INFO  2025-08-04 10:11:00,938 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_vs/browserLink - - -
+INFO  2025-08-04 10:11:00,998 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 60.7141ms
+INFO  2025-08-04 10:11:01,035 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - - -
+INFO  2025-08-04 10:11:01,040 [17   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:11:01,057 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - - -
+INFO  2025-08-04 10:11:01,059 [17   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "SetCookie", controller = "AntiForgery", area = ""}. Executing controller action with signature Void SetCookie() on controller Apex_IT.Web.Host.Controllers.AntiForgeryController (Apex_IT.Web.Host).
+INFO  2025-08-04 10:11:01,126 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 67.9761ms
+INFO  2025-08-04 10:11:02,241 [18   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-08-04 10:11:02,263 [18   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host) in 1197.5865ms
+INFO  2025-08-04 10:11:02,267 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:11:02,274 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - 200 - application/json;+charset=utf-8 1233.8702ms
+INFO  2025-08-04 10:11:06,576 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/api/services/app/Employee/GetAll - - -
+INFO  2025-08-04 10:11:06,583 [11   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.GetAllAsync (Apex_IT.Application)'
+INFO  2025-08-04 10:11:06,614 [11   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Abp.Application.Services.Dto.PagedResultDto`1[Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto]] GetAllAsync(Abp.Application.Services.Dto.PagedAndSortedResultRequestDto) on controller Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService (Apex_IT.Application).
+INFO  2025-08-04 10:11:13,290 [18   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-08-04 10:11:13,308 [18   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.GetAllAsync (Apex_IT.Application) in 6690.717ms
+INFO  2025-08-04 10:11:13,313 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.GetAllAsync (Apex_IT.Application)'
+INFO  2025-08-04 10:11:13,317 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/api/services/app/Employee/GetAll - 200 - application/json;+charset=utf-8 6739.5074ms
+DEBUG 2025-08-04 10:14:31,654 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2025-08-04 10:14:31,849 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2025-08-04 10:14:31,858 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Web.Host.Startup.Apex_ITWebHostModule, Apex_IT.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:14:31,859 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITWebCoreModule, Apex_IT.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:14:31,859 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITApplicationModule, Apex_IT.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:14:31,860 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITCoreModule, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:14:31,860 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:14:31,860 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:14:31,860 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:14:31,860 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:14:31,861 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.EntityFrameworkCore.Apex_ITEntityFrameworkModule, Apex_IT.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:14:31,861 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:14:31,861 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:14:31,861 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:14:31,861 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:14:31,862 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:14:31,862 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:14:31,863 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2025-08-04 10:14:31,908 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:14:31,908 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:14:31,908 [1    ] o.Configuration.LanguageManagementConfig - Converted Apex_IT (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:14:31,908 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:14:32,136 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Apex_IT.EntityFrameworkCore.Apex_ITDbContext, Apex_IT.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:14:32,241 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2025-08-04 10:14:32,260 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2025-08-04 10:14:32,266 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2025-08-04 10:14:32,269 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Apex_IT
+DEBUG 2025-08-04 10:14:32,272 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2025-08-04 10:14:32,277 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2025-08-04 10:14:32,282 [1    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[Apex_IT.MultiTenancy.Tenant, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Apex_IT.Authorization.Users.User, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+DEBUG 2025-08-04 10:14:32,294 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2025-08-04 10:14:32,294 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Users.Dto.CreateUserDto
+DEBUG 2025-08-04 10:14:32,296 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Users.Dto.UserDto
+DEBUG 2025-08-04 10:14:32,296 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2025-08-04 10:14:32,297 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Sessions.Dto.UserLoginInfoDto
+DEBUG 2025-08-04 10:14:32,297 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Roles.Dto.PermissionDto
+DEBUG 2025-08-04 10:14:32,297 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2025-08-04 10:14:32,297 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.MultiTenancy.Dto.TenantDto
+DEBUG 2025-08-04 10:14:32,297 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.SupervisorService.Dto.SupervisorDto
+DEBUG 2025-08-04 10:14:32,297 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.RequestingService.Dto.RequestDto
+DEBUG 2025-08-04 10:14:32,297 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.EquipmentService.Dto.EquipmentDto
+DEBUG 2025-08-04 10:14:32,297 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto
+DEBUG 2025-08-04 10:14:32,297 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.ConditionReportService.Dto.ConditionReportDto
+DEBUG 2025-08-04 10:14:32,297 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.CategoryService.Dto.CategoryDto
+INFO  2025-08-04 10:14:45,961 [1    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,fa,ja,zh-Hans
+INFO  2025-08-04 10:14:46,601 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/ - - -
+INFO  2025-08-04 10:14:46,716 [1    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
+INFO  2025-08-04 10:14:46,723 [1    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
+INFO  2025-08-04 10:14:46,731 [1    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Users\Willem\Documents\Github\Apex-IT\Backend\src\Apex_IT.Web.Host
+INFO  2025-08-04 10:14:47,004 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:14:47,105 [16   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Apex_IT.Web.Host.Controllers.HomeController (Apex_IT.Web.Host).
+INFO  2025-08-04 10:14:48,584 [16   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2025-08-04 10:14:48,620 [16   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host) in 1486.9783ms
+INFO  2025-08-04 10:14:48,626 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:14:48,648 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/index.html - - -
+INFO  2025-08-04 10:14:48,654 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/ - 302 - - 2066.4355ms
+INFO  2025-08-04 10:14:48,785 [10   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/index.html - 200 - text/html;charset=utf-8 136.1221ms
+INFO  2025-08-04 10:14:48,788 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - - -
+INFO  2025-08-04 10:14:48,796 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - 200 16517 application/javascript;+charset=utf-8 8.1002ms
+INFO  2025-08-04 10:14:48,807 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_vs/browserLink - - -
+INFO  2025-08-04 10:14:48,859 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 52.0058ms
+INFO  2025-08-04 10:14:48,893 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - - -
+INFO  2025-08-04 10:14:48,899 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:14:48,909 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - - -
+INFO  2025-08-04 10:14:48,921 [16   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "SetCookie", controller = "AntiForgery", area = ""}. Executing controller action with signature Void SetCookie() on controller Apex_IT.Web.Host.Controllers.AntiForgeryController (Apex_IT.Web.Host).
+INFO  2025-08-04 10:14:48,975 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 69.7583ms
+INFO  2025-08-04 10:14:49,908 [14   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-08-04 10:14:49,923 [14   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host) in 998.8719ms
+INFO  2025-08-04 10:14:49,926 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:14:49,930 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - 200 - application/json;+charset=utf-8 1036.1298ms
+INFO  2025-08-04 10:14:55,627 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/api/services/app/Employee/GetAll - - -
+INFO  2025-08-04 10:14:55,635 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.GetAllAsync (Apex_IT.Application)'
+INFO  2025-08-04 10:14:55,656 [16   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Abp.Application.Services.Dto.PagedResultDto`1[Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto]] GetAllAsync(Abp.Application.Services.Dto.PagedAndSortedResultRequestDto) on controller Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService (Apex_IT.Application).
+INFO  2025-08-04 10:14:58,197 [16   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-08-04 10:14:58,219 [16   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.GetAllAsync (Apex_IT.Application) in 2555.1963ms
+INFO  2025-08-04 10:14:58,231 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.GetAllAsync (Apex_IT.Application)'
+INFO  2025-08-04 10:14:58,239 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/api/services/app/Employee/GetAll - 200 - application/json;+charset=utf-8 2607.2921ms
+DEBUG 2025-08-04 10:16:56,492 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2025-08-04 10:16:56,719 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2025-08-04 10:16:56,727 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Web.Host.Startup.Apex_ITWebHostModule, Apex_IT.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:16:56,728 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITWebCoreModule, Apex_IT.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:16:56,728 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITApplicationModule, Apex_IT.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:16:56,729 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.Apex_ITCoreModule, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:16:56,729 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:16:56,729 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:16:56,729 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:16:56,730 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:16:56,730 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Apex_IT.EntityFrameworkCore.Apex_ITEntityFrameworkModule, Apex_IT.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:16:56,730 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:16:56,730 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:16:56,730 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:16:56,730 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:16:56,731 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:16:56,731 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:16:56,732 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2025-08-04 10:16:56,783 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:16:56,783 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:16:56,783 [1    ] o.Configuration.LanguageManagementConfig - Converted Apex_IT (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:16:56,783 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-08-04 10:16:57,014 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Apex_IT.EntityFrameworkCore.Apex_ITDbContext, Apex_IT.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-08-04 10:16:57,119 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2025-08-04 10:16:57,140 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2025-08-04 10:16:57,146 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2025-08-04 10:16:57,150 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Apex_IT
+DEBUG 2025-08-04 10:16:57,153 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2025-08-04 10:16:57,158 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2025-08-04 10:16:57,165 [1    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[Apex_IT.MultiTenancy.Tenant, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Apex_IT.Authorization.Users.User, Apex_IT.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+DEBUG 2025-08-04 10:16:57,177 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2025-08-04 10:16:57,177 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Users.Dto.CreateUserDto
+DEBUG 2025-08-04 10:16:57,179 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Users.Dto.UserDto
+DEBUG 2025-08-04 10:16:57,180 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2025-08-04 10:16:57,180 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Sessions.Dto.UserLoginInfoDto
+DEBUG 2025-08-04 10:16:57,180 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.Roles.Dto.PermissionDto
+DEBUG 2025-08-04 10:16:57,180 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2025-08-04 10:16:57,180 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.MultiTenancy.Dto.TenantDto
+DEBUG 2025-08-04 10:16:57,180 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.SupervisorService.Dto.SupervisorDto
+DEBUG 2025-08-04 10:16:57,180 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.RequestingService.Dto.RequestDto
+DEBUG 2025-08-04 10:16:57,180 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.EquipmentService.Dto.EquipmentDto
+DEBUG 2025-08-04 10:16:57,180 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto
+DEBUG 2025-08-04 10:16:57,180 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.ConditionReportService.Dto.ConditionReportDto
+DEBUG 2025-08-04 10:16:57,180 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Apex_IT.CRUDAppServices.CategoryService.Dto.CategoryDto
+INFO  2025-08-04 10:17:10,873 [1    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,fa,ja,zh-Hans
+INFO  2025-08-04 10:17:11,081 [10   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/ - - -
+INFO  2025-08-04 10:17:11,115 [1    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
+INFO  2025-08-04 10:17:11,116 [1    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
+INFO  2025-08-04 10:17:11,118 [1    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Users\Willem\Documents\Github\Apex-IT\Backend\src\Apex_IT.Web.Host
+INFO  2025-08-04 10:17:11,221 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:17:11,252 [14   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Apex_IT.Web.Host.Controllers.HomeController (Apex_IT.Web.Host).
+INFO  2025-08-04 10:17:12,790 [14   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2025-08-04 10:17:12,814 [14   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host) in 1544.4302ms
+INFO  2025-08-04 10:17:12,820 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.HomeController.Index (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:17:12,847 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/index.html - - -
+INFO  2025-08-04 10:17:12,852 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/ - 302 - - 1772.4766ms
+INFO  2025-08-04 10:17:12,960 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/index.html - 200 - text/html;charset=utf-8 111.3277ms
+INFO  2025-08-04 10:17:12,980 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - - -
+INFO  2025-08-04 10:17:12,995 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - 200 16517 application/javascript;+charset=utf-8 10.8119ms
+INFO  2025-08-04 10:17:13,009 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_vs/browserLink - - -
+INFO  2025-08-04 10:17:13,075 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 69.9706ms
+INFO  2025-08-04 10:17:13,108 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - - -
+INFO  2025-08-04 10:17:13,114 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:17:13,128 [16   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "SetCookie", controller = "AntiForgery", area = ""}. Executing controller action with signature Void SetCookie() on controller Apex_IT.Web.Host.Controllers.AntiForgeryController (Apex_IT.Web.Host).
+INFO  2025-08-04 10:17:13,130 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - - -
+INFO  2025-08-04 10:17:13,185 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 54.5672ms
+INFO  2025-08-04 10:17:14,096 [14   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-08-04 10:17:14,117 [14   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host) in 985.127ms
+INFO  2025-08-04 10:17:14,122 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.Web.Host.Controllers.AntiForgeryController.SetCookie (Apex_IT.Web.Host)'
+INFO  2025-08-04 10:17:14,127 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - 200 - application/json;+charset=utf-8 1016.9676ms
+INFO  2025-08-04 10:17:25,311 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/api/services/app/Employee/GetAll - - -
+INFO  2025-08-04 10:17:25,323 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.GetAllAsync (Apex_IT.Application)'
+INFO  2025-08-04 10:17:25,357 [14   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Abp.Application.Services.Dto.PagedResultDto`1[Apex_IT.CRUDAppServices.EmployeeService.Dto.EmployeeDto]] GetAllAsync(Abp.Application.Services.Dto.PagedAndSortedResultRequestDto) on controller Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService (Apex_IT.Application).
+INFO  2025-08-04 10:17:27,328 [14   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-08-04 10:17:27,354 [14   ] c.Infrastructure.ControllerActionInvoker - Executed action Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.GetAllAsync (Apex_IT.Application) in 1991.8391ms
+INFO  2025-08-04 10:17:27,358 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Apex_IT.CRUDAppServices.EmployeeService.EmployeeAppService.GetAllAsync (Apex_IT.Application)'
+INFO  2025-08-04 10:17:27,361 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/api/services/app/Employee/GetAll - 200 - application/json;+charset=utf-8 2052.5154ms

@@ -1,33 +1,38 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Table, Button, Modal, Form, Space, message, Select } from "antd";
+import { Table, Button, Modal, Form, Space, message, Select, Input } from "antd";
 import { useStyles } from "./style/styles";
-import { IEmployee } from "@/providers/employee-provider/models";
 import { IEquipment } from "@/providers/equipment-provider/models";
 import Loader from "@/components/loader/loader";
 import { useEmployeeState, useEmployeeActions } from "@/providers/employee-provider";
 import { useEquipmentState, useEquipmentActions } from "@/providers/equipment-provider";
 import { useCategoryActions, useCategoryState } from "@/providers/category-provider";
 import { useRequestActions, useRequestState } from "@/providers/request-provider";
+import { useConditionReportActions, useConditionReportState } from "@/providers/condition-report-provider";
 import { IRequest } from "@/providers/request-provider/models";
+import { IConditionReport } from "@/providers/condition-report-provider/models";
 
 const EquipmentPage = () => {
     const { styles } = useStyles();
     const { Employees } = useEmployeeState();
     const { Equipments } = useEquipmentState();
     const { getEmployees } = useEmployeeActions();
-    const { getEquipments } = useEquipmentActions();
+    const { getEquipments, updateEquipment } = useEquipmentActions();
     const { getCategories } = useCategoryActions();
     const { Categories } = useCategoryState();
     const { getRequests, createRequest } = useRequestActions();
     const { Requests } = useRequestState();
+    const { getConditionReports, createConditionReport } = useConditionReportActions();
+    const { ConditionReports } = useConditionReportState();
 
     const [modalVisible, setModalVisible] = useState(false);
+    const [reportModalVisible, setReportModalVisible] = useState(false);
     const [loading, setLoading] = useState(false);
     const [form] = Form.useForm();
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [userId, setUserId] = useState<number | null>(null);
+    const [selectedEquipmentForReport, setSelectedEquipmentForReport] = useState<IEquipment | null>(null);
 
     useEffect(() => {
         const storedId = sessionStorage.getItem("userId");
@@ -44,6 +49,11 @@ const EquipmentPage = () => {
     const handleAddRequest = async () => {
         setLoading(true);
         try {
+            if (!userId) {
+                message.error("User session not found. Please log in again.");
+                return;
+            }
+
             const values = await form.validateFields();
             const requester = Employees?.find(emp => emp.id === userId);
 
@@ -64,8 +74,7 @@ const EquipmentPage = () => {
                 equipmentId: selectedEquipment.id,
                 equipmentName: selectedEquipment.name,
                 requestingEmployeeEmail: requester.emailAddress,
-                requestingEmployeeId: parseInt(sessionStorage.getItem("userId") || "0"),
-
+                requestingEmployeeId: userId,
             };
 
             await createRequest(requestPayload);
@@ -79,6 +88,57 @@ const EquipmentPage = () => {
             message.error("Failed to submit request");
         }
         setLoading(false);
+    };
+
+    const handleReturnEquipment = async (record: IEquipment) => {
+        setLoading(true);
+        try {
+            const updatedEquipment: IEquipment = {
+                ...record,
+                status: "inventory",
+                handlerEmail: "supervisor1@example.com", // Update this logic in the near future
+            };
+
+            await updateEquipment(updatedEquipment);
+            message.success("Equipment returned successfully");
+            await refresh();
+        } catch (error) {
+            message.error("Failed to return equipment");
+            console.error("Error returning equipment:", error);
+        }
+        setLoading(false);
+    };
+
+    const handleOpenReportModal = (equipment: IEquipment) => {
+        setSelectedEquipmentForReport(equipment);
+        form.resetFields();
+        setReportModalVisible(true);
+    };
+    const handleReportCondition = async () => {
+        try {
+            const values = await form.validateFields();
+
+            if (!selectedEquipmentForReport || !userId) {
+                message.error("No equipment selected or user not found");
+                return;
+            }
+
+            const reportPayload: IConditionReport = {
+                equipmentId: selectedEquipmentForReport.id,
+                equipmentName: selectedEquipmentForReport.name,
+                reportingEmployeeEmail: Employees?.find(emp => emp.id === userId)?.emailAddress || "",
+                description: values.description,
+                priority: "pending",
+            };
+
+            await createConditionReport(reportPayload);
+            message.success("Condition report submitted");
+            setReportModalVisible(false);
+            await refresh();
+        } catch (error) {
+            console.error("Error submitting condition report:", error);
+            message.error("Failed to submit report");
+        }
     };
 
     const columns = [
@@ -114,11 +174,11 @@ const EquipmentPage = () => {
                 const handler = Employees?.find(emp => emp.emailAddress === record.handlerEmail);
                 return handler ? (
                     <Space>
-                        <Button type="primary" onClick={() => { /* Return logic */ }}>
+                        <Button type="primary" onClick={() => { handleReturnEquipment(record) }}>
                             Return
                         </Button>
-                        <Button onClick={() => { /* Extension logic */ }}>
-                            Request Extension
+                        <Button onClick={() => { handleOpenReportModal(record) }}>
+                            Report condition
                         </Button>
                     </Space>
                 ) : (
@@ -160,7 +220,7 @@ const EquipmentPage = () => {
                         pagination={{ pageSize: 5 }}
                         scroll={{ x: "max-content" }}
                     />
-
+                    {/* model for request */}
                     <Modal
                         title="Request Equipment"
                         open={modalVisible}
@@ -219,6 +279,39 @@ const EquipmentPage = () => {
                                     ))}
                                 </Select>
                             </Form.Item>
+                        </Form>
+                    </Modal>
+
+                    {/* model for reports */}
+                    <Modal
+                        title="Report Equipment Condition"
+                        open={reportModalVisible}
+                        onCancel={() => setReportModalVisible(false)}
+                        footer={
+                            <Space>
+                                <Button onClick={() => setReportModalVisible(false)}>Cancel</Button>
+                                <Button type="primary" onClick={handleReportCondition}>
+                                    Submit Report
+                                </Button>
+                            </Space>
+                        }
+                    >
+                        <Form form={form} layout="vertical">
+                            <Form.Item
+                                name="description"
+                                label="Condition Description"
+                                rules={[{ required: true, message: "Please describe the condition" }]}
+                            >
+                                <Input.TextArea
+                                    rows={4}
+                                    placeholder="Describe the condition of the equipment"
+                                />
+                            </Form.Item>
+                            <Button type="dashed" onClick={() => {/* trigger AI image analysis */ }}>
+                                Analyze Image with AI
+                            </Button>
+
+                            {/* Add AI report write according to picture */}
                         </Form>
                     </Modal>
                 </div>
