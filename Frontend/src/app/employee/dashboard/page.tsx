@@ -90,7 +90,7 @@ const EmployeeDashboard = () => {
                                 block
                                 size="large"
                                 className={styles.quickActionButton}
-                                onClick={() => router.push("./equipment")}
+                                onClick={() => router.push("./reports")}
                             >
                                 Report Condition
                             </Button>
