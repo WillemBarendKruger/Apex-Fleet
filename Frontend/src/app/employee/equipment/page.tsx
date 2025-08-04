@@ -129,7 +129,7 @@ const EquipmentPage = () => {
     ];
 
     const filteredEquipments = Equipments?.filter(eq =>
-        eq.handlerId == userId
+        eq.handlerId === userId
     );
 
     return (
