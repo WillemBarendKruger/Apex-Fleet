@@ -53,7 +53,6 @@ const SettingsPage = () => {
         password: values.password,
         roleName: "Supervisor",
       };
-      };
 
       updateSupervisor(payload);
       message.success("Profile updated successfully!");
