@@ -27,7 +27,7 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
     const [loggedInUser, setLoggedInUser] = useState("Guest");
 
     useEffect(() => {
-        const storedData = sessionStorage.getItem("curentUser");
+        const storedData = sessionStorage.getItem("currentUser");
         if (storedData) {
             setLoggedInUser(storedData);
         }
