@@ -12,6 +12,8 @@ namespace Apex_IT.CRUDAppServices.EquipmentService.Dto
         public virtual string SerialNumber { get; set; }
         public virtual int MaintenancePeriod { get; set; }
         public virtual string Status { get; set; }
+        public virtual DateTime? ReturnDate { get; set; }
+        public virtual DateTime? LastMaintenanceDate { get; set; }
 
         public virtual Guid CategoryId { get; set; }
         public virtual string CategoryName { get; set; }

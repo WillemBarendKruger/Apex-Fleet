@@ -46,6 +46,7 @@ const EquipmentPage = () => {
                 name: values.name,
                 serialNumber: values.serialNumber,
                 maintenancePeriod: values.maintenancePeriod,
+                LastMaintenanceDate: Date.now(),
                 status: "inventory",
                 categoryName: values.categoryName,
                 handlerEmail: values.handlerEmail,

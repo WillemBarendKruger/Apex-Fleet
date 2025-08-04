@@ -4,7 +4,7 @@ import { Row, Col, Card, Button, Divider } from "antd/es";
 import { useRouter } from "next/navigation";
 // import IncidentList from "@/components/muncipality-components/incidents";
 import { useStyles } from "./style/styles";
-// import { useIncidentState, useIncidentActions } from "@/providers/incident-provider";
+import { useEquipmentActions, useEquipmentState } from "@/providers/equipment-provider";
 // import { useServiceProviderState, useServiceProviderActions } from "@/providers/serviceProvider-provider";
 import { useEffect } from "react";
 import SupervisorList from "@/components/list-component/SupervisorList";
@@ -16,7 +16,7 @@ const SupervisorDashboard = () => {
     useEffect(() => {
         // getIncidentList();
         // getServiceProviderList();
-    }, [""]);
+    }, []);
 
 
     return (
