@@ -14,7 +14,6 @@ import {
 } from "@ant-design/icons";
 import { useAuthActions } from "@/providers/auth-provider";
 import Loader from "@/components/loader/loader";
-import { logInSuccess } from "@/providers/auth-provider/actions";
 
 type FieldType = {
     email?: string;
@@ -36,7 +35,6 @@ const Login = () => {
                 rememberClient: true,
             };
             await login(payload);
-            logInSuccess();
             setLoading(false);
         } catch (error) {
             setLoading(false);
