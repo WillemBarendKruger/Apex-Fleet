@@ -6,6 +6,7 @@ export interface IAuthStateContext {
     isSuccess: boolean;
     isError: boolean;
     user?: IUser;
+    users?: IUser[];
 }
 
 export interface IAuthActionsContext {
@@ -20,6 +21,7 @@ export const INITIAL_STATE: IAuthStateContext = {
     isPending: false,
     isSuccess: false,
     isError: false,
+    users: [],
 };
 
 export const AuthStateContext = createContext<IAuthStateContext>(INITIAL_STATE);

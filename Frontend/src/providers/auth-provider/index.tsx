@@ -26,10 +26,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 const decoded = decodeToken(token);
                 const userRole = decoded[AbpTokenProperies.role];
                 const userId = decoded[AbpTokenProperies.nameidentifier];
+                const userName = decoded[AbpTokenProperies.name];
 
                 sessionStorage.setItem("token", token);
                 sessionStorage.setItem("role", userRole);
                 sessionStorage.setItem("userId", userId);
+                sessionStorage.setItem("currentUser", userName);
 
                 if (userRole === "Supervisor") {
                     router.replace(`/supervisor/dashboard`);
@@ -45,7 +47,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                     message.error("Login failed. Please check your credentials.");
                     dispatch(logInError());
                 }
-                getCurrentUser();
             })
             .catch((error) => {
                 console.error(error);
@@ -103,10 +104,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         await instance
             .get(endpoint)
             .then((response) => {
-                sessionStorage.setItem(
-                    "currentUser",
-                    JSON.stringify(response.data.result.user.name)
-                );
+                sessionStorage.setItem("UserInfo", JSON.stringify(response.data.result.user));
                 dispatch(getCurrentUserSuccess(response.data.result.user));
             })
             .catch((error) => {

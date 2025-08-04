@@ -6,6 +6,7 @@ import { EquipmentsProvider } from "@/providers/equipment-provider";
 import { CategoriesProvider } from "@/providers/category-provider";
 import { RequestsProvider } from "@/providers/request-provider";
 import { ConditionReportsProvider } from "@/providers/condition-report-provider";
+import { SupervisorProvider } from "@/providers/supervisor-provider";
 
 export default function RootLayout({
   children,
@@ -36,17 +37,19 @@ export default function RootLayout({
       >
         <body>
           <AuthProvider>
-            <EmployeeProvider>
-              <CategoriesProvider>
-                <EquipmentsProvider>
-                  <RequestsProvider>
-                    <ConditionReportsProvider>
-                      {children}
-                    </ConditionReportsProvider>
-                  </RequestsProvider>
-                </EquipmentsProvider>
-              </CategoriesProvider>
-            </EmployeeProvider>
+            <SupervisorProvider>
+              <EmployeeProvider>
+                <CategoriesProvider>
+                  <EquipmentsProvider>
+                    <RequestsProvider>
+                      <ConditionReportsProvider>
+                        {children}
+                      </ConditionReportsProvider>
+                    </RequestsProvider>
+                  </EquipmentsProvider>
+                </CategoriesProvider>
+              </EmployeeProvider>
+            </SupervisorProvider>
           </AuthProvider>
         </body>
       </ConfigProvider>

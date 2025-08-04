@@ -73,11 +73,11 @@ export const getCurrentUserSuccess = createAction<
 >(
     AuthActionsEnum.getCurrentUserSuccess,
 
-    (currentuser: IUser) => ({
+    (user: IUser) => ({
         isPending: false,
         isSuccess: true,
         isError: false,
-        user: currentuser,
+        user,
     })
 );
 

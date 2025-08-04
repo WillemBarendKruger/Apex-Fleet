@@ -1,6 +1,6 @@
 "use client";
 
-import { Row, Col, Card, Button, Divider, Spin } from "antd";
+import { Row, Col, Card, Button, Divider } from "antd";
 import { useRouter } from "next/navigation";
 import { useStyles } from "./style/styles";
 import { useEffect, useState } from "react";
@@ -9,6 +9,7 @@ import { useEmployeeState, useEmployeeActions } from "@/providers/employee-provi
 import { useEquipmentState, useEquipmentActions } from "@/providers/equipment-provider";
 import { useRequestState, useRequestActions } from "@/providers/request-provider";
 import { useConditionReportState, useConditionReportActions } from "@/providers/condition-report-provider";
+import Loader from "@/components/loader/loader";
 
 const SupervisorDashboard = () => {
     const router = useRouter();
@@ -26,24 +27,25 @@ const SupervisorDashboard = () => {
 
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            await Promise.all([
-                getEmployees(),
-                getEquipments(),
-                getRequests(),
-                getConditionReports(),
-            ]);
-            setLoading(false);
-        };
+    const fetchData = async () => {
+        setLoading(true);
+        await Promise.all([
+            getEmployees(),
+            getEquipments(),
+            getRequests(),
+            getConditionReports(),
+        ]);
+        setLoading(false);
+    };
 
+    useEffect(() => {
         fetchData();
     }, []);
 
     return (
         <div className={styles.dashboardContainer}>
             {loading ? (
-                <Spin size="large" />
+                <Loader />
             ) : (
                 <>
                     <Row gutter={[20, 20]} className={styles.summaryRow}>

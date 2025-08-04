@@ -5,8 +5,8 @@ import { Button, Modal, Form, Input, Divider, message } from "antd";
 import { useStyles } from "./style/styles";
 import { useRouter } from "next/navigation";
 
-import { IEmployee } from "@/providers/employee-provider/models";
-import { useEmployeeActions } from "@/providers/employee-provider";
+import { ISupervisor } from "@/providers/supervisor-provider/models";
+import { useSupervisorActions } from "@/providers/supervisor-provider";
 import { useAuthActions, useAuthState } from "@/providers/auth-provider";
 
 import "@ant-design/v5-patch-for-react-19";
@@ -16,13 +16,13 @@ const SettingsPage = () => {
   const router = useRouter();
 
   const { getCurrentUser } = useAuthActions();
-  const { updateEmployee, deleteEmployee } = useEmployeeActions();
+  const { updateSupervisor, deleteSupervisor } = useSupervisorActions();
   const { user } = useAuthState();
 
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
   const [form] = Form.useForm();
 
-  const refresh = async () => {
+  const fetchUser = async () => {
     getCurrentUser();
 
     if (user) {
@@ -37,25 +37,24 @@ const SettingsPage = () => {
   };
 
   useEffect(() => {
-    refresh();
+    fetchUser();
   }, []);
 
   const handleUpdateDetails = async () => {
     try {
       const values = await form.validateFields();
 
-      const payload: IEmployee = {
+      const payload: ISupervisor = {
         id: parseInt(sessionStorage.getItem("userId") || "0"),
         userName: values.userName,
         name: values.name,
         surname: values.surname,
         emailAddress: values.emailAddress,
         password: values.password,
-        roleName: "Employee",
-        isActive: true,
+        roleName: "Supervisor",
       };
 
-      updateEmployee(payload);
+      updateSupervisor(payload);
       message.success("Profile updated successfully!");
     } catch (error) {
       console.error("Update error:", error);
@@ -65,7 +64,7 @@ const SettingsPage = () => {
 
   const confirmDelete = async () => {
     try {
-      deleteEmployee(parseInt(sessionStorage.getItem("userId") || "0"));
+      deleteSupervisor(parseInt(sessionStorage.getItem("userId") || "0"));
       message.success("Account deleted successfully!");
       sessionStorage.clear();
       router.push("/login");

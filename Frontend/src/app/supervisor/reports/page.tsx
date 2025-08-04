@@ -8,7 +8,6 @@ import Loader from "@/components/loader/loader";
 import { useEmployeeActions } from "@/providers/employee-provider";
 import { useConditionReportState, useConditionReportActions } from "@/providers/condition-report-provider/";
 import { IConditionReport } from "@/providers/condition-report-provider/models";
-import { IEquipment } from "@/providers/equipment-provider/models";
 
 const ReportsListPage = () => {
     const { styles } = useStyles();
@@ -137,7 +136,7 @@ const ReportsListPage = () => {
                         columns={columns}
                         dataSource={ConditionReports}
                         className={styles.equipmentTable}
-                        rowKey={(record, index) => record.id?.toString() || `temp-${index}`}
+                        rowKey={(record) => record.id?.toString() || record.equipmentName}
                         pagination={{ pageSize: 5 }}
                         scroll={{ x: "max-content" }}
                     />
