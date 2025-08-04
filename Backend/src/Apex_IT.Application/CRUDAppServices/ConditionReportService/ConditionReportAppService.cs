@@ -76,16 +76,17 @@ namespace Apex_IT.CRUDAppServices.ConditionReportService
         public override async Task<PagedResultDto<ConditionReportDto>> GetAllAsync(PagedAndSortedResultRequestDto input)
         {
             var query = _reportsRepository.GetAllIncluding(eq => eq.Equipment, emp => emp.ReportingEmployee);
-            
+
             var totalCount = await query.CountAsync();
-            var requests = await query
-                    .Skip(input.SkipCount)
-                    .Take(input.MaxResultCount)
-                    .ToListAsync();
-            
-            var conditionReports = ObjectMapper.Map<List<ConditionReportDto>>(requests);
-            
-                return new PagedResultDto<ConditionReportDto>(totalCount, conditionReports);
+            var reports = await query
+                               .OrderBy(r => r.CreationTime)
+                               .Skip(input.SkipCount)
+                                .Take(input.MaxResultCount)
+                                .ToListAsync();
+
+            var conditionReports = ObjectMapper.Map<List<ConditionReportDto>>(reports);
+
+            return new PagedResultDto<ConditionReportDto>(totalCount, conditionReports);
         }
     }
 }

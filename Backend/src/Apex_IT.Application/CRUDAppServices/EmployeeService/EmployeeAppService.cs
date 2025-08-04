@@ -1,9 +1,13 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Abp.UI;
 using Apex_IT.Authorization.Users;
+using Apex_IT.CRUDAppServices.ConditionReportService.Dto;
 using Apex_IT.CRUDAppServices.EmployeeService.Dto;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,10 +16,12 @@ namespace Apex_IT.CRUDAppServices.EmployeeService
     public class EmployeeAppService : AsyncCrudAppService<User, EmployeeDto, long>
     {
         private readonly UserManager _userManager;
+        private readonly IRepository<User, long> _employeeRepository;
 
-        public EmployeeAppService(IRepository<User, long> repository, UserManager userManager) : base(repository)
+        public EmployeeAppService(IRepository<User, long> repository, UserManager userManager, IRepository<User, long> employeeRepository) : base(repository)
         {
             _userManager = userManager;
+            _employeeRepository = employeeRepository;
         }
 
         public override async Task<EmployeeDto> CreateAsync(EmployeeDto input)

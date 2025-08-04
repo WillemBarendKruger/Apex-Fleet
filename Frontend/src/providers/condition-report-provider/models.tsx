@@ -4,7 +4,7 @@ export interface IConditionReport {
     priority: string,
     equipmentName: string,
     equipmentId?: string,
-    reportingEmployeeName: string,
+    reportingEmployeeName?: string,
     reportingEmployeeEmail: string,
     reportingEmployeeId?: number
 }
