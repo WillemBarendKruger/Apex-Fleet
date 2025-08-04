@@ -51,7 +51,15 @@ const SettingsPage = () => {
         surname: values.surname,
         emailAddress: values.emailAddress,
         password: values.password,
-        roleName: "Employee",
+      const payload: ISupervisor = {
+        id: parseInt(sessionStorage.getItem("userId") || "0"),
+        userName: values.userName,
+        name: values.name,
+        surname: values.surname,
+        emailAddress: values.emailAddress,
+        password: values.password,
+        roleName: "Supervisor",
+      };
       };
 
       updateSupervisor(payload);
