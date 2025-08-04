@@ -25,6 +25,20 @@ const GeminiImageAnalysis: React.FC<Props> = ({ onDescriptionGenerated }) => {
   const [loading, setLoading] = useState(false);
 
   const handleUpload = (file: File) => {
+    // Validate file type
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    if (!allowedTypes.includes(file.type)) {
+      message.error('Please upload a valid image file (JPEG, PNG, GIF, WebP)');
+      return false;
+    }
+
+    // Validate file size (e.g., 5MB limit)
+    const maxSize = 5 * 1024 * 1024;
+    if (file.size > maxSize) {
+      message.error('File size must be less than 5MB');
+      return false;
+    }
+
     setImageFile(file);
     const reader = new FileReader();
     reader.onload = () => setImagePreviewUrl(reader.result as string);
