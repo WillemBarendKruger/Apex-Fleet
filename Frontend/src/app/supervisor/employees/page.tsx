@@ -25,8 +25,10 @@ const EmployeesPage = () => {
   const [profileModalVisible, setProfileModalVisible] = useState(false);
 
   const refresh = async () => {
+    setLoading(true);
     await getEmployees();
     await getEquipments();
+    setLoading(false);
 
   }
 
@@ -209,7 +211,10 @@ const EmployeesPage = () => {
               <Form.Item
                 name="email"
                 label="Email"
-                rules={[{ required: true, message: "Please enter email" }]}
+                rules={[
+                  { required: true, message: "Please enter email" },
+                  { type: "email", message: "Please enter a valid email address" },
+                ]}
               >
                 <Input />
               </Form.Item>

@@ -1,15 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Row, Col, Card, Button, Divider, Typography, Spin } from "antd";
+import { Row, Col, Card, Button, Divider, Typography } from "antd";
 import { useRouter } from "next/navigation";
 import { useStyles } from "./style/styles";
 import { useEquipmentState, useEquipmentActions } from "@/providers/equipment-provider";
 import { useConditionReportState, useConditionReportActions } from "@/providers/condition-report-provider";
-import { useEmployeeState } from "@/providers/employee-provider";
 import { IConditionReport } from "@/providers/condition-report-provider/models";
 import { IEquipment } from "@/providers/equipment-provider/models";
 import SupervisorList from "@/components/list-component/SupervisorList";
+import Loader from "@/components/loader/loader";
 
 const { Title, Text } = Typography;
 
@@ -23,8 +23,6 @@ const EmployeeDashboard = () => {
     const { ConditionReports } = useConditionReportState();
     const { getConditionReports } = useConditionReportActions();
 
-    const { Employees } = useEmployeeState();
-
     const [userId, setUserId] = useState<number | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -33,13 +31,16 @@ const EmployeeDashboard = () => {
         if (storedId && !isNaN(parseInt(storedId))) {
             setUserId(parseInt(storedId));
         }
+    }, []);
 
-        const fetchData = async () => {
-            await Promise.all([getEquipments(), getConditionReports()]);
-            setLoading(false);
-        };
+    const refresh = async () => {
+        setLoading(true);
+        await Promise.all([getEquipments(), getConditionReports()]);
+        setLoading(false);
+    };
 
-        fetchData();
+    useEffect(() => {
+        refresh();
     }, []);
 
     const assignedEquipments: IEquipment[] =
@@ -51,7 +52,7 @@ const EmployeeDashboard = () => {
     return (
         <div className={styles.dashboardContainer}>
             {loading ? (
-                <Spin size="large" />
+                <Loader />
             ) : (
                 <>
                     <Row gutter={[20, 20]} className={styles.summaryRow}>
@@ -90,7 +91,7 @@ const EmployeeDashboard = () => {
                                 block
                                 size="large"
                                 className={styles.quickActionButton}
-                                onClick={() => router.push("./reports")}
+                                onClick={() => router.push("./equipment")}
                             >
                                 Report Condition
                             </Button>

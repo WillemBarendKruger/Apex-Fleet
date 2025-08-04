@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import {
     MenuFoldOutlined,
@@ -9,11 +9,13 @@ import {
     LogoutOutlined,
     HomeOutlined,
     FileTextOutlined,
+    WarningOutlined,
+    SnippetsOutlined,
+    UsergroupAddOutlined,
 } from "@ant-design/icons";
-import { Button, Layout, Menu, Modal, theme, Image } from "antd/es";
+import { Button, Layout, Menu, Modal, theme, Image } from "antd";
 import Title from "antd/es/typography/Title";
 import { useStyles } from "./style/styles";
-// import withAuth from "@/hoc/withAuth";
 
 const { Header, Sider, Content } = Layout;
 
@@ -21,6 +23,16 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
+
+    const [loggedInUser, setLoggedInUser] = useState("Guest");
+
+    useEffect(() => {
+        const storedData = sessionStorage.getItem("curentUser");
+        if (storedData) {
+            setLoggedInUser(storedData);
+        }
+    }, []);
+
 
     const [collapsed, setCollapsed] = useState(false);
     const [logoutModalVisible, setLogoutModalVisible] = useState(false);
@@ -31,9 +43,10 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
     const getSelectedKey = () => {
         if (pathname.includes("/dashboard")) return "1";
         if (pathname.includes("/equipment")) return "2";
-        if (pathname.includes("/employee")) return "3";
+        if (pathname.includes("/employees")) return "3";
         if (pathname.includes("/requests")) return "4";
         if (pathname.includes("/reports")) return "5";
+        if (pathname.includes("/settings")) return "6";
         return "1";
     };
 
@@ -44,7 +57,7 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
     };
 
     return (
-        <Layout style={{ minHeight: "100vh" }}>
+        <Layout style={{ height: "100vh", overflow: "hidden" }}>
             <Sider
                 trigger={null}
                 collapsible
@@ -52,7 +65,7 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
                 breakpoint="lg"
                 collapsedWidth="80"
                 onBreakpoint={(broken) => setCollapsed(broken)}
-                style={{ position: "relative" }}
+                style={{ position: "relative", height: "100%" }}
             >
                 <div className={styles.imageContainer}>
                     <Image
@@ -75,33 +88,15 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
                         if (info.key === "3") router.push("/supervisor/employees");
                         if (info.key === "4") router.push("/supervisor/requests");
                         if (info.key === "5") router.push("/supervisor/reports");
+                        if (info.key === "6") router.push("/supervisor/settings");
                     }}
                     items={[
-                        {
-                            key: "1",
-                            icon: <HomeOutlined />,
-                            label: "Home",
-                        },
-                        {
-                            key: "2",
-                            icon: <FileTextOutlined />,
-                            label: "Equipment",
-                        },
-                        {
-                            key: "3",
-                            icon: <ToolOutlined />,
-                            label: "Employees",
-                        },
-                        {
-                            key: "4",
-                            icon: <ToolOutlined />,
-                            label: "Requests",
-                        },
-                        {
-                            key: "5",
-                            icon: <ToolOutlined />,
-                            label: "Reports",
-                        },
+                        { key: "1", icon: <HomeOutlined />, label: "Home" },
+                        { key: "2", icon: <FileTextOutlined />, label: "Equipment" },
+                        { key: "3", icon: <UsergroupAddOutlined />, label: "Employees" },
+                        { key: "4", icon: <SnippetsOutlined />, label: "Requests" },
+                        { key: "5", icon: <WarningOutlined />, label: "Reports" },
+                        { key: "6", icon: <ToolOutlined />, label: "Settings" },
                     ]}
                 />
 
@@ -124,18 +119,21 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
                 icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                 onClick={() => setCollapsed(!collapsed)}
                 className={styles.toggleButton}
-                style={{ left: collapsed ? "80px" : "200px", background: colorBgContainer }}
+                style={{
+                    left: collapsed ? "80px" : "200px",
+                    background: colorBgContainer,
+                }}
             />
 
             <Layout>
                 <Header className={styles.headerTitle}>
                     <Title level={2} className={styles.title}>
-                        Supervisor Dashboard
+                        Welcome {loggedInUser}
                     </Title>
                 </Header>
 
                 <Content className={styles.contentContainer}>
-                    {children}
+                    <div className={styles.scrollableContent}>{children}</div>
                 </Content>
             </Layout>
 
@@ -154,4 +152,3 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
 };
 
 export default SupervisorLayout;
-// export default withAuth(ServiceProviderLayout, { allowedRoles: ["Municipality"] });

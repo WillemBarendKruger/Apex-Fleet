@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Table, Button, Modal, Form, Input, Space, message, Select } from "antd";
+import { Table, Button, Modal, Form, Input, Space, message, Select, InputNumber } from "antd";
 import { useStyles } from "./style/styles";
 import { IEmployee } from "@/providers/employee-provider/models";
 import { IEquipment } from "@/providers/equipment-provider/models";
@@ -27,9 +27,11 @@ const EquipmentPage = () => {
     const [handlerModalVisible, setHandlerModalVisible] = useState(false);
 
     const refresh = async () => {
+        setLoading(true);
         await getEmployees();
         await getCategories();
         await getEquipments();
+        setLoading(false);
     }
 
     useEffect(() => {
@@ -46,7 +48,7 @@ const EquipmentPage = () => {
                 name: values.name,
                 serialNumber: values.serialNumber,
                 maintenancePeriod: values.maintenancePeriod,
-                LastMaintenanceDate: Date.now(),
+                LastMaintenanceDate: new Date(),
                 status: "inventory",
                 categoryName: values.categoryName,
                 handlerEmail: values.handlerEmail,
@@ -173,10 +175,14 @@ const EquipmentPage = () => {
                             <Form.Item
                                 name="maintenancePeriod"
                                 label="Maintenance Period"
-                                rules={[{ required: true, message: "Please enter maintenance period" }]}
+                                rules={[
+                                    { required: true, message: "Please enter maintenance period" },
+                                    { pattern: /^\d+$/, message: "Only numeric values are allowed" },
+                                ]}
                             >
-                                <Input />
+                                <InputNumber min={0} style={{ width: "100%" }} />
                             </Form.Item>
+
                             <Form.Item
                                 label="Category"
                                 name="categoryName"
@@ -240,13 +246,12 @@ const EquipmentPage = () => {
                                 <p><strong>Name:</strong> {selectedHandler.name} {selectedHandler.surname}</p>
                                 <p><strong>Email:</strong> {selectedHandler.emailAddress}</p>
                                 <p><strong>Username:</strong> {selectedHandler.userName}</p>
-                                <p><strong>Role:</strong> {selectedHandler.roleName}</p>
                             </div>
                         ) : (
                             <p>No handler selected.</p>
                         )}
                     </Modal>
-                </div>
+                </div >
             )}
         </>
     );

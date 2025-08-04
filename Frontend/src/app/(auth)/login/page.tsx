@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useStyles } from "./style/styles";
 import Typography from "antd/es/typography";
-import { Button, Divider, Flex, Form, FormProps, Input, Spin, message } from "antd";
+import { Button, Divider, Form, FormProps, Input, message } from "antd";
 import "@ant-design/v5-patch-for-react-19";
 import Image from "next/image";
 import {

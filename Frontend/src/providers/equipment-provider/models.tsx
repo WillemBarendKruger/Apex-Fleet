@@ -4,7 +4,7 @@ export interface IEquipment {
     serialNumber: string,
     maintenancePeriod: number,
     ReturnDate?: number,
-    LastMaintenanceDate?: number,
+    LastMaintenanceDate?: Date,
     status: string,
     categoryId?: string,
     categoryName: string,

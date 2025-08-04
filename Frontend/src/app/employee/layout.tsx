@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import {
     MenuFoldOutlined,
@@ -10,10 +10,9 @@ import {
     HomeOutlined,
     FileTextOutlined,
 } from "@ant-design/icons";
-import { Button, Layout, Menu, Modal, theme, Image } from "antd/es";
+import { Button, Layout, Menu, Modal, theme, Image } from "antd";
 import Title from "antd/es/typography/Title";
 import { useStyles } from "./style/styles";
-// import withAuth from "@/hoc/withAuth";
 
 const { Header, Sider, Content } = Layout;
 
@@ -22,6 +21,14 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
         token: { colorBgContainer },
     } = theme.useToken();
 
+    const [loggedInUser, setLoggedInUser] = useState("Guest");
+
+    useEffect(() => {
+        const storedData = sessionStorage.getItem("curentUser");
+        if (storedData) {
+            setLoggedInUser(storedData);
+        }
+    }, []);
     const [collapsed, setCollapsed] = useState(false);
     const [logoutModalVisible, setLogoutModalVisible] = useState(false);
     const { styles } = useStyles();
@@ -42,7 +49,7 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
     };
 
     return (
-        <Layout style={{ minHeight: "100vh" }}>
+        <Layout style={{ height: "100vh", overflow: "hidden" }}>
             <Sider
                 trigger={null}
                 collapsible
@@ -50,7 +57,7 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
                 breakpoint="lg"
                 collapsedWidth="80"
                 onBreakpoint={(broken) => setCollapsed(broken)}
-                style={{ position: "relative" }}
+                style={{ position: "relative", height: "100%" }}
             >
                 <div className={styles.imageContainer}>
                     <Image
@@ -86,7 +93,7 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
                         {
                             key: "3",
                             icon: <ToolOutlined />,
-                            label: "settings",
+                            label: "Settings",
                         },
                     ]}
                 />
@@ -110,18 +117,23 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
                 icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                 onClick={() => setCollapsed(!collapsed)}
                 className={styles.toggleButton}
-                style={{ left: collapsed ? "80px" : "200px", background: colorBgContainer }}
+                style={{
+                    left: collapsed ? "80px" : "200px",
+                    background: colorBgContainer,
+                }}
             />
 
             <Layout>
                 <Header className={styles.headerTitle}>
                     <Title level={2} className={styles.title}>
-                        Employee Dashboard
+                        Welcome {loggedInUser}
                     </Title>
                 </Header>
 
                 <Content className={styles.contentContainer}>
-                    {children}
+                    <div className={styles.scrollableContent}>
+                        {children}
+                    </div>
                 </Content>
             </Layout>
 
@@ -140,4 +152,3 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
 };
 
 export default SupervisorLayout;
-// export default withAuth(ServiceProviderLayout, { allowedRoles: ["Municipality"] });

@@ -8,8 +8,8 @@ import Loader from "@/components/loader/loader";
 import { useEmployeeState, useEmployeeActions } from "@/providers/employee-provider";
 import { useEquipmentState, useEquipmentActions } from "@/providers/equipment-provider";
 import { useCategoryActions, useCategoryState } from "@/providers/category-provider";
-import { useRequestActions, useRequestState } from "@/providers/request-provider";
-import { useConditionReportActions, useConditionReportState } from "@/providers/condition-report-provider";
+import { useRequestActions } from "@/providers/request-provider";
+import { useConditionReportActions } from "@/providers/condition-report-provider";
 import { IRequest } from "@/providers/request-provider/models";
 import { IConditionReport } from "@/providers/condition-report-provider/models";
 import GeminiImageAnalysis from "@/components/Gemini/gemini";
@@ -23,9 +23,7 @@ const EquipmentPage = () => {
     const { getCategories } = useCategoryActions();
     const { Categories } = useCategoryState();
     const { getRequests, createRequest } = useRequestActions();
-    const { Requests } = useRequestState();
-    const { getConditionReports, createConditionReport } = useConditionReportActions();
-    const { ConditionReports } = useConditionReportState();
+    const { createConditionReport } = useConditionReportActions();
 
     const [modalVisible, setModalVisible] = useState(false);
     const [reportModalVisible, setReportModalVisible] = useState(false);

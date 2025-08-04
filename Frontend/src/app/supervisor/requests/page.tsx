@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Table, Button, Space, message } from "antd";
 import { useStyles } from "./style/styles";
-import { IEmployee } from "@/providers/employee-provider/models";
 import Loader from "@/components/loader/loader";
 import { useEmployeeState, useEmployeeActions } from "@/providers/employee-provider";
 import { useCategoryActions } from "@/providers/category-provider";
