@@ -10,6 +10,7 @@ import { useEmployeeActions } from "@/providers/employee-provider";
 import { useAuthActions, useAuthState } from "@/providers/auth-provider";
 
 import "@ant-design/v5-patch-for-react-19";
+import Loader from "@/components/loader/loader";
 
 const SettingsPage = () => {
   const { styles } = useStyles();
@@ -21,9 +22,11 @@ const SettingsPage = () => {
 
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
   const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
 
   const refresh = async () => {
-    getCurrentUser();
+    setLoading(true);
+    await getCurrentUser();
 
     if (user) {
       form.setFieldsValue({
@@ -34,6 +37,7 @@ const SettingsPage = () => {
         roleNames: "Employee",
       });
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -76,111 +80,116 @@ const SettingsPage = () => {
   };
 
   return (
-    <div className={styles.updateContainer}>
-      <div style={{ width: "100%", display: "flex", justifyContent: "start", marginBottom: "16px" }}>
-        <h2 style={{ margin: 0 }}>Update your profile details</h2>
-      </div>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className={styles.updateContainer}>
+          <div style={{ width: "100%", display: "flex", justifyContent: "start", marginBottom: "16px" }}>
+            <h2 style={{ margin: 0 }}>Update your profile details</h2>
+          </div>
 
-      <div style={{ width: "100%" }}>
-        <Form layout="vertical" form={form}>
-          <Form.Item
-            name="userName"
-            label="Username"
-            rules={[{ required: true, message: "Please enter your Username" }]}
-          >
-            <Input />
-          </Form.Item>
+          <div style={{ width: "100%" }}>
+            <Form layout="vertical" form={form}>
+              <Form.Item
+                name="userName"
+                label="Username"
+                rules={[{ required: true, message: "Please enter your Username" }]}
+              >
+                <Input />
+              </Form.Item>
 
-          <Form.Item
-            name="name"
-            label="Name"
-            rules={[{ required: true, message: "Please enter your Name" }]}
-          >
-            <Input />
-          </Form.Item>
+              <Form.Item
+                name="name"
+                label="Name"
+                rules={[{ required: true, message: "Please enter your Name" }]}
+              >
+                <Input />
+              </Form.Item>
 
-          <Form.Item
-            name="surname"
-            label="Surname"
-            rules={[{ required: true, message: "Please enter your Surname" }]}
-          >
-            <Input />
-          </Form.Item>
+              <Form.Item
+                name="surname"
+                label="Surname"
+                rules={[{ required: true, message: "Please enter your Surname" }]}
+              >
+                <Input />
+              </Form.Item>
 
-          <Form.Item
-            name="emailAddress"
-            label="Email"
-            rules={[
-              { required: true, message: "Please enter email" },
-              { type: "email", message: "Please enter a valid email address" },
-            ]}
-          >
-            <Input type="email" />
-          </Form.Item>
+              <Form.Item
+                name="emailAddress"
+                label="Email"
+                rules={[
+                  { required: true, message: "Please enter email" },
+                  { type: "email", message: "Please enter a valid email address" },
+                ]}
+              >
+                <Input type="email" />
+              </Form.Item>
 
-          <Divider>Change Password</Divider>
+              <Divider>Change Password</Divider>
 
-          <Form.Item
-            name="password"
-            label="New Password"
-            rules={[
-              {
-                validator(_, value) {
-                  if (!value) {
-                    return Promise.resolve(); // Allow empty (optional field)
-                  }
+              <Form.Item
+                name="password"
+                label="New Password"
+                rules={[
+                  {
+                    validator(_, value) {
+                      if (!value) {
+                        return Promise.resolve(); // Allow empty (optional field)
+                      }
 
-                  const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
-                  if (!strongPasswordRegex.test(value)) {
-                    return Promise.reject(
-                      new Error("Password must be at least 6 characters, include uppercase, lowercase, and a number.")
-                    );
-                  }
+                      const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
+                      if (!strongPasswordRegex.test(value)) {
+                        return Promise.reject(
+                          new Error("Password must be at least 6 characters, include uppercase, lowercase, and a number.")
+                        );
+                      }
 
-                  return Promise.resolve();
-                }
+                      return Promise.resolve();
+                    }
 
-              },
-            ]}
-          >
-            <Input.Password placeholder="Input your current password to update" />
-          </Form.Item>
+                  },
+                ]}
+              >
+                <Input.Password placeholder="Input your current password to update" />
+              </Form.Item>
 
-          <Button
-            type="primary"
-            htmlType="submit"
-            block
-            size="large"
-            onClick={handleUpdateDetails}
-          >
-            Confirm Update
-          </Button>
+              <Button
+                type="primary"
+                htmlType="submit"
+                block
+                size="large"
+                onClick={handleUpdateDetails}
+              >
+                Confirm Update
+              </Button>
 
-          <Divider>Delete your Account?</Divider>
-        </Form>
+              <Divider>Delete your Account?</Divider>
+            </Form>
 
-        <Button
-          type="default"
-          danger
-          block
-          size="large"
-          onClick={() => setDeleteModalVisible(true)}
-        >
-          Delete Account
-        </Button>
+            <Button
+              type="default"
+              danger
+              block
+              size="large"
+              onClick={() => setDeleteModalVisible(true)}
+            >
+              Delete Account
+            </Button>
 
-        <Modal
-          open={deleteModalVisible}
-          title="Confirm Delete"
-          onCancel={() => setDeleteModalVisible(false)}
-          onOk={confirmDelete}
-          okText="Yes, Delete"
-          cancelText="Cancel"
-        >
-          <p>Are you sure you want to delete your account and log out?</p>
-        </Modal>
-      </div>
-    </div>
+            <Modal
+              open={deleteModalVisible}
+              title="Confirm Delete"
+              onCancel={() => setDeleteModalVisible(false)}
+              onOk={confirmDelete}
+              okText="Yes, Delete"
+              cancelText="Cancel"
+            >
+              <p>Are you sure you want to delete your account and log out?</p>
+            </Modal>
+          </div>
+        </div>
+      )}</>
   );
 };
 
