@@ -64,9 +64,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             .post(endpoint, user)
             .then((response) => {
                 const token = response.data.result.accessToken;
-                const decoded = jwtDecode(token);
+
                 sessionStorage.setItem("token", token);
-                sessionStorage.setItem("role", JSON.stringify(decoded));
                 dispatch(registerSuccess(user));
                 message.success("Registration successfull!");
             })

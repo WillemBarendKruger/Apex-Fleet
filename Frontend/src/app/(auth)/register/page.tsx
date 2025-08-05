@@ -54,7 +54,6 @@ const RegistrationForm = () => {
             };
 
             await register(payload);
-            message.success("Registered successfully!");
             router.replace("/login");
         } catch (error) {
             console.error(error);
