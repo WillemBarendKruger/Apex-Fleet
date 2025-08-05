@@ -36,6 +36,7 @@ export const RequestsProvider = ({ children }: { children: React.ReactNode }) =>
                 const filteredData = response.data.result.items.map((Request: IRequest) => ({
                     id: Request.id,
                     status: Request.status,
+                    description: Request.description,
                     equipmentId: Request.equipmentId,
                     equipmentName: Request.equipmentName,
                     requestingEmployeeEmail: Request.requestingEmployeeEmail,
@@ -58,6 +59,7 @@ export const RequestsProvider = ({ children }: { children: React.ReactNode }) =>
                 const filteredData = response.data.result.items.map((Request: IRequest) => ({
                     id: Request.id,
                     status: Request.status,
+                    description: Request.description,
                     equipmentId: Request.equipmentId,
                     equipmentName: Request.equipmentName,
                     requestingEmployeeEmail: Request.requestingEmployeeEmail,
