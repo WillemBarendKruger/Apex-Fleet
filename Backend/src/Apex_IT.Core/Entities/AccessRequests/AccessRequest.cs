@@ -9,6 +9,7 @@ namespace Apex_IT.Entities.AccessRequests
     public class AccessRequest : FullAuditedEntity<Guid>
     {
         public virtual string Status { get; set; }
+        public virtual string? Description { get; set; }
 
         public virtual Guid EquipmentId { get; set; }
         [ForeignKey("EquipmentId")]

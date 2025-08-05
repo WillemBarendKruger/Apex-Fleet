@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Table, Button, Modal, Form, Space, message, Select, Input } from "antd";
+import { Table, Button, Modal, Form, Space, message, Select, Input, Tooltip } from "antd";
+import { RollbackOutlined, FileProtectOutlined } from "@ant-design/icons";
 import { useStyles } from "./style/styles";
 import { IEquipment } from "@/providers/equipment-provider/models";
 import Loader from "@/components/loader/loader";
@@ -32,6 +33,9 @@ const EquipmentPage = () => {
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [userId, setUserId] = useState<number | null>(null);
     const [selectedEquipmentForReport, setSelectedEquipmentForReport] = useState<IEquipment | null>(null);
+
+    const [returnModalVisible, setReturnModalVisible] = useState(false);
+    const [selectedRecord, setSelectedRecord] = useState<IEquipment | null>(null);
 
     useEffect(() => {
         const storedId = sessionStorage.getItem("userId");
@@ -70,6 +74,7 @@ const EquipmentPage = () => {
 
             const requestPayload: IRequest = {
                 status: "pending",
+                description: values.description || "",
                 equipmentId: selectedEquipment.id,
                 equipmentName: selectedEquipment.name,
                 requestingEmployeeEmail: requester.emailAddress,
@@ -183,12 +188,26 @@ const EquipmentPage = () => {
                 const handler = Employees?.find(emp => emp.emailAddress === record.handlerEmail);
                 return handler ? (
                     <Space>
-                        <Button type="primary" onClick={() => { handleReturnEquipment(record) }}>
-                            Return
-                        </Button>
-                        <Button onClick={() => { handleOpenReportModal(record) }}>
-                            Report condition
-                        </Button>
+                        <Tooltip title="Return Equipment">
+                            <Button
+                                icon={<RollbackOutlined />}
+                                type="primary" // Blue background
+                                style={{ backgroundColor: "#52c41a", borderColor: "#52c41a" }} // Green
+                                onClick={() => {
+                                    setSelectedRecord(record);
+                                    setReturnModalVisible(true);
+                                }}
+                            />
+                        </Tooltip>
+
+                        <Tooltip title="Report Condition">
+                            <Button
+                                icon={<FileProtectOutlined />}
+                                type="default"
+                                style={{ color: "#fa8c16", borderColor: "#fa8c16" }} // Orange text and border
+                                onClick={() => handleOpenReportModal(record)}
+                            />
+                        </Tooltip>
                     </Space>
                 ) : (
                     <span>Unassigned</span>
@@ -202,133 +221,148 @@ const EquipmentPage = () => {
     );
 
     return (
-        <>
-            {loading ? (
-                <Loader />
-            ) : (
-                <div className={styles.equipmentContainer}>
-                    <div
-                        style={{
-                            width: "100%",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            marginBottom: "16px",
-                        }}
-                    >
-                        <h2 style={{ margin: 0 }}>My Assigned Equipment</h2>
-                        <Button type="primary" onClick={() => setModalVisible(true)}>
-                            Request Equipment
+        <div className={styles.equipmentContainer}>
+            <div
+                style={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginBottom: "16px",
+                }}
+            >
+                <h2 style={{ margin: 0 }}>My Assigned Equipment</h2>
+                <Button type="primary" onClick={() => setModalVisible(true)}>
+                    Request Equipment
+                </Button>
+            </div>
+
+            <Table
+                columns={columns}
+                dataSource={filteredEquipments}
+                className={styles.equipmentTable}
+                rowKey={(record) => record.id?.toString() || `temp-${record.serialNumber}`}
+                pagination={{ pageSize: 5 }}
+                scroll={{ x: "max-content" }}
+                loading={{
+                    spinning: loading,
+                    indicator: <Loader />,
+                }}
+            />
+
+            {/* Return model */}
+            <Modal
+                open={returnModalVisible}
+                title="Confirm Return"
+                onCancel={() => setReturnModalVisible(false)}
+                onOk={() => {
+                    if (selectedRecord) {
+                        handleReturnEquipment(selectedRecord);
+                    }
+                    setReturnModalVisible(false);
+                }}
+                okText="Return"
+                cancelText="Cancel"
+            >
+                <p>Are you sure you want to return this equipment?</p>
+            </Modal>
+
+            {/* model for request */}
+            <Modal
+                title="Request Equipment"
+                open={modalVisible}
+                onCancel={() => setModalVisible(false)}
+                footer={
+                    <Space>
+                        <Button onClick={() => setModalVisible(false)}>Cancel</Button>
+                        <Button type="primary" onClick={handleAddRequest}>
+                            Submit Request
                         </Button>
-                    </div>
-
-                    <Table
-                        columns={columns}
-                        dataSource={filteredEquipments}
-                        className={styles.equipmentTable}
-                        rowKey={(record) => record.id?.toString() || `temp-${record.serialNumber}`}
-                        pagination={{ pageSize: 5 }}
-                        scroll={{ x: "max-content" }}
-                        loading={!filteredEquipments}
-                    />
-                    {/* model for request */}
-                    <Modal
-                        title="Request Equipment"
-                        open={modalVisible}
-                        onCancel={() => setModalVisible(false)}
-                        footer={
-                            <Space>
-                                <Button onClick={() => setModalVisible(false)}>Cancel</Button>
-                                <Button type="primary" onClick={handleAddRequest}>
-                                    Submit Request
-                                </Button>
-                            </Space>
-                        }
+                    </Space>
+                }
+            >
+                <Form form={form} layout="vertical">
+                    <Form.Item
+                        label="Category"
+                        name="categoryName"
+                        rules={[{ required: true, message: "Please select a category" }]}
                     >
-                        <Form form={form} layout="vertical">
-                            <Form.Item
-                                label="Category"
-                                name="categoryName"
-                                rules={[{ required: true, message: "Please select a category" }]}
-                            >
-                                <Select
-                                    placeholder="Select a category"
-                                    onChange={(value) => {
-                                        setSelectedCategory(value);
-                                        form.setFieldsValue({ categoryName: value });
-                                    }}
-                                >
-                                    {Categories?.map((cat) => (
-                                        <Select.Option key={cat.type} value={cat.type}>
-                                            {cat.type}
-                                        </Select.Option>
-                                    ))}
-                                </Select>
-                            </Form.Item>
+                        <Select
+                            placeholder="Select a category"
+                            onChange={(value) => {
+                                setSelectedCategory(value);
+                                form.setFieldsValue({ categoryName: value });
+                            }}
+                        >
+                            {Categories?.map((cat) => (
+                                <Select.Option key={cat.type} value={cat.type}>
+                                    {cat.type}
+                                </Select.Option>
+                            ))}
+                        </Select>
+                    </Form.Item>
 
-                            <Form.Item
-                                name="equipmentId"
-                                label="Select Equipment"
-                                rules={[{ required: true, message: "Please select available equipment" }]}
-                            >
-                                <Select
-                                    showSearch
-                                    placeholder="Choose equipment from inventory"
-                                    optionFilterProp="children"
-                                    filterOption={(input, option) =>
-                                        typeof option?.children === "string" &&
-                                        (option.children as string).toLowerCase().includes(input.toLowerCase())
-                                    }
-                                >
-                                    {Equipments?.filter(eq =>
-                                        eq.status === "inventory" &&
-                                        eq.categoryName === selectedCategory
-                                    ).map(eq => (
-                                        <Select.Option key={eq.id} value={eq.id}>
-                                            {eq.name} ({eq.serialNumber})
-                                        </Select.Option>
-                                    ))}
-                                </Select>
-                            </Form.Item>
-                        </Form>
-                    </Modal>
-
-                    {/* model for reports */}
-                    <Modal
-                        title="Report Equipment Condition"
-                        open={reportModalVisible}
-                        onCancel={() => setReportModalVisible(false)}
-                        footer={
-                            <Space>
-                                <Button onClick={() => setReportModalVisible(false)}>Cancel</Button>
-                                <Button type="primary" onClick={handleReportCondition}>
-                                    Submit Report
-                                </Button>
-                            </Space>
-                        }
+                    <Form.Item
+                        name="equipmentId"
+                        label="Select Equipment"
+                        rules={[{ required: true, message: "Please select available equipment" }]}
                     >
-                        <Form form={form} layout="vertical">
-                            <Form.Item
-                                name="description"
-                                label="Condition Description"
-                                rules={[{ required: true, message: "Please describe the condition" }]}
-                            >
-                                <Input.TextArea
-                                    rows={4}
-                                    placeholder="Describe the condition of the equipment"
-                                />
-                            </Form.Item>
-                            <Form.Item name="picture" label="Picture">
-                                <GeminiImageAnalysis
-                                    onDescriptionGenerated={(desc) => {
-                                        form.setFieldsValue({ description: desc });
-                                    }}
-                                />
-                            </Form.Item>
-                        </Form>
-                    </Modal>
-                </div>
-            )}
-        </>
+                        <Select
+                            showSearch
+                            placeholder="Choose equipment from inventory"
+                            optionFilterProp="children"
+                            filterOption={(input, option) =>
+                                typeof option?.children === "string" &&
+                                (option.children as string).toLowerCase().includes(input.toLowerCase())
+                            }
+                        >
+                            {Equipments?.filter(eq =>
+                                eq.status === "inventory" &&
+                                eq.categoryName === selectedCategory
+                            ).map(eq => (
+                                <Select.Option key={eq.id} value={eq.id}>
+                                    {eq.name} ({eq.serialNumber})
+                                </Select.Option>
+                            ))}
+                        </Select>
+                    </Form.Item>
+                </Form>
+            </Modal>
+
+            {/* model for reports */}
+            <Modal
+                title="Report Equipment Condition"
+                open={reportModalVisible}
+                onCancel={() => setReportModalVisible(false)}
+                footer={
+                    <Space>
+                        <Button onClick={() => setReportModalVisible(false)}>Cancel</Button>
+                        <Button type="primary" onClick={handleReportCondition}>
+                            Submit Report
+                        </Button>
+                    </Space>
+                }
+            >
+                <Form form={form} layout="vertical">
+                    <Form.Item
+                        name="description"
+                        label="Condition Description"
+                        rules={[{ required: true, message: "Please describe the condition" }]}
+                    >
+                        <Input.TextArea
+                            rows={4}
+                            placeholder="Describe the condition of the equipment"
+                        />
+                    </Form.Item>
+                    <Form.Item name="picture" label="Picture">
+                        <GeminiImageAnalysis
+                            onDescriptionGenerated={(desc) => {
+                                form.setFieldsValue({ description: desc });
+                            }}
+                        />
+                    </Form.Item>
+                </Form>
+            </Modal>
+        </div>
     );
 };
 
