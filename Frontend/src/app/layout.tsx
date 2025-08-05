@@ -31,6 +31,9 @@ export default function RootLayout({
             Input: {
               colorText: "rgb(255,255,255)",
             },
+            Card: {
+              colorBorderSecondary: "#13c2c2",
+            }
           },
           algorithm: darkAlgorithm,
         }}

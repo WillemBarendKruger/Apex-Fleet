@@ -22,9 +22,9 @@ const getPriorityTag = (status: string) => {
     }
 };
 
-const SupervisorList: React.FC<Props> = ({ reports }) => {
+const ReportsList: React.FC<Props> = ({ reports }) => {
     return (
-        <Card bordered={false}>
+        <Card >
             <Title level={4}>Recent Equipment Condition Reports</Title>
             <List
                 itemLayout="vertical"
@@ -35,7 +35,7 @@ const SupervisorList: React.FC<Props> = ({ reports }) => {
                         <List.Item.Meta
                             title={
                                 <>
-                                    <Text strong>{report.equipmentName}</Text> {getPriorityTag(report.status)}
+                                    <Text strong>{report.equipmentName}</Text>  {getPriorityTag(report.status)}
                                 </>
                             }
                             description={
@@ -49,8 +49,8 @@ const SupervisorList: React.FC<Props> = ({ reports }) => {
                     </List.Item>
                 )}
             />
-        </Card>
+        </Card >
     );
 };
 
-export default SupervisorList;
+export default ReportsList;

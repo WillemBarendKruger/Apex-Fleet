@@ -69,7 +69,7 @@ export const useStyles = createStyles(({ token }) => ({
     color: ${token.colorText};
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     height: 50px;
 
     &:hover {

@@ -1,18 +1,18 @@
 import { createStyles, css } from "antd-style";
 
 export const useStyles = createStyles({
-    dashboardContainer: css`
+  dashboardContainer: css`
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     padding: 24px;
   `,
-    summaryRow: css`
+  summaryRow: css`
     width: 100%;
     margin-bottom: 24px;
   `,
-    summaryCard: css`
+  summaryCard: css`
     h3 {
       margin-bottom: 8px;
     }
@@ -24,14 +24,16 @@ export const useStyles = createStyles({
       font-weight: bold;
     }
   `,
-    quickActionsRow: css`
+  quickActionsRow: css`
     width: 100%;
     margin-bottom: 24px;
   `,
-    quickActionButton: css`
+  quickActionButton: css`
     width: 100%;
   `,
-    incidentCard: css`
+  incidentCard: css`
+    padding: 16px;
+    min-height: 200px;
     width: 100%;
   `,
 
