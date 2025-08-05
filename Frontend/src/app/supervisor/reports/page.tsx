@@ -173,81 +173,75 @@ const ReportsListPage = () => {
     ];
 
     return (
-        <>
-            {loading ? (
-                <Loader />
-            ) : (
-                <div className={styles.equipmentContainer}>
-                    <div
-                        style={{
-                            width: "100%",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            marginBottom: "16px",
-                        }}
-                    >
-                        <h2 style={{ margin: 0 }}>Reports List</h2>
-                    </div>
+        <div className={styles.equipmentContainer}>
+            <div
+                style={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginBottom: "16px",
+                }}
+            >
+                <h2 style={{ margin: 0 }}>Reports List</h2>
+            </div>
 
-                    <Table
-                        columns={columns}
-                        dataSource={pendingReports}
-                        className={styles.equipmentTable}
-                        rowKey={(record) => record.id?.toString() || record.equipmentName}
-                        pagination={{ pageSize: 5 }}
-                        scroll={{ x: "max-content" }}
-                        loading={!ConditionReports}
-                    />
+            <Table
+                columns={columns}
+                dataSource={pendingReports}
+                className={styles.equipmentTable}
+                rowKey={(record) => record.id?.toString() || record.equipmentName}
+                pagination={{ pageSize: 5 }}
+                scroll={{ x: "max-content" }}
+                loading={!ConditionReports}
+            />
 
-                    {/* Maintenance modal */}
-                    <Modal
-                        open={maintenanceModalVisible}
-                        title="Confirm Maintenance"
-                        onCancel={() => setMaintenanceModalVisible(false)}
-                        onOk={() => {
-                            if (selectedRecord) {
-                                handleMaintenance(selectedRecord);
-                            }
-                            setMaintenanceModalVisible(false);
-                        }}
-                        okText="Confirm"
-                        cancelText="Cancel"
-                    >
-                        <p>Are you sure you want to send this equipment for maintenance?</p>
-                    </Modal>
+            {/* Maintenance modal */}
+            <Modal
+                open={maintenanceModalVisible}
+                title="Confirm Maintenance"
+                onCancel={() => setMaintenanceModalVisible(false)}
+                onOk={() => {
+                    if (selectedRecord) {
+                        handleMaintenance(selectedRecord);
+                    }
+                    setMaintenanceModalVisible(false);
+                }}
+                okText="Confirm"
+                cancelText="Cancel"
+            >
+                <p>Are you sure you want to send this equipment for maintenance?</p>
+            </Modal>
 
-                    {/* Decline model */}
-                    <Modal
-                        open={declineModalVisible}
-                        title="Decline Request"
-                        onCancel={() => setDeclineModalVisible(false)}
-                        onOk={() => {
-                            if (!declineReason.trim()) {
-                                message.error("Please provide a reason for the decline.");
-                                return;
-                            }
-                            if (selectedRecord) {
-                                handleDecline(selectedRecord, declineReason);
-                            }
-                            setDeclineModalVisible(false);
-                            setDeclineReason("");
-                        }}
-                        okText="Submit"
-                        cancelText="Cancel"
-                    >
-                        <p>Please provide a reason for declining this request:</p>
-                        <Input.TextArea
-                            rows={4}
-                            value={declineReason}
-                            onChange={(e) => setDeclineReason(e.target.value)}
-                            placeholder="Enter reason..."
-                        />
-                    </Modal>
+            {/* Decline model */}
+            <Modal
+                open={declineModalVisible}
+                title="Decline Request"
+                onCancel={() => setDeclineModalVisible(false)}
+                onOk={() => {
+                    if (!declineReason.trim()) {
+                        message.error("Please provide a reason for the decline.");
+                        return;
+                    }
+                    if (selectedRecord) {
+                        handleDecline(selectedRecord, declineReason);
+                    }
+                    setDeclineModalVisible(false);
+                    setDeclineReason("");
+                }}
+                okText="Submit"
+                cancelText="Cancel"
+            >
+                <p>Please provide a reason for declining this request:</p>
+                <Input.TextArea
+                    rows={4}
+                    value={declineReason}
+                    onChange={(e) => setDeclineReason(e.target.value)}
+                    placeholder="Enter reason..."
+                />
+            </Modal>
 
 
-                </div>
-            )}
-        </>
+        </div>
     );
 };
 

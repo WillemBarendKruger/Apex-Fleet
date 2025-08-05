@@ -115,145 +115,141 @@ const EquipmentPage = () => {
     ];
 
     return (
-        <>
-            {loading ? (
-                <Loader />
-            ) : (
-                <div className={styles.equipmentContainer}>
-                    <div
-                        style={{
-                            width: "100%",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            marginBottom: "16px",
-                        }}
-                    >
-                        <h2 style={{ margin: 0 }}>Equipment List</h2>
-                        <Button type="primary" onClick={() => setModalVisible(true)}>
-                            Add Equipment
+
+        <div className={styles.equipmentContainer}>
+            <div
+                style={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginBottom: "16px",
+                }}
+            >
+                <h2 style={{ margin: 0 }}>Equipment List</h2>
+                <Button type="primary" onClick={() => setModalVisible(true)}>
+                    Add Equipment
+                </Button>
+            </div>
+
+            <Table
+                columns={columns}
+                dataSource={Equipments}
+                className={styles.equipmentTable}
+                rowKey={(record) => record.id || record.serialNumber}
+                pagination={{ pageSize: 5 }}
+                scroll={{ x: "max-content" }}
+                loading={!Equipments}
+            />
+
+            {/* Add Equipment Modal */}
+            <Modal
+                title="Add Equipment"
+                open={modalVisible}
+                onCancel={() => setModalVisible(false)}
+                footer={
+                    <Space>
+                        <Button onClick={() => setModalVisible(false)}>Cancel</Button>
+                        <Button type="primary" onClick={handleAddEquipment}>
+                            Add
                         </Button>
-                    </div>
-
-                    <Table
-                        columns={columns}
-                        dataSource={Equipments}
-                        className={styles.equipmentTable}
-                        rowKey={(record) => record.id || record.serialNumber}
-                        pagination={{ pageSize: 5 }}
-                        scroll={{ x: "max-content" }}
-                    />
-
-                    {/* Add Equipment Modal */}
-                    <Modal
-                        title="Add Equipment"
-                        open={modalVisible}
-                        onCancel={() => setModalVisible(false)}
-                        footer={
-                            <Space>
-                                <Button onClick={() => setModalVisible(false)}>Cancel</Button>
-                                <Button type="primary" onClick={handleAddEquipment}>
-                                    Add
-                                </Button>
-                            </Space>
-                        }
+                    </Space>
+                }
+            >
+                <Form form={form} layout="vertical">
+                    <Form.Item
+                        name="name"
+                        label="Name"
+                        rules={[{ required: true, message: "Please enter equipment name" }]}
                     >
-                        <Form form={form} layout="vertical">
-                            <Form.Item
-                                name="name"
-                                label="Name"
-                                rules={[{ required: true, message: "Please enter equipment name" }]}
-                            >
-                                <Input />
-                            </Form.Item>
-                            <Form.Item
-                                name="serialNumber"
-                                label="Serial Number"
-                                rules={[{ required: true, message: "Please enter serial number" }]}
-                            >
-                                <Input />
-                            </Form.Item>
-                            <Form.Item
-                                name="maintenancePeriod"
-                                label="Maintenance Period"
-                                rules={[
-                                    { required: true, message: "Please enter maintenance period" },
-                                    { pattern: /^\d+$/, message: "Only numeric values are allowed" },
-                                ]}
-                            >
-                                <InputNumber min={0} style={{ width: "100%" }} />
-                            </Form.Item>
-
-                            <Form.Item
-                                label="Category"
-                                name="categoryName"
-                                rules={[{ required: true, message: "Please select or create a category" }]}
-                            >
-                                <Select
-                                    mode="tags"
-                                    placeholder="Select or create a category"
-                                    tokenSeparators={[',']}
-                                    style={{ width: '100%' }}
-                                    onChange={(value) => {
-                                        const lastValue = value[value.length - 1];
-                                        form.setFieldsValue({ categoryName: lastValue });
-                                    }}
-                                >
-                                    {Categories?.map((cat) => (
-                                        <Select.Option key={cat.type} value={cat.type}>
-                                            {cat.type}
-                                        </Select.Option>
-                                    ))}
-                                </Select>
-                            </Form.Item>
-                            <Form.Item
-                                name="handlerEmail"
-                                label="Assign to Handler"
-                                rules={[{ required: true, message: "Please select a handler" }]}
-                            >
-                                <Select
-                                    showSearch
-                                    placeholder="Select an employee"
-                                    optionFilterProp="children"
-                                    filterOption={(input, option) =>
-                                        typeof option?.label === "string" &&
-                                        option.label.toLowerCase().includes(input.toLowerCase())
-                                    }
-                                >
-                                    {Employees?.map((emp) => (
-                                        <Select.Option key={emp.emailAddress} value={emp.emailAddress}>
-                                            {emp.name} {emp.surname} ({emp.emailAddress})
-                                        </Select.Option>
-                                    ))}
-                                </Select>
-                            </Form.Item>
-
-                        </Form>
-                    </Modal>
-
-                    {/* Handler Info Modal */}
-                    <Modal
-                        title="Handler Profile"
-                        open={handlerModalVisible}
-                        onCancel={() => setHandlerModalVisible(false)}
-                        footer={[
-                            <Button key="close" onClick={() => setHandlerModalVisible(false)}>
-                                Close
-                            </Button>,
+                        <Input />
+                    </Form.Item>
+                    <Form.Item
+                        name="serialNumber"
+                        label="Serial Number"
+                        rules={[{ required: true, message: "Please enter serial number" }]}
+                    >
+                        <Input />
+                    </Form.Item>
+                    <Form.Item
+                        name="maintenancePeriod"
+                        label="Maintenance Period"
+                        rules={[
+                            { required: true, message: "Please enter maintenance period" },
+                            { pattern: /^\d+$/, message: "Only numeric values are allowed" },
                         ]}
                     >
-                        {selectedHandler ? (
-                            <div>
-                                <p><strong>Name:</strong> {selectedHandler.name} {selectedHandler.surname}</p>
-                                <p><strong>Email:</strong> {selectedHandler.emailAddress}</p>
-                                <p><strong>Username:</strong> {selectedHandler.userName}</p>
-                            </div>
-                        ) : (
-                            <p>No handler selected.</p>
-                        )}
-                    </Modal>
-                </div >
-            )}
-        </>
+                        <InputNumber min={0} style={{ width: "100%" }} />
+                    </Form.Item>
+
+                    <Form.Item
+                        label="Category"
+                        name="categoryName"
+                        rules={[{ required: true, message: "Please select or create a category" }]}
+                    >
+                        <Select
+                            mode="tags"
+                            placeholder="Select or create a category"
+                            tokenSeparators={[',']}
+                            style={{ width: '100%' }}
+                            onChange={(value) => {
+                                const lastValue = value[value.length - 1];
+                                form.setFieldsValue({ categoryName: lastValue });
+                            }}
+                        >
+                            {Categories?.map((cat) => (
+                                <Select.Option key={cat.type} value={cat.type}>
+                                    {cat.type}
+                                </Select.Option>
+                            ))}
+                        </Select>
+                    </Form.Item>
+                    <Form.Item
+                        name="handlerEmail"
+                        label="Assign to Handler"
+                        rules={[{ required: true, message: "Please select a handler" }]}
+                    >
+                        <Select
+                            showSearch
+                            placeholder="Select an employee"
+                            optionFilterProp="children"
+                            filterOption={(input, option) =>
+                                typeof option?.label === "string" &&
+                                option.label.toLowerCase().includes(input.toLowerCase())
+                            }
+                        >
+                            {Employees?.map((emp) => (
+                                <Select.Option key={emp.emailAddress} value={emp.emailAddress}>
+                                    {emp.name} {emp.surname} ({emp.emailAddress})
+                                </Select.Option>
+                            ))}
+                        </Select>
+                    </Form.Item>
+
+                </Form>
+            </Modal>
+
+            {/* Handler Info Modal */}
+            <Modal
+                title="Handler Profile"
+                open={handlerModalVisible}
+                onCancel={() => setHandlerModalVisible(false)}
+                footer={[
+                    <Button key="close" onClick={() => setHandlerModalVisible(false)}>
+                        Close
+                    </Button>,
+                ]}
+            >
+                {selectedHandler ? (
+                    <div>
+                        <p><strong>Name:</strong> {selectedHandler.name} {selectedHandler.surname}</p>
+                        <p><strong>Email:</strong> {selectedHandler.emailAddress}</p>
+                        <p><strong>Username:</strong> {selectedHandler.userName}</p>
+                    </div>
+                ) : (
+                    <p>No handler selected.</p>
+                )}
+            </Modal>
+        </div >
     );
 };
 
