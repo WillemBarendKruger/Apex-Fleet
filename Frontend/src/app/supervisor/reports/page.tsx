@@ -97,7 +97,7 @@ const ReportsListPage = () => {
             ]);
 
             message.success("Request declined and equipment returned to inventory.");
-            refresh();
+            await refresh();
         } catch (error) {
             console.error("Decline failed:", error);
             message.error("Failed to decline request. Please try again.");
