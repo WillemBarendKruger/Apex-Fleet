@@ -11,7 +11,7 @@ interface Props {
 
 const RequestList: React.FC<Props> = ({ requests }) => (
     <Card>
-        <Title level={4}>Recent Equipment Condition Reports</Title>
+        <Title level={4}>Recent Equipment Requests</Title>
         <List
             itemLayout="vertical"
             dataSource={requests}
