@@ -228,6 +228,7 @@ const EquipmentPage = () => {
                         rowKey={(record) => record.id?.toString() || `temp-${record.serialNumber}`}
                         pagination={{ pageSize: 5 }}
                         scroll={{ x: "max-content" }}
+                        loading={!filteredEquipments}
                     />
                     {/* model for request */}
                     <Modal

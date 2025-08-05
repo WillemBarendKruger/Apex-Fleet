@@ -36,7 +36,7 @@ const SettingsPage = () => {
         name: user.name,
         surname: user.surname,
         emailAddress: user.emailAddress,
-        roleNames: "Employee",
+        roleNames: "Supervisor",
       });
     }
     setLoading(false);

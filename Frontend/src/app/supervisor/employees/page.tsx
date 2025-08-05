@@ -171,6 +171,7 @@ const EmployeesPage = () => {
             rowKey={(record) => record.userName}
             pagination={{ pageSize: 5 }}
             scroll={{ x: "max-content" }}
+            loading={!enrichedEmployees}
           />
 
           <Modal

@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Table, Button, Space, message, Tag } from "antd";
+import { Table, Button, Space, message, Tag, Tooltip, Input, Modal } from "antd";
+import { ToolOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import { useStyles } from "./style/styles";
 import { useEquipmentState, useEquipmentActions } from "@/providers/equipment-provider";
 import Loader from "@/components/loader/loader";
@@ -18,6 +19,10 @@ const ReportsListPage = () => {
     const { ConditionReports } = useConditionReportState();
 
     const [loading, setLoading] = useState(false);
+    const [maintenanceModalVisible, setMaintenanceModalVisible] = useState(false);
+    const [declineModalVisible, setDeclineModalVisible] = useState(false);
+    const [declineReason, setDeclineReason] = useState("");
+    const [selectedRecord, setSelectedRecord] = useState<IConditionReport | null>(null);
 
     const refresh = async () => {
         setLoading(true);
@@ -35,35 +40,70 @@ const ReportsListPage = () => {
             message.error("Equipment not found");
             return;
         }
+
         try {
+            const maintenanceNote = "Sent for maintenance due to reported condition.";
+
+            const updatedDescription = report.description
+                ? `${report.description} ${maintenanceNote}`
+                : maintenanceNote;
+
             await Promise.all([
-                updateConditionReport({ ...report, status: "maintenance" }),
-                updateEquipment({ ...equipment, status: "maintenance" }),
+                updateConditionReport({
+                    ...report,
+                    description: updatedDescription,
+                    status: "maintenance",
+                }),
+                updateEquipment({
+                    ...equipment,
+                    status: "maintenance",
+                }),
             ]);
-            message.success("Sent for maintenance");
+
+            message.success("Equipment sent for maintenance.");
             await refresh();
         } catch (error) {
-            message.error("Failed to update report status");
             console.error("Error updating report:", error);
+            message.error("Failed to send equipment for maintenance.");
         }
     };
 
 
-    const handleDecline = async (report: IConditionReport) => {
+    const pendingReports = ConditionReports?.filter(report => report.status === "pending") || [];
+
+
+    const handleDecline = async (report: IConditionReport, reason: string) => {
         const equipment = Equipments?.find(eq => eq.name === report.equipmentName);
         if (!equipment) {
             message.error("Equipment not found");
             return;
         }
 
-        await Promise.all([
-            updateConditionReport({ ...report, status: "declined" }),
-            updateEquipment({ ...equipment, status: "inventory" }),
-        ]);
+        try {
+            const updatedDescription = report.description
+                ? `${report.description} Reason: ${reason}`
+                : `Reason: ${reason}`;
 
-        message.info("Request declined");
-        refresh();
+            await Promise.all([
+                updateConditionReport({
+                    ...report,
+                    description: updatedDescription,
+                    status: "declined",
+                }),
+                updateEquipment({
+                    ...equipment,
+                    status: "inventory",
+                }),
+            ]);
+
+            message.success("Request declined and equipment returned to inventory.");
+            refresh();
+        } catch (error) {
+            console.error("Decline failed:", error);
+            message.error("Failed to decline request. Please try again.");
+        }
     };
+
 
     const columns = [
         {
@@ -104,13 +144,30 @@ const ReportsListPage = () => {
             key: "actions",
             render: (_: IConditionReport, record: IConditionReport) => (
                 <Space>
-                    <Button type="primary" onClick={() => handleMaintenance(record)}>
-                        Send for Maintenance
-                    </Button>
-                    <Button danger onClick={() => handleDecline(record)}>
-                        Decline
-                    </Button>
+                    <Tooltip title="Send for Maintenance">
+                        <Button
+                            icon={<ToolOutlined />}
+                            type="default"
+                            onClick={() => {
+                                setSelectedRecord(record);
+                                setMaintenanceModalVisible(true);
+                            }}
+                        />
+                    </Tooltip>
+
+                    <Tooltip title="Decline Request">
+                        <Button
+                            icon={<CloseCircleOutlined />}
+                            danger
+                            type="default"
+                            onClick={() => {
+                                setSelectedRecord(record);
+                                setDeclineModalVisible(true);
+                            }}
+                        />
+                    </Tooltip>
                 </Space>
+
             ),
         },
     ];
@@ -134,12 +191,60 @@ const ReportsListPage = () => {
 
                     <Table
                         columns={columns}
-                        dataSource={ConditionReports}
+                        dataSource={pendingReports}
                         className={styles.equipmentTable}
                         rowKey={(record) => record.id?.toString() || record.equipmentName}
                         pagination={{ pageSize: 5 }}
                         scroll={{ x: "max-content" }}
+                        loading={!ConditionReports}
                     />
+
+                    {/* Maintenance modal */}
+                    <Modal
+                        open={maintenanceModalVisible}
+                        title="Confirm Maintenance"
+                        onCancel={() => setMaintenanceModalVisible(false)}
+                        onOk={() => {
+                            if (selectedRecord) {
+                                handleMaintenance(selectedRecord);
+                            }
+                            setMaintenanceModalVisible(false);
+                        }}
+                        okText="Confirm"
+                        cancelText="Cancel"
+                    >
+                        <p>Are you sure you want to send this equipment for maintenance?</p>
+                    </Modal>
+
+                    {/* Decline model */}
+                    <Modal
+                        open={declineModalVisible}
+                        title="Decline Request"
+                        onCancel={() => setDeclineModalVisible(false)}
+                        onOk={() => {
+                            if (!declineReason.trim()) {
+                                message.error("Please provide a reason for the decline.");
+                                return;
+                            }
+                            if (selectedRecord) {
+                                handleDecline(selectedRecord, declineReason);
+                            }
+                            setDeclineModalVisible(false);
+                            setDeclineReason("");
+                        }}
+                        okText="Submit"
+                        cancelText="Cancel"
+                    >
+                        <p>Please provide a reason for declining this request:</p>
+                        <Input.TextArea
+                            rows={4}
+                            value={declineReason}
+                            onChange={(e) => setDeclineReason(e.target.value)}
+                            placeholder="Enter reason..."
+                        />
+                    </Modal>
+
+
                 </div>
             )}
         </>
