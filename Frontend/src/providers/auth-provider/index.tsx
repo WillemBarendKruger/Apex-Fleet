@@ -34,10 +34,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 sessionStorage.setItem("currentUser", userName);
 
                 if (userRole === "Supervisor") {
+                    getCurrentUser();
                     router.replace(`/supervisor/dashboard`);
                     message.success("Login successfully!");
                     dispatch(logInSuccess(response.data.result.user));
                 } else if (((userRole === "Employee"))) {
+                    getCurrentUser();
                     router.replace(`/employee/dashboard`);
                     message.success("Login successfully!");
                     dispatch(logInSuccess(response.data.result.user));
