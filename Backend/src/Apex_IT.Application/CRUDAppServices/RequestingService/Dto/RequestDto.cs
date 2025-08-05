@@ -9,6 +9,7 @@ namespace Apex_IT.CRUDAppServices.RequestingService.Dto
     public class RequestDto : EntityDto<Guid>
     {
         public virtual string Status { get; set; }
+        public virtual string? Description { get; set; }
 
         public virtual Guid EquipmentId { get; set; }
         public virtual string EquipmentName { get; set; }
