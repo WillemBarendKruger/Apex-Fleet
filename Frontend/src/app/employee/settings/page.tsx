@@ -81,7 +81,7 @@ const SettingsPage = () => {
 
   return (
     <>
-      {loading ? (
+      {loading && !user ? (
         <Loader />
       ) : (
         <div className={styles.updateContainer}>

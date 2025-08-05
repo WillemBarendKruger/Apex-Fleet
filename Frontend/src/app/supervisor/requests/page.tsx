@@ -169,10 +169,7 @@ const RequestListPage = () => {
                 rowKey={(record, index) => record.id?.toString() || `temp-${index}`}
                 pagination={{ pageSize: 5 }}
                 scroll={{ x: "max-content" }}
-                loading={{
-                    spinning: loading,
-                    indicator: <Loader />,
-                }}
+                loading={!newRequests}
             />
 
             {/* Approve model */}
