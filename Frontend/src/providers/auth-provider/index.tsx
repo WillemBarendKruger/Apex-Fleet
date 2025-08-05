@@ -69,7 +69,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 sessionStorage.setItem("role", JSON.stringify(decoded));
                 dispatch(registerSuccess(user));
                 message.success("Registration successfull!");
-                dispatch(logOutSuccess());
             })
             .catch((error) => {
                 dispatch(registerError());
@@ -83,14 +82,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         const endpoint = `services/app/employee/Create`;
         await instance
             .post(endpoint, user)
-            .then((response) => {
-                const token = response.data.result.accessToken;
-                const decoded = jwtDecode(token);
-                sessionStorage.setItem("token", token);
-                sessionStorage.setItem("role", JSON.stringify(decoded));
+            .then(() => {
                 dispatch(registerSuccess(user));
-                message.success("Registration successfull!");
-                dispatch(logOutSuccess());
+                message.success("Employee registerd successfull!");
             })
             .catch((error) => {
                 dispatch(registerError());

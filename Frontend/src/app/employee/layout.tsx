@@ -29,6 +29,7 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
             setLoggedInUser(storedData);
         }
     }, []);
+
     const [collapsed, setCollapsed] = useState(false);
     const [logoutModalVisible, setLogoutModalVisible] = useState(false);
     const { styles } = useStyles();

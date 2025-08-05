@@ -11,14 +11,14 @@ interface Props {
     reports: IConditionReport[];
 }
 
-const getPriorityTag = (priority: string) => {
-    switch (priority.toLowerCase()) {
-        case "urgent":
-            return <Tag color="red" icon={<WarningOutlined />}>Urgent</Tag>;
-        case "resolved":
-            return <Tag color="green" icon={<CheckCircleOutlined />}>Resolved</Tag>;
+const getPriorityTag = (status: string) => {
+    switch (status.toLowerCase()) {
+        case "declined":
+            return <Tag color="red" icon={<WarningOutlined />}>{status}</Tag>;
+        case "maintenance":
+            return <Tag color="green" icon={<CheckCircleOutlined />}>{status}</Tag>;
         default:
-            return <Tag color="orange" icon={<ClockCircleOutlined />}>Pending</Tag>;
+            return <Tag color="orange" icon={<ClockCircleOutlined />}>{status}</Tag>;
     }
 };
 
