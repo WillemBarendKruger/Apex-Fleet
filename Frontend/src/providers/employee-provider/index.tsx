@@ -5,6 +5,7 @@ import { IEmployee } from "./models";
 import { EmployeeReducer } from "./reducer";
 import { useContext, useReducer } from "react";
 import { createEmployeeError, createEmployeePending, createEmployeeSuccess, deleteEmployeeError, deleteEmployeePending, deleteEmployeeSuccess, getEmployeeError, getEmployeePending, getEmployeesError, getEmployeesPending, getEmployeesSuccess, getEmployeeSuccess, updateEmployeeError, updateEmployeePending, updateEmployeeSuccess } from "./actions";
+import { message } from "antd";
 
 export const EmployeeProvider = ({ children }: { children: React.ReactNode }) => {
     const [state, dispatch] = useReducer(EmployeeReducer, INITIAL_STATE);
@@ -66,10 +67,12 @@ export const EmployeeProvider = ({ children }: { children: React.ReactNode }) =>
             .put(endpoint, employee)
             .then((response) => {
                 dispatch(updateEmployeeSuccess(response.data));
+                message.success("Profile updated successfully!");
             })
             .catch((error) => {
                 console.error(error);
                 dispatch(updateEmployeeError());
+                message.error("Something went wrong while updating your details.");
             });
     };
 
@@ -80,10 +83,12 @@ export const EmployeeProvider = ({ children }: { children: React.ReactNode }) =>
             .delete(endpoint)
             .then((response) => {
                 dispatch(deleteEmployeeSuccess(response.data));
+                message.success("Account deleted successfully!");
             })
             .catch((error) => {
                 console.error(error);
                 dispatch(deleteEmployeeError());
+                message.error("Something went wrong while deleting your account.");
             });
     };
 

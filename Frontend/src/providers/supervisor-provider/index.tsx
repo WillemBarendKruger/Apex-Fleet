@@ -5,6 +5,7 @@ import { ISupervisor } from "./models";
 import { SupervisorReducer } from "./reducer";
 import { useContext, useReducer } from "react";
 import { createSupervisorError, createSupervisorPending, createSupervisorSuccess, deleteSupervisorError, deleteSupervisorPending, deleteSupervisorSuccess, getSupervisorError, getSupervisorPending, getSupervisorsError, getSupervisorsPending, getSupervisorsSuccess, getSupervisorSuccess, updateSupervisorError, updateSupervisorPending, updateSupervisorSuccess } from "./actions";
+import { message } from "antd";
 
 export const SupervisorProvider = ({ children }: { children: React.ReactNode }) => {
     const [state, dispatch] = useReducer(SupervisorReducer, INITIAL_STATE);
@@ -65,10 +66,12 @@ export const SupervisorProvider = ({ children }: { children: React.ReactNode }) 
             .put(endpoint, Supervisor)
             .then((response) => {
                 dispatch(updateSupervisorSuccess(response.data));
+                message.success("Profile updated successfully!");
             })
             .catch((error) => {
                 console.error(error);
                 dispatch(updateSupervisorError());
+                message.error("Something went wrong while updating your details.");
             });
     };
 
@@ -79,10 +82,12 @@ export const SupervisorProvider = ({ children }: { children: React.ReactNode }) 
             .delete(endpoint)
             .then((response) => {
                 dispatch(deleteSupervisorSuccess(response.data));
+                message.success("Account deleted successfully!");
             })
             .catch((error) => {
                 console.error(error);
                 dispatch(deleteSupervisorError());
+                message.error("Something went wrong while deleting your account.");
             });
     };
 

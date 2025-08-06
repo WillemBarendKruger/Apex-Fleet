@@ -41,7 +41,7 @@ export const useStyles = createStyles({
   right: 0;
   overflow-x: hidden;
   padding-top: 20px;
-  background-color: #7AB2D3;
+  background-color: #616F39;
 
   clip-path: polygon(35% 0%, 100% 0%, 100% 100%, 0% 100%);
   
@@ -150,7 +150,7 @@ export const useStyles = createStyles({
     align: center;
   `,
   link: css`
-    color: #0b192c;
+    color: #ff6500;
   `,
   mobileLogo: css`
     display: none;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Table, Button, Modal, Form, Input, Space, message } from "antd";
+import { Table, Button, Modal, Form, Input, Space, message, Card } from "antd";
 import { useStyles } from "./style/styles";
 import { IEmployee } from "@/providers/employee-provider/models";
 import Loader from "@/components/loader/loader";
@@ -116,7 +116,7 @@ const EmployeesPage = () => {
   ];
 
   return (
-    <div className={styles.serviceProviderContainer}>
+    <div className={styles.EmployeesContainer}>
       <div
         style={{
           width: "100%",
@@ -160,15 +160,17 @@ const EmployeesPage = () => {
         )}
       </Modal>
 
-      <Table
-        columns={columns}
-        dataSource={enrichedEmployees}
-        className={styles.serviceProviderTable}
-        rowKey={(record) => record.userName}
-        pagination={{ pageSize: 5 }}
-        scroll={{ x: "max-content" }}
-        loading={!enrichedEmployees}
-      />
+      <Card className={styles.EmployeesContainer}>
+        <Table
+          columns={columns}
+          dataSource={enrichedEmployees}
+          className={styles.EmployeesTable}
+          rowKey={(record) => record.userName}
+          pagination={{ pageSize: 5 }}
+          scroll={{ x: "max-content" }}
+          loading={!enrichedEmployees}
+        />
+      </Card>
 
       <Modal
         title="Add Employee"
