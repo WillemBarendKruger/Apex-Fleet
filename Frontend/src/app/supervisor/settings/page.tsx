@@ -37,9 +37,8 @@ const SupervisorSettings = () => {
         updateUser={updateSupervisor}
         deleteUser={deleteSupervisor}
         roleName={"Supervisor"}
-        redirectAfterDelete={() => router.push("/login")} getCurrentUser={function (): Promise<void> {
-          throw new Error("Function not implemented.");
-        }}
+        redirectAfterDelete={() => router.push("/login")}
+        getCurrentUser={getCurrentUser}
       />
     </div>
   );

@@ -14,6 +14,8 @@ import { Button, Layout, Menu, Modal, theme, Image } from "antd";
 import Title from "antd/es/typography/Title";
 import { useStyles } from "./style/styles";
 import Loader from "@/components/loader/loader";
+import { useAuthActions } from "@/providers/auth-provider";
+import withAuth from "@/HOC/withAuth";
 
 const { Header, Sider, Content } = Layout;
 
@@ -24,6 +26,8 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
 
     const [loggedInUser, setLoggedInUser] = useState("Unknown User");
     const [loading, setLoading] = useState(false);
+
+    const { logOut } = useAuthActions();
 
     useEffect(() => {
         setLoading(true);
@@ -48,9 +52,8 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
     };
 
     const confirmLogout = () => {
-        sessionStorage.clear();
         setLogoutModalVisible(false);
-        router.push("/login");
+        logOut();
     };
 
     return (
@@ -162,4 +165,4 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-export default EmployeeLayout;
+export default withAuth(EmployeeLayout, { allowedRoles: ["Employee"] });

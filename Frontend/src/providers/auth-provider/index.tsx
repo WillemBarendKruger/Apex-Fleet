@@ -109,7 +109,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             dispatch(logOutPending());
             sessionStorage.clear();
             dispatch(logOutSuccess());
-            router.replace("/auth/login");
+            router.replace("/login");
             message.success("Logged out successfully!");
         } catch {
             dispatch(logOutError());
