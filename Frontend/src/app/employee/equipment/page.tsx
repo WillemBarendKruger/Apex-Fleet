@@ -5,7 +5,6 @@ import { Table, Button, Modal, Form, Space, message, Select, Input, Tooltip } fr
 import { RollbackOutlined, FileProtectOutlined } from "@ant-design/icons";
 import { useStyles } from "./style/styles";
 import { IEquipment } from "@/providers/equipment-provider/models";
-import Loader from "@/components/loader/loader";
 import { useEmployeeState, useEmployeeActions } from "@/providers/employee-provider";
 import { useEquipmentState, useEquipmentActions } from "@/providers/equipment-provider";
 import { useCategoryActions, useCategoryState } from "@/providers/category-provider";
@@ -172,9 +171,9 @@ const EquipmentPage = () => {
             key: "maintenancePeriod",
         },
         {
-            title: "Status",
-            dataIndex: "status",
-            key: "status",
+            title: "Due date",
+            dataIndex: "returnDate",
+            key: "returnDate",
         },
         {
             title: "Category",
@@ -322,6 +321,27 @@ const EquipmentPage = () => {
                             ))}
                         </Select>
                     </Form.Item>
+                    <Form.Item
+                        name="dueDate"
+                        label="Due Date"
+                        rules={[
+                            { required: true, message: "Please select a due date" },
+                            {
+                                validator: (_, value) => {
+                                    if (!value) return Promise.resolve();
+                                    const selectedDate = new Date(value);
+                                    const today = new Date();
+                                    today.setHours(0, 0, 0, 0);
+                                    if (selectedDate < today) {
+                                        return Promise.reject("Due date cannot be before today");
+                                    }
+                                    return Promise.resolve();
+                                },
+                            },
+                        ]}
+                    >
+                        <Input type="date" placeholder="Select due date" />
+                    </Form.Item>
                 </Form>
             </Modal>
 
@@ -333,7 +353,7 @@ const EquipmentPage = () => {
                 footer={
                     <Space>
                         <Button onClick={() => setReportModalVisible(false)}>Cancel</Button>
-                        <Button type="primary" onClick={handleReportCondition}>
+                        <Button type="primary" onClick={handleReportCondition} loading={loading}>
                             Submit Report
                         </Button>
                     </Space>

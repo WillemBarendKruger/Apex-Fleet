@@ -3,7 +3,7 @@ export interface IEquipment {
     name: string,
     serialNumber: string,
     maintenancePeriod: number,
-    ReturnDate?: number,
+    returnDate?: string,
     LastMaintenanceDate?: Date,
     status: string,
     categoryId?: string,

@@ -40,6 +40,7 @@ export const EquipmentsProvider = ({ children }: { children: React.ReactNode }) 
                     name: Equipment.name,
                     serialNumber: Equipment.serialNumber,
                     maintenancePeriod: Equipment.maintenancePeriod,
+                    returnDate: Equipment.returnDate,
                     status: Equipment.status,
                     categoryId: Equipment.categoryId,
                     categoryName: Equipment.categoryName,

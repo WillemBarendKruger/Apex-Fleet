@@ -22,6 +22,7 @@ import {
     updateRequestSuccess,
 } from "./actions";
 import { IRequest } from "./models";
+import { message } from "antd";
 
 export const RequestsProvider = ({ children }: { children: React.ReactNode }) => {
     const [state, dispatch] = useReducer(RequestReducer, INITIAL_STATE);
@@ -110,10 +111,12 @@ export const RequestsProvider = ({ children }: { children: React.ReactNode }) =>
             .delete(endpoint)
             .then((response) => {
                 dispatch(deleteRequestSuccess(response.data));
+                message.success("Request deleted successfully.");
             })
             .catch((error) => {
                 console.error(error);
                 dispatch(deleteRequestError());
+                message.error("Failed to delete request.");
             });
     };
 

@@ -1,16 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Table, Button, Space, message, Tooltip, Modal, Input, Tag, Card } from "antd";
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import { useStyles } from "./style/styles";
-import Loader from "@/components/loader/loader";
 import { useEmployeeState, useEmployeeActions } from "@/providers/employee-provider";
 import { useCategoryActions } from "@/providers/category-provider";
 import { useRequestState, useRequestActions } from "@/providers/request-provider";
 import { IRequest } from "@/providers/request-provider/models";
 import { useEquipmentState, useEquipmentActions } from "@/providers/equipment-provider";
-import { IEquipment } from "@/providers/equipment-provider/models";
 
 const RequestListPage = () => {
     const { styles } = useStyles();
@@ -19,7 +17,7 @@ const RequestListPage = () => {
     const { getEmployees } = useEmployeeActions();
     const { getCategories } = useCategoryActions();
     const { Requests } = useRequestState();
-    const { getRequests, updateRequest } = useRequestActions();
+    const { getRequests, updateRequest, deleteRequest } = useRequestActions();
     const { getEquipments, updateEquipment } = useEquipmentActions();
 
     const [loading, setLoading] = useState(false);
@@ -39,23 +37,39 @@ const RequestListPage = () => {
 
     const handleApprove = async (record: IRequest) => {
         try {
-            const approvalNote = "Request approved by supervisor.";
-
-            const updatedDescription = record.description
-                ? `${record.description} ${approvalNote}`
-                : approvalNote;
-
-            await updateRequest({
-                ...record,
-                description: updatedDescription,
-                status: "assigned",
-            });
+            if (!record.id || !record.equipmentId || !record.requestingEmployeeId) {
+                message.error("Missing request, equipment, or employee ID.");
+                return;
+            }
 
             const equipment = Equipments?.find(eq => eq.id === record.equipmentId);
             const handler = Employees?.find(emp => emp.id === record.requestingEmployeeId);
 
             if (!equipment || !handler) {
-                message.error("Equipment or requester not found");
+                message.error("Equipment or requester not found.");
+                return;
+            }
+
+            let returnDateStr = "";
+            const dateMatch = record.description?.match(/\d{4}-\d{2}-\d{2}/);
+            if (dateMatch) {
+                returnDateStr = dateMatch[0];
+            } else {
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                returnDateStr = tomorrow.toISOString().slice(0, 10);
+            }
+
+            const returnDate = new Date(returnDateStr);
+            if (isNaN(returnDate.getTime())) {
+                message.error("Invalid return date.");
+                return;
+            }
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            if (returnDate < today) {
+                message.error("Return date cannot be in the past.");
                 return;
             }
 
@@ -64,7 +78,10 @@ const RequestListPage = () => {
                 handlerId: handler.id,
                 handlerEmail: handler.emailAddress,
                 status: "assigned",
+                returnDate: returnDate.toISOString(),
             });
+
+            await deleteRequest(record.id);
 
             message.success("Request approved.");
             await refresh();
@@ -73,6 +90,7 @@ const RequestListPage = () => {
             message.error("Failed to approve request.");
         }
     };
+
 
     const handleDecline = async (record: IRequest, reason: string) => {
         try {
@@ -171,7 +189,7 @@ const RequestListPage = () => {
                     columns={columns}
                     dataSource={newRequests}
                     className={styles.requestsTable}
-                    rowKey={(record, index) => record.id?.toString() || `temp-${index}`}
+                    rowKey={(record) => record.id?.toString() || ""}
                     pagination={{ pageSize: 5 }}
                     scroll={{ x: "max-content" }}
                     loading={!newRequests}
