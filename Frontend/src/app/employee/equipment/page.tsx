@@ -191,8 +191,8 @@ const EquipmentPage = () => {
                         <Tooltip title="Return Equipment">
                             <Button
                                 icon={<RollbackOutlined />}
-                                type="primary" // Blue background
-                                style={{ backgroundColor: "#52c41a", borderColor: "#52c41a" }} // Green
+                                type="primary"
+                                style={{ backgroundColor: "#52c41a", borderColor: "#52c41a" }}
                                 onClick={() => {
                                     setSelectedRecord(record);
                                     setReturnModalVisible(true);

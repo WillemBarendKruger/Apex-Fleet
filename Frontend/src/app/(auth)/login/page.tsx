@@ -99,9 +99,6 @@ const Login = () => {
                                                         "Wrong password requirments",
                                                 },
                                             ]}
-                                            style={{
-                                                width: "300px",
-                                            }}
                                         >
                                             <Input.Password
                                                 className={styles.input}
@@ -118,10 +115,8 @@ const Login = () => {
                                                 block
                                                 type="primary"
                                                 htmlType="submit"
-                                                style={{
-                                                    width: "300px",
-                                                    fontWeight: "bold",
-                                                }}
+                                                className={styles.loginButton}
+                                                loading={loading}
                                                 size="large"
                                             >
                                                 Log in

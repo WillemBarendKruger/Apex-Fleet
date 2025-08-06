@@ -17,6 +17,7 @@ import {
 import { Form, Input, Button, FormProps, message, Flex, Spin } from "antd/es";
 import { useAuthActions } from "@/providers/auth-provider";
 import Link from "next/link";
+import Loader from "@/components/loader/loader";
 
 type FieldType = {
     accessToken?: string;
@@ -69,13 +70,7 @@ const RegistrationForm = () => {
         <>
             {loading ? (
                 <div>
-                    <Flex
-                        justify="center"
-                        align="center"
-                        style={{ marginBottom: 20, width: "100%", height: "100vh" }}
-                    >
-                        <Spin size="large" />
-                    </Flex>
+                    <Loader />
                 </div>
             ) : (
                 <>
@@ -107,6 +102,7 @@ const RegistrationForm = () => {
                                     <Form
                                         form={form}
                                         name="register"
+                                        className={styles.formContent}
                                         onFinish={handleRegister}
                                         scrollToFirstError
                                     >
@@ -153,18 +149,15 @@ const RegistrationForm = () => {
                                             rules={[
                                                 {
                                                     required: true,
-                                                    message: "Please input your password!",
+                                                    message: "Please input your Password!",
                                                 },
                                                 {
-
                                                     pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
-                                                    message: "Password must include at least 6 characters, uppercase, lowercase, number, and special character!",
+                                                    min: 6,
+                                                    message:
+                                                        "Wrong password requirments",
                                                 },
                                             ]}
-                                            hasFeedback
-                                            style={{
-                                                width: "300px",
-                                            }}
                                         >
                                             <Input.Password
                                                 className={styles.input}
@@ -232,17 +225,16 @@ const RegistrationForm = () => {
                                                 type="primary"
                                                 htmlType="submit"
                                                 block
-                                                style={{ width: "300px" }}
                                                 size="large"
+                                                loading={loading}
                                             >
                                                 Register
                                             </Button>
                                         </Form.Item>
-                                        <Link href="/login" className={styles.loginBtn}>
+                                        <Link href="/login" className={styles.loginButton}>
                                             <Button
                                                 type="default"
                                                 block
-                                                style={{ width: "300px" }}
                                                 size="large"
 
                                             >
