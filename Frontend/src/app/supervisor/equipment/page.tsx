@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Table, Button, Modal, Form, Input, Space, message, Select, InputNumber } from "antd";
+import { Table, Button, Modal, Form, Input, Space, message, Select, InputNumber, Card } from "antd";
 import { useStyles } from "./style/styles";
 import { IEmployee } from "@/providers/employee-provider/models";
 import { IEquipment } from "@/providers/equipment-provider/models";
@@ -9,6 +9,7 @@ import Loader from "@/components/loader/loader";
 import { useEmployeeState, useEmployeeActions } from "@/providers/employee-provider";
 import { useEquipmentState, useEquipmentActions } from "@/providers/equipment-provider";
 import { useCategoryActions, useCategoryState } from "@/providers/category-provider"
+import SummaryCard from "@/components/SummaryCard/SummaryCard";
 
 const EquipmentPage = () => {
     const { styles } = useStyles();
@@ -131,15 +132,17 @@ const EquipmentPage = () => {
                 </Button>
             </div>
 
-            <Table
-                columns={columns}
-                dataSource={Equipments}
-                className={styles.equipmentTable}
-                rowKey={(record) => record.id || record.serialNumber}
-                pagination={{ pageSize: 5 }}
-                scroll={{ x: "max-content" }}
-                loading={!Equipments}
-            />
+            <Card className={styles.equipmentContainer}>
+                <Table
+                    columns={columns}
+                    dataSource={Equipments}
+                    className={styles.equipmentTable}
+                    rowKey={(record) => record.id || record.serialNumber}
+                    pagination={{ pageSize: 5 }}
+                    scroll={{ x: "max-content" }}
+                    loading={!Equipments}
+                />
+            </Card>
 
             {/* Add Equipment Modal */}
             <Modal

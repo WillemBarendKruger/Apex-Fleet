@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { Table, Button, Space, message, Tooltip, Modal, Input, Tag } from "antd";
+import { Table, Button, Space, message, Tooltip, Modal, Input, Tag, Card } from "antd";
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import { useStyles } from "./style/styles";
 import Loader from "@/components/loader/loader";
@@ -154,7 +154,7 @@ const RequestListPage = () => {
     ];
 
     return (
-        <div className={styles.equipmentContainer}>
+        <div className={styles.requestsContainer}>
             <div
                 style={{
                     width: "100%",
@@ -166,15 +166,17 @@ const RequestListPage = () => {
                 <h2 style={{ margin: 0 }}>Requests List</h2>
             </div>
 
-            <Table
-                columns={columns}
-                dataSource={newRequests}
-                className={styles.equipmentTable}
-                rowKey={(record, index) => record.id?.toString() || `temp-${index}`}
-                pagination={{ pageSize: 5 }}
-                scroll={{ x: "max-content" }}
-                loading={!newRequests}
-            />
+            <Card className={styles.requestsContainer}>
+                <Table
+                    columns={columns}
+                    dataSource={newRequests}
+                    className={styles.requestsTable}
+                    rowKey={(record, index) => record.id?.toString() || `temp-${index}`}
+                    pagination={{ pageSize: 5 }}
+                    scroll={{ x: "max-content" }}
+                    loading={!newRequests}
+                />
+            </Card>
 
             {/* Approve model */}
             <Modal

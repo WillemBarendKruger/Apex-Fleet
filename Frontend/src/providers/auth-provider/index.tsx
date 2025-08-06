@@ -27,6 +27,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 const userId = decoded[AbpTokenProperies.nameidentifier];
                 const currentUser = decoded[AbpTokenProperies.name];
 
+                sessionStorage.setItem("token", token);
                 sessionStorage.setItem("currentUser", currentUser);
                 sessionStorage.setItem("role", userRole);
                 sessionStorage.setItem("userId", userId);
@@ -35,12 +36,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                     getCurrentUser();
                     router.replace(`/supervisor/dashboard`);
                     message.success("Login successfully!");
-                    dispatch(logInSuccess(response.data.result.user));
+                    dispatch(logInSuccess(token));
                 } else if (((userRole === "Employee"))) {
                     getCurrentUser();
                     router.replace(`/employee/dashboard`);
                     message.success("Login successfully!");
-                    dispatch(logInSuccess(response.data.result.user));
+                    dispatch(logInSuccess(token));
                 }
                 else {
                     router.replace(`/login`)
@@ -60,10 +61,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         const endpoint = `services/app/supervisor/Create`;
         await instance
             .post(endpoint, user)
-            .then((response) => {
-                const token = response.data.result.accessToken;
-
-                sessionStorage.setItem("token", token);
+            .then(() => {
                 dispatch(registerSuccess(user));
                 message.success("Registration successfull!");
             })

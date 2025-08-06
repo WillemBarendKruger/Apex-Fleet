@@ -18,6 +18,7 @@ import { Form, Input, Button, FormProps, message, Flex, Spin } from "antd/es";
 import { useAuthActions } from "@/providers/auth-provider";
 import Link from "next/link";
 import Loader from "@/components/loader/loader";
+import { ISupervisor } from "@/providers/supervisor-provider/models";
 
 type FieldType = {
     accessToken?: string;
@@ -45,7 +46,7 @@ const RegistrationForm = () => {
                 return;
             }
 
-            const payload = {
+            const payload: ISupervisor = {
                 emailAddress: values.emailAddress,
                 password: values.password,
                 roleName: "Supervisor",

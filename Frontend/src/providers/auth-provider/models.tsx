@@ -13,6 +13,7 @@ export interface ILogin {
 }
 
 export interface IUser {
+    id?: number;
     userName: string;
     emailAddress: string;
     password: string;

@@ -32,7 +32,7 @@ export const logInSuccess = createAction<IAuthStateContext, string>(
         isPending: false,
         isSuccess: true,
         isError: false,
-        token: token,
+        token,
     })
 );
 

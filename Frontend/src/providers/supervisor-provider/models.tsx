@@ -1,5 +1,5 @@
 export interface ISupervisor {
-    id: number,
+    id?: number,
     userName: string,
     emailAddress: string,
     password: string,

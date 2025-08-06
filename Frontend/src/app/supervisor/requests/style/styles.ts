@@ -1,14 +1,12 @@
 import { createStyles, css } from "antd-style";
 
 export const useStyles = createStyles({
-    equipmentContainer: css`
+    requestsContainer: css`
         display: flex;
         flex-direction: column;
-        align-items: center;
         width: 100%;
-        padding: 24px;
     `,
-    equipmentTable: css`
+    requestsTable: css`
         width: 100%;
     `,
 });

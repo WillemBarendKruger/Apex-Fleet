@@ -21,8 +21,8 @@ export default function RootLayout({
       <ConfigProvider
         theme={{
           token: {
-            colorPrimary: "#13c2c2",
-            colorInfo: "#E55C00",
+            colorPrimary: "#A7D129",
+            colorInfo: "#e55c00",
             colorTextBase: "#ffffff",
             colorBgBase: "#374151",
             fontSize: 15,
@@ -32,7 +32,23 @@ export default function RootLayout({
               colorText: "rgb(255,255,255)",
             },
             Card: {
-              colorBorderSecondary: "#13c2c2",
+              colorBorderSecondary: "#e55c00",
+              colorBgContainer: "transparent",
+            },
+            Table: {
+              colorBgContainer: "#374151",
+              colorText: "#ffffff",
+              colorBgTextHover: "#616F39",
+              colorBgTextActive: "#616F39",
+              headerBg: "#616F39",
+            },
+            Divider: {
+              colorSplit: "#ffffff"
+            },
+            Modal: {
+              contentBg: "#616F39",
+              headerBg: "#616F39",
+              colorText: "#ffffff",
             }
           },
           algorithm: darkAlgorithm,

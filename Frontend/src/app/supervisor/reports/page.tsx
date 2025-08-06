@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Table, Button, Space, message, Tag, Tooltip, Input, Modal } from "antd";
+import { Table, Button, Space, message, Tag, Tooltip, Input, Modal, Card } from "antd";
 import { ToolOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import { useStyles } from "./style/styles";
 import { useEquipmentState, useEquipmentActions } from "@/providers/equipment-provider";
@@ -174,7 +174,7 @@ const ReportsListPage = () => {
     ];
 
     return (
-        <div className={styles.equipmentContainer}>
+        <div className={styles.reportsContainer}>
             <div
                 style={{
                     width: "100%",
@@ -186,16 +186,20 @@ const ReportsListPage = () => {
                 <h2 style={{ margin: 0 }}>Reports List</h2>
             </div>
 
-            <Table
-                columns={columns}
-                dataSource={pendingReports}
-                className={styles.equipmentTable}
-                rowKey={(record) => record.id?.toString() || record.equipmentName}
-                pagination={{ pageSize: 5 }}
-                scroll={{ x: "max-content" }}
-                loading={!ConditionReports}
-            />
-
+            <Card className={styles.reportsContainer}>
+                <Table
+                    columns={columns}
+                    dataSource={pendingReports}
+                    className={styles.reportsTable}
+                    rowKey={(record) => record.id?.toString() || record.equipmentName}
+                    pagination={{ pageSize: 5 }}
+                    scroll={{ x: "max-content" }}
+                    loading={{
+                        spinning: loading,
+                        indicator: <Loader />,
+                    }}
+                />
+            </Card>
             {/* Maintenance modal */}
             <Modal
                 open={maintenanceModalVisible}
