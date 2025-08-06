@@ -21,6 +21,7 @@ const ProfileForm = ({
     deleteUser,
     redirectAfterDelete,
     roleName,
+    getCurrentUser
 }: ProfileFormProps) => {
     const [form] = Form.useForm();
     const [loading, setLoading] = useState(false);
@@ -29,7 +30,7 @@ const ProfileForm = ({
     useEffect(() => {
         const fetchUser = async () => {
             setLoading(true);
-
+            await getCurrentUser();
             if (userInfo) {
                 form.setFieldsValue({
                     userName: userInfo.userName,
@@ -87,7 +88,7 @@ const ProfileForm = ({
                     label="Username"
                     rules={[{ required: true, message: "Please enter your Username" }]}
                 >
-                    <Input placeholder="NAME" />
+                    <Input />
                 </Form.Item>
 
                 <Form.Item

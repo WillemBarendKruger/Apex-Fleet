@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Form } from "antd";
+import { useEffect } from "react";
 import { useStyles } from "./style/styles";
 import { useRouter } from "next/navigation";
 
@@ -20,23 +19,8 @@ const SettingsPage = () => {
   const { updateEmployee, deleteEmployee } = useEmployeeActions();
   const { user } = useAuthState();
 
-  const [form] = Form.useForm();
-  const [loading, setLoading] = useState(false);
-
   const refresh = async () => {
-    setLoading(true);
     await getCurrentUser();
-
-    if (user) {
-      form.setFieldsValue({
-        userName: user.userName,
-        name: user.name,
-        surname: user.surname,
-        emailAddress: user.emailAddress,
-        roleNames: "Employee",
-      });
-    }
-    setLoading(false);
   };
 
   useEffect(() => {
@@ -45,7 +29,7 @@ const SettingsPage = () => {
 
   return (
     <>
-      {loading && !user ? (
+      {!user ? (
         <Loader />
       ) : (
         <div className={styles.updateContainer}>
@@ -54,9 +38,8 @@ const SettingsPage = () => {
             updateUser={updateEmployee}
             deleteUser={deleteEmployee}
             roleName={"Employee"}
-            redirectAfterDelete={() => router.push("/login")} getCurrentUser={function (): Promise<void> {
-              throw new Error("Function not implemented.");
-            }}
+            redirectAfterDelete={() => router.push("/login")}
+            getCurrentUser={getCurrentUser}
           />
         </div>
       )}</>

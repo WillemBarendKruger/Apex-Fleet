@@ -27,9 +27,14 @@ const withAuth = <P extends object>(
 
             if (allowedRoles.length > 0 && !allowedRoles.includes(userRole || "")) {
                 if (userRole === "Supervisor") {
-                    router.push("/supervisor/dashboard");
-                } else if (userRole === "Employee") {
-                    router.push("/emmployee/dashboard");
+                    sessionStorage.clear();
+                    message.error("You do not have permission to access this page. Please log in as a Employee.");
+                    router.push("/login");
+                }
+                else if (userRole === "Employee") {
+                    sessionStorage.clear();
+                    message.error("You do not have permission to access this page. Please log in as a Supervisor.");
+                    router.push("/login");
                 } else {
                     message.error("Login failed. Please check your credentials.");
                 }
