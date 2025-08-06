@@ -15,10 +15,12 @@
     <ProjectReference Include="..\..\src\Apex_IT.EntityFrameworkCore\Apex_IT.EntityFrameworkCore.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="DotNetEnv" Version="3.1.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
     <PackageReference Include="Npgsql" Version="8.0.4" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
     <PackageReference Include="NSubstitute" Version="5.1.0" />
+    <PackageReference Include="SendGrid" Version="9.29.3" />
     <PackageReference Include="Shouldly" Version="4.2.1" />
     <PackageReference Include="xunit" Version="2.9.0" />
     <PackageReference Include="xunit.extensibility.execution" Version="2.9.0" />

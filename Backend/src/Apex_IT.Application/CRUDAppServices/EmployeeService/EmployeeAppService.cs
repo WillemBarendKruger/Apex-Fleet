@@ -5,6 +5,7 @@ using Abp.UI;
 using Apex_IT.Authorization.Users;
 using Apex_IT.CRUDAppServices.ConditionReportService.Dto;
 using Apex_IT.CRUDAppServices.EmployeeService.Dto;
+using Apex_IT.EmailService;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,13 @@ namespace Apex_IT.CRUDAppServices.EmployeeService
     {
         private readonly UserManager _userManager;
         private readonly IRepository<User, long> _employeeRepository;
+        private readonly ISendGridEmailService _sendGridEmailService;
 
-        public EmployeeAppService(IRepository<User, long> repository, UserManager userManager, IRepository<User, long> employeeRepository) : base(repository)
+        public EmployeeAppService(IRepository<User, long> repository, UserManager userManager, IRepository<User, long> employeeRepository, ISendGridEmailService sendGridEmailService) : base(repository)
         {
             _userManager = userManager;
             _employeeRepository = employeeRepository;
+            _sendGridEmailService = sendGridEmailService;
         }
 
         public override async Task<EmployeeDto> CreateAsync(EmployeeDto input)
@@ -48,6 +51,20 @@ namespace Apex_IT.CRUDAppServices.EmployeeService
                 }
 
                 await _userManager.AddToRoleAsync(employee, "Employee");
+
+                await _sendGridEmailService.SendEmailAsync(
+                    input.EmailAddress,
+                    "Welcome to Apex IT",
+                  $@"
+                    <p>You have been registered successfully.</p>
+                    <p>Here are your credentials:</p>
+                    <ul>
+                      <li><strong>Username:</strong> {input.UserName}</li>
+                      <li><strong>Email:</strong> {input.EmailAddress}</li>
+                      <li><strong>Password:</strong> {input.Password}</li>
+                    </ul>
+                    <p><strong>Note:</strong> Update this for your own safety.</p>"
+                );
             }
             catch (Exception ex)
             {

@@ -42,7 +42,7 @@ const ProfileForm = ({
             setLoading(false);
         };
         fetchUser();
-    }, [userInfo]);
+    }, []);
 
     const handleUpdateDetails = async () => {
         try {

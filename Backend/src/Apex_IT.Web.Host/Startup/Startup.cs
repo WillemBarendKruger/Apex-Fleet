@@ -1,22 +1,24 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
+﻿using Abp.AspNetCore;
+using Abp.AspNetCore.Mvc.Antiforgery;
+using Abp.AspNetCore.SignalR.Hubs;
+using Abp.Castle.Logging.Log4Net;
+using Abp.Extensions;
+using Apex_IT.Configuration;
+using Apex_IT.EmailService;
+using Apex_IT.Identity;
+using Castle.Facilities.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Castle.Facilities.Logging;
-using Abp.AspNetCore;
-using Abp.AspNetCore.Mvc.Antiforgery;
-using Abp.Castle.Logging.Log4Net;
-using Abp.Extensions;
-using Apex_IT.Configuration;
-using Apex_IT.Identity;
-using Abp.AspNetCore.SignalR.Hubs;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using SendGrid;
+using System;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 
 namespace Apex_IT.Web.Host.Startup
 {
@@ -47,6 +49,12 @@ namespace Apex_IT.Web.Host.Startup
             AuthConfigurer.Configure(services, _appConfiguration);
 
             services.AddSignalR();
+
+            // Sendgrid
+            DotNetEnv.Env.TraversePath().Load("./.env");
+            var key = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
+            services.AddSingleton<ISendGridClient>(new SendGridClient(key));
+            services.AddTransient<ISendGridEmailService, SendGridEmailService>();
 
             // Configure CORS for angular2 UI
             services.AddCors(
