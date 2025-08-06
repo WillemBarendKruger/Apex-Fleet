@@ -28,7 +28,7 @@ export const useStyles = createStyles({
     padding-top: 20px;
     left: 0;
     background: #7AB2D3;
-   clip-path: polygon(0% 0%, 65% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(0% 0%, 65% 0%, 100% 100%, 0% 100%);
 
     @media (max-width: 768px) {
       width: 100%;
@@ -52,7 +52,7 @@ export const useStyles = createStyles({
     width: 100%;
     left: 0;
     right: 0;
-    clip-path: none; /* Remove angle on mobile for simplicity */
+    clip-path: none;
   }
 `,
   splitRight: css`
@@ -129,7 +129,14 @@ export const useStyles = createStyles({
     }
 
     @media (max-width: 360px) {
-      width: 200px;
+      width: 250px;
+    }
+  `,
+  loginButton: css`
+    min-width: 300px;
+    font-weight: bold;
+    @media (max-width: 360px) {
+      min-width: 250px;
     }
   `,
   flex: css`

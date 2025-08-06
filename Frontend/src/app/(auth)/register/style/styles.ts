@@ -12,11 +12,11 @@ export const useStyles = createStyles({
   `,
   left: css`
     left: 0;
-    background-color: #111;
+    background-color: #0b192c;
   `,
   right: css`
     right: 0;
-    background-color: #111;
+    background-color: #0b192c;
   `,
   splitLeft: css`
     height: 100%;
@@ -43,14 +43,13 @@ export const useStyles = createStyles({
   padding-top: 20px;
   background-color: #7AB2D3;
 
-  /* Create angled edge using clip-path */
   clip-path: polygon(35% 0%, 100% 0%, 100% 100%, 0% 100%);
   
   @media (max-width: 768px) {
     width: 100%;
     right: 0;
     left: 0;
-    clip-path: none; /* Remove angle on mobile for simplicity */
+    clip-path: none;
   }
 `,
   Right: css`
@@ -68,7 +67,7 @@ export const useStyles = createStyles({
     width: 100%;
     right: 0;
     left: 0;
-    clip-path: none; /* Remove angle on mobile for simplicity */
+    clip-path: none;
   }`,
   centered: css`
     position: absolute;
@@ -76,6 +75,9 @@ export const useStyles = createStyles({
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+  `,
+  subHeading: css`
+    color: #ff6500;
   `,
   page: css`
     height: 100%;
@@ -86,6 +88,69 @@ export const useStyles = createStyles({
     align-items: center;
     justify-items: center;
     justify-content: center;
+  `,
+  formContent: css`
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+  `,
+  heading: css`
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    padding: 1rem;
+    color: white;
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 20px;
+    }
+  `,
+  input: css`
+    width: 300px;
+    border-color: #ff6500;
+    background: #0B192C;
+    &:hover {
+      background-color: #0B192C !important;
+    }
+      &:active {
+      background-color: #0B192C !important;
+    }
+      &:focus {
+      background-color: #0B192C !important;
+    }
+
+    @media (max-width: 480px) {
+      width: 300px;
+    }
+
+    @media (max-width: 360px) {
+      width: 250px;
+    }
+  `,
+  loginButton: css`
+    min-width: 300px;
+    font-weight: bold;
+    @media (max-width: 360px) {
+      min-width: 250px;
+    }
+  `,
+  registerBtn: css`
+    min-width: 300px;
+    font-weight: bold;
+    @media (max-width: 360px) {
+      min-width: 250px;
+    }
+  `,
+  flex: css`
+    justify: space-between;
+    align: center;
+  `,
+  link: css`
+    color: #0b192c;
   `,
   mobileLogo: css`
     display: none;
@@ -109,79 +174,15 @@ export const useStyles = createStyles({
       max-height: 100px;
     }
   `,
-  heading: css`
-    align-items: center;
-    text-align: center;
-    font-size: 35px;
-    padding: 1rem;
-    color: white;
-    @media (max-width: 768px) {
-      font-size: 24px;
-    }
+
+  logoText: css`
+    color: #ff6500;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
 
     @media (max-width: 480px) {
       font-size: 20px;
     }
   `,
-  input: css`
-    width: 300px !important;
-    border-color: #080808ff;
-    background: #0B192C;
-    &:hover {
-      background-color: #0b192c !important;
-    }
-    &:active {
-      background-color: #0b192c !important;
-    }
-    &:focus {
-      background-color: #0B192C !important;
-    }
-
-    @media (max-width: 480px) {
-      width: 300px !important;
-    }
-
-    @media (max-width: 360px) {
-      width: 200px !important;
-    }
-  `,
-  select: css`
-    width: 300px;
-    border-color: grey;
-    background: #0b192c;
-    &:hover {
-      background-color: #0b192c !important;
-    }
-    &:active {
-      background-color: #0b192c !important;
-    }
-    &:focus {
-      background-color: #0b192c !important;
-    }
-
-    @media (max-width: 480px) {
-      width: 300px;
-    }
-
-    @media (max-width: 360px) {
-      width: 200px;
-    }
-  `,
-  flex: css`
-    justify: space-between;
-    align: center;
-  `,
-  loginBtn: css`
-  width: 300px ;
-    align-items: center;
-    justify-items: center;
-    justify-content: center;
-    background-color: #0b192c !important;
-  `,
-  registerBtn: css`
-  background-color: #E55C00 !important;
-  &:hover {
-      background-color: #ff6500 !important;
-    }
-  `
 });

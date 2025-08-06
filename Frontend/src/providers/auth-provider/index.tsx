@@ -8,7 +8,6 @@ import { useContext, useReducer } from "react";
 import { useRouter } from "next/navigation";
 import { decodeToken, AbpTokenProperies } from "@/utils/jwt";
 import { getCurrentUserError, getCurrentUserPending, getCurrentUserSuccess, logInError, logInPending, logInSuccess, logOutError, logOutPending, logOutSuccess, registerError, registerPending, registerSuccess } from "./actions";
-import { jwtDecode } from "jwt-decode";
 import { message } from "antd/es";
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
@@ -26,12 +25,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 const decoded = decodeToken(token);
                 const userRole = decoded[AbpTokenProperies.role];
                 const userId = decoded[AbpTokenProperies.nameidentifier];
-                const userName = decoded[AbpTokenProperies.name];
+                const currentUser = decoded[AbpTokenProperies.name];
 
-                sessionStorage.setItem("token", token);
+                sessionStorage.setItem("currentUser", currentUser);
                 sessionStorage.setItem("role", userRole);
                 sessionStorage.setItem("userId", userId);
-                sessionStorage.setItem("currentUser", userName);
 
                 if (userRole === "Supervisor") {
                     getCurrentUser();
@@ -99,7 +97,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         await instance
             .get(endpoint)
             .then((response) => {
-                sessionStorage.setItem("UserInfo", JSON.stringify(response.data.result.user));
                 dispatch(getCurrentUserSuccess(response.data.result.user));
             })
             .catch((error) => {

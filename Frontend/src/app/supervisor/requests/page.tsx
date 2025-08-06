@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { Table, Button, Space, message, Tooltip, Modal, Input } from "antd";
+import { Table, Button, Space, message, Tooltip, Modal, Input, Tag } from "antd";
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import { useStyles } from "./style/styles";
 import Loader from "@/components/loader/loader";
@@ -116,6 +116,9 @@ const RequestListPage = () => {
             title: "Status",
             dataIndex: "status",
             key: "status",
+            render: (status: string) => {
+                return <Tag color={status === "pending" ? "orange" : status === "declined" ? "red" : "green"}>{status.toUpperCase()}</Tag>;
+            },
         },
         {
             title: "Actions",
@@ -126,6 +129,7 @@ const RequestListPage = () => {
                         <Button
                             icon={<CheckCircleOutlined />}
                             type="default"
+                            style={{ backgroundColor: "#52c41a", borderColor: "#52c41a" }}
                             onClick={() => {
                                 setSelectedRecord(record);
                                 setApproveModalVisible(true);

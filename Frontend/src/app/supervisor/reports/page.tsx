@@ -148,6 +148,7 @@ const ReportsListPage = () => {
                         <Button
                             icon={<ToolOutlined />}
                             type="default"
+                            style={{ borderColor: "#ff9900ff", backgroundColor: "#ff9900ff" }}
                             onClick={() => {
                                 setSelectedRecord(record);
                                 setMaintenanceModalVisible(true);
