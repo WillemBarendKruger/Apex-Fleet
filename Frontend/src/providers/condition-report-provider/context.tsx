@@ -13,7 +13,7 @@ export interface IConditionReportActionsContext {
     getConditionReports: () => Promise<void>;
     createConditionReport: (ConditionReport: IConditionReport) => Promise<void>;
     updateConditionReport: (ConditionReport: IConditionReport) => Promise<void>;
-    deleteConditionReport: (ConditionReportId: string) => void;
+    deleteConditionReport: (ConditionReportId: string) => Promise<void>;
 }
 
 export const INITIAL_STATE: IConditionReportStateContext = {
