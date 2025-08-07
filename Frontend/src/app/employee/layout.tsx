@@ -49,7 +49,7 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
         if (pathname.includes("/dashboard")) return "1";
         if (pathname.includes("/equipment")) return "2";
         if (pathname.includes("/settings")) return "3";
-        if (pathname.includes("/employee/troubleshoot-ai")) return "";
+        if (pathname.includes("/employee/troubleshoot-ai")) return "4";
         return "1";
     };
 
