@@ -42,7 +42,7 @@ const EquipmentPage = () => {
     const refresh = async () => {
         setLoading(true);
         await Promise.all([getEmployees(), getCategories(), getEquipments(), getRequests()]);
-        setFilteredEquipment(myEquipment ?? []);
+        setLoading(false)
     };
 
     useEffect(() => {
@@ -51,7 +51,6 @@ const EquipmentPage = () => {
             setUserId(parseInt(storedId));
         }
         refresh();
-        setLoading(false);
     }, []);
 
     useEffect(() => {
@@ -150,6 +149,7 @@ const EquipmentPage = () => {
         form.resetFields();
         setReportModalVisible(true);
     };
+
     const handleReportCondition = async () => {
         setLoading(true);
         try {

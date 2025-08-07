@@ -11,6 +11,9 @@ import {
     createConditionReportError,
     createConditionReportPending,
     createConditionReportSuccess,
+    deleteConditionReportError,
+    deleteConditionReportPending,
+    deleteConditionReportSuccess,
     getConditionReportsError,
     getConditionReportsPending,
     getConditionReportsSuccess,
@@ -19,6 +22,7 @@ import {
     updateConditionReportSuccess,
 } from "./actions";
 import { IConditionReport } from "./models";
+import { message } from "antd";
 
 export const ConditionReportsProvider = ({ children }: { children: React.ReactNode }) => {
     const [state, dispatch] = useReducer(ConditionReportReducer, INITIAL_STATE);
@@ -80,13 +84,30 @@ export const ConditionReportsProvider = ({ children }: { children: React.ReactNo
             });
     };
 
+    const deleteConditionReport = async (requestId: string) => {
+        dispatch(deleteConditionReportPending());
+        const endpoint = `services/app/ConditionReport/Delete?Id=${requestId}`;
+        await instance
+            .delete(endpoint)
+            .then((response) => {
+                dispatch(deleteConditionReportSuccess(response.data));
+                message.success("Rreport deleted successfully.");
+            })
+            .catch((error) => {
+                console.error(error);
+                dispatch(deleteConditionReportError());
+                message.error("Failed to delete Report.");
+            });
+    };
+
     return (
         <ConditionReportStateContext.Provider value={state}>
             <ConditionReportActionContext.Provider
                 value={{
                     getConditionReports,
                     createConditionReport,
-                    updateConditionReport
+                    updateConditionReport,
+                    deleteConditionReport
                 }}
             >
                 {children}

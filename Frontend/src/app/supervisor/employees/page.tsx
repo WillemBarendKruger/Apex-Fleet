@@ -33,13 +33,29 @@ const EmployeesPage = () => {
     await getEmployees();
     await getEquipments();
     setLoading(false);
-
   }
 
   useEffect(() => {
     refresh();
-    setFilteredEmployees(enrichedEmployees);
   }, []);
+
+  const enrichedEmployees = useMemo(() => {
+    return Employees?.map((employee) => {
+      const equipmentOwned = Equipments?.filter(
+        (eq) => eq.handlerId === employee.id
+      ) || [];
+
+      return {
+        ...employee,
+        equipmentCount: equipmentOwned.length,
+      };
+    }) ?? [];
+  }, [Employees, Equipments]);
+
+
+  useEffect(() => {
+    setFilteredEmployees(enrichedEmployees);
+  }, [enrichedEmployees]);
 
   useEffect(() => {
     handleSearch(searchTerm);
@@ -70,19 +86,6 @@ const EmployeesPage = () => {
     }
     setLoading(false);
   };
-
-  const enrichedEmployees = useMemo(() => {
-    return Employees?.map((employee) => {
-      const equipmentOwned = Equipments?.filter(
-        (eq) => eq.handlerId === employee.id
-      ) || [];
-
-      return {
-        ...employee,
-        equipmentCount: equipmentOwned.length,
-      };
-    }) ?? [];
-  }, [Employees, Equipments]);
 
   const handleSearch = (term: string) => {
     setSearchTerm(term);
@@ -122,7 +125,7 @@ const EmployeesPage = () => {
       key: "email",
     },
     {
-      title: "Equipment in Possession",
+      title: "Equipment",
       dataIndex: "equipmentCount",
       key: "equipment",
     },

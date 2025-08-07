@@ -38,12 +38,15 @@ const EquipmentPage = () => {
         await getCategories();
         await getEquipments();
         setLoading(false);
-        setFilteredEquipment(Equipments || []);
     }
 
     useEffect(() => {
         refresh();
     }, []);
+
+    useEffect(() => {
+        setFilteredEquipment(Equipments || []);
+    }, [Equipments]);
 
     useEffect(() => {
         handleSearch(searchTerm);
@@ -265,10 +268,9 @@ const EquipmentPage = () => {
                         <Select
                             mode="tags"
                             placeholder="Select or create a category"
-                            tokenSeparators={[',']}
                             style={{ width: '100%' }}
                             onChange={(value) => {
-                                const lastValue = value[value.length - 1];
+                                const lastValue = value[0];
                                 form.setFieldsValue({ categoryName: lastValue });
                             }}
                         >

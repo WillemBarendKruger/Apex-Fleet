@@ -24,6 +24,7 @@ import {
     updateEquipmentPending,
 } from "./actions";
 import { IEquipment } from "./models";
+import { message } from "antd";
 
 export const EquipmentsProvider = ({ children }: { children: React.ReactNode }) => {
     const [state, dispatch] = useReducer(EquipmentReducer, INITIAL_STATE);
@@ -89,9 +90,11 @@ export const EquipmentsProvider = ({ children }: { children: React.ReactNode }) 
             .then((response) => {
                 dispatch(createEquipmentSuccess(response.data.data));
                 getEquipments();
+                message.success("Created successfully")
             })
             .catch((error) => {
                 dispatch(createEquipmentError());
+                message.error("Failed to create")
                 console.error(error);
             });
     };
@@ -103,10 +106,12 @@ export const EquipmentsProvider = ({ children }: { children: React.ReactNode }) 
             .put(endpoint, equiment)
             .then((response) => {
                 dispatch(createEquipmentSuccess(response.data));
+                message.success("Equipment updated")
             })
             .catch((error) => {
                 console.error(error);
                 dispatch(updateEquipmentError());
+                message.error("Failed to update")
             });
     };
 
@@ -117,10 +122,13 @@ export const EquipmentsProvider = ({ children }: { children: React.ReactNode }) 
             .delete(endpoint)
             .then((response) => {
                 dispatch(deleteEquipmentSuccess(response.data));
+                message.success("Deleted successfully");
+                getEquipments();
             })
             .catch((error) => {
                 console.error(error);
                 dispatch(deleteEquipmentError());
+                message.error("Delete failed")
             });
     };
 

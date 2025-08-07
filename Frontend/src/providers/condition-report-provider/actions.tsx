@@ -18,6 +18,10 @@ export enum ConditionReportActionsEnum {
     updateConditionReportPending = "UPDATE_CONDITIONREPORT_PENDING",
     updateConditionReportSuccess = "UPDATE_CONDITIONREPORT_SUCCESS",
     updateConditionReportError = "UPDATE_CONDITIONREPORT_ERROR",
+
+    deleteConditionReportPending = "DELETE_CONDITIONREPORT_PENDING",
+    deleteConditionReportSuccess = "DELETE_CONDITIONREPORT_SUCCESS",
+    deleteConditionReportError = "DELETE_CONDITIONREPORT_ERROR",
 }
 
 export const getConditionReportsPending = createAction<IConditionReportStateContext>(
@@ -97,5 +101,25 @@ export const updateConditionReportSuccess = createAction<IConditionReportStateCo
 
 export const updateConditionReportError = createAction<IConditionReportStateContext>(
     ConditionReportActionsEnum.updateConditionReportError,
+    () => ({ isPending: false, isSuccess: false, isError: true })
+);
+
+export const deleteConditionReportPending = createAction<IConditionReportStateContext>(
+    ConditionReportActionsEnum.deleteConditionReportPending,
+    () => ({ isPending: true, isSuccess: false, isError: false })
+);
+
+export const deleteConditionReportSuccess = createAction<
+    IConditionReportStateContext,
+    IConditionReport
+>(ConditionReportActionsEnum.deleteConditionReportSuccess, (report: IConditionReport) => ({
+    isPending: false,
+    isSuccess: true,
+    isError: false,
+    report,
+}));
+
+export const deleteConditionReportError = createAction<IConditionReportStateContext>(
+    ConditionReportActionsEnum.deleteConditionReportError,
     () => ({ isPending: false, isSuccess: false, isError: true })
 );

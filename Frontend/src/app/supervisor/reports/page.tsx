@@ -5,18 +5,18 @@ import { Table, Button, Space, message, Tag, Tooltip, Input, Modal, Card } from 
 import { ToolOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import { useStyles } from "./style/styles";
 import { useEquipmentState, useEquipmentActions } from "@/providers/equipment-provider";
-import Loader from "@/components/loader/loader";
 import { useEmployeeActions } from "@/providers/employee-provider";
 import { useConditionReportState, useConditionReportActions } from "@/providers/condition-report-provider/";
 import { IConditionReport } from "@/providers/condition-report-provider/models";
 import Search from "antd/es/input/Search";
+import { deleteConditionReportError } from "@/providers/condition-report-provider/actions";
 
 const ReportsListPage = () => {
     const { styles } = useStyles();
     const { getEmployees } = useEmployeeActions();
     const { getEquipments, updateEquipment } = useEquipmentActions();
     const { Equipments } = useEquipmentState();
-    const { getConditionReports, updateConditionReport } = useConditionReportActions();
+    const { getConditionReports, updateConditionReport, deleteConditionReport } = useConditionReportActions();
     const { ConditionReports } = useConditionReportState();
 
     const [loading, setLoading] = useState(false);
@@ -38,6 +38,10 @@ const ReportsListPage = () => {
         refresh();
         setFilteredReports(ConditionReports || []);
     }, []);
+
+    useEffect(() => {
+        setFilteredReports(pendingReports || []);
+    }, [ConditionReports]);
 
     useEffect(() => {
         handleSearch(searchTerm);
@@ -67,18 +71,9 @@ const ReportsListPage = () => {
         }
 
         try {
-            const maintenanceNote = "Sent for maintenance due to reported condition.";
-
-            const updatedDescription = report.description
-                ? `${report.description} ${maintenanceNote}`
-                : maintenanceNote;
 
             await Promise.all([
-                updateConditionReport({
-                    ...report,
-                    description: updatedDescription,
-                    status: "maintenance",
-                }),
+                deleteConditionReport(report.id ?? ""),
                 updateEquipment({
                     ...equipment,
                     status: "maintenance",
@@ -94,7 +89,7 @@ const ReportsListPage = () => {
     };
 
 
-    const pendingReports = ConditionReports?.filter(report => report.status === "pending") || [];
+    const pendingReports = ConditionReports?.filter(report => report.status === "pending" || report.status === "maintenance") || [];
 
 
     const handleDecline = async (report: IConditionReport, reason: string) => {
@@ -161,7 +156,7 @@ const ReportsListPage = () => {
             dataIndex: "status",
             key: "status",
             render: (status: string) => {
-                return <Tag color={status === "pending" ? "orange" : status === "declined" ? "red" : "green"}>{status.toUpperCase()}</Tag>;
+                return <Tag style={{ background: "transparent" }} color={status === "pending" ? "orange" : status === "declined" ? "red" : "green"}>{status.toUpperCase()}</Tag>;
             },
         },
         {

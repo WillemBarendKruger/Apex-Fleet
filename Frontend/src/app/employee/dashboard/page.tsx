@@ -1,6 +1,6 @@
 "use client";
 
-import { Row, Col, Card } from "antd";
+import { Row, Col, Card, message } from "antd";
 import { useStyles } from "./style/styles";
 import { useEffect, useState } from "react";
 
@@ -29,10 +29,10 @@ const EmployeeDashboard = () => {
     const { getEquipments } = useEquipmentActions();
 
     const { ConditionReports } = useConditionReportState();
-    const { getConditionReports } = useConditionReportActions();
+    const { getConditionReports, deleteConditionReport } = useConditionReportActions();
 
     const { Requests } = useRequestState();
-    const { getRequests } = useRequestActions();
+    const { getRequests, deleteRequest } = useRequestActions();
 
     const userId = useUserId();
     const [loading, setLoading] = useState(true);
@@ -59,6 +59,27 @@ const EmployeeDashboard = () => {
 
     const myRequests: IRequest[] =
         Requests?.filter(req => req.requestingEmployeeId === userId) || [];
+
+    const handleDeleteReport = async (id: string) => {
+        try {
+            await deleteConditionReport(id);
+            message.success("Report deleted.");
+            refresh();
+        } catch {
+            message.error("Failed to delete report.");
+        }
+    };
+
+    const handleDeleteRequest = async (id: string) => {
+        try {
+            await deleteRequest(id);
+            message.success("Request deleted.");
+            refresh();
+        } catch (error) {
+            message.error("Failed to delete request.");
+            console.error(error);
+        }
+    };
 
     return (
         <div className={styles.dashboardContainer}>
@@ -117,7 +138,8 @@ const EmployeeDashboard = () => {
                     <DashboardSection title="My Recent Activity">
                         <Row gutter={[16, 16]} className={styles.quickActionsRow}>
                             <Col xs={24} md={12}>
-                                <ReportsList reports={myReports.toReversed().slice(0, 3)} />
+                                <ReportsList reports={myReports.toReversed().slice(0, 3)} onDelete={handleDeleteReport}
+                                />
                             </Col>
                             <Col xs={24} md={12}>
                                 <RequestList
@@ -125,6 +147,8 @@ const EmployeeDashboard = () => {
                                         .filter(req => req.status === "declined")
                                         .reverse()
                                         .slice(0, 3)}
+                                    onDelete={handleDeleteRequest}
+
                                 />
                             </Col>
                         </Row>
