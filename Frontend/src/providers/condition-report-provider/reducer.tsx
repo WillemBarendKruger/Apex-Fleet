@@ -41,6 +41,18 @@ export const ConditionReportReducer = handleActions<IConditionReportStateContext
             ...state,
             ...action.payload,
         }),
+        [ConditionReportActionsEnum.deleteConditionReportPending]: (state, action) => ({
+            ...state,
+            ...action.payload,
+        }),
+        [ConditionReportActionsEnum.deleteConditionReportSuccess]: (state, action) => ({
+            ...state,
+            ...action.payload,
+        }),
+        [ConditionReportActionsEnum.deleteConditionReportError]: (state, action) => ({
+            ...state,
+            ...action.payload,
+        }),
     },
     INITIAL_STATE
 );

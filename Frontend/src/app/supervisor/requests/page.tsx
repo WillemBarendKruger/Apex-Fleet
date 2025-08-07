@@ -41,6 +41,7 @@ const RequestListPage = () => {
 
     const handleApprove = async (record: IRequest) => {
         try {
+            message.info("Processing Request")
             if (!record.id || !record.equipmentId || !record.requestingEmployeeId) {
                 message.error("Missing request, equipment, or employee ID.");
                 return;
@@ -122,6 +123,10 @@ const RequestListPage = () => {
     }, []);
 
     useEffect(() => {
+        setFilteredRequests(Requests || []);
+    }, [Requests]);
+
+    useEffect(() => {
         handleSearch(searchTerm);
     }, [searchTerm]);
 
@@ -131,7 +136,7 @@ const RequestListPage = () => {
         const lowerTerm = term.toLowerCase();
 
         const results = newRequests.filter((item: IRequest) =>
-            [item.description, item.equipmentName, item.requestingEmployeeEmail, item.status]
+            [item.description, item.equipmentName, item.requestingEmployeeEmail]
                 .filter(Boolean)
                 .some((field) =>
                     field?.toLowerCase().includes(lowerTerm)
@@ -160,7 +165,7 @@ const RequestListPage = () => {
             dataIndex: "status",
             key: "status",
             render: (status: string) => {
-                return <Tag color={status === "pending" ? "orange" : status === "declined" ? "red" : "green"}>{status.toUpperCase()}</Tag>;
+                return <Tag style={{ background: "transparent" }} color={status === "pending" ? "orange" : status === "declined" ? "red" : "green"}>{status.toUpperCase()}</Tag>;
             },
         },
         {
