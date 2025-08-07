@@ -6,7 +6,7 @@ import Title from "antd/es/typography/Title";
 const { Text } = Typography;
 
 interface Props {
-    requests: IRequest[];
+    requests: IRequest[] | undefined;
 }
 
 const RequestList: React.FC<Props> = ({ requests }) => (

@@ -12,6 +12,7 @@ import ReportsList from "@/components/list-component/ReportsList";
 import QuickActionButton from "@/components/ActionButtons/ActionButtons";
 import DashboardSection from "@/components/DashboardSection/DashboardSection";
 import SummaryCard from "@/components/SummaryCard/SummaryCard";
+import RequestList from "@/components/RequestList/RequestList";
 
 
 const SupervisorDashboard = () => {
@@ -110,6 +111,14 @@ const SupervisorDashboard = () => {
                         <Row gutter={[16, 16]} className={styles.quickActionsRow}>
                             <Col xs={24} md={12}>
                                 <ReportsList reports={ConditionReports?.filter(rp => rp.status === "pending").slice(0, 3) || []} /></Col>
+                            <Col xs={24} md={12}>
+                                <RequestList
+                                    requests={Requests
+                                        ?.filter(req => req.status === "pending")
+                                        .reverse()
+                                        .slice(0, 3)}
+                                />
+                            </Col>
                         </Row>
                     </DashboardSection>
                 </>

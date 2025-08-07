@@ -1,13 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Table, Button, Modal, Form, Input, Space, message, Card } from "antd";
 import { useStyles } from "./style/styles";
 import { IEmployee } from "@/providers/employee-provider/models";
-import Loader from "@/components/loader/loader";
 import { useAuthActions } from "@/providers/auth-provider";
 import { useEmployeeState, useEmployeeActions } from "@/providers/employee-provider";
 import { useEquipmentState, useEquipmentActions } from "@/providers/equipment-provider"
+import Search from "antd/es/input/Search";
+import Paragraph from "antd/es/typography/Paragraph";
+import Title from "antd/es/typography/Title";
 
 const EmployeesPage = () => {
   const { styles } = useStyles();
@@ -23,6 +25,8 @@ const EmployeesPage = () => {
 
   const [selectedEmployee, setSelectedEmployee] = useState<IEmployee | null>(null);
   const [profileModalVisible, setProfileModalVisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredEmployees, setFilteredEmployees] = useState<IEmployee[]>([]);
 
   const refresh = async () => {
     setLoading(true);
@@ -34,7 +38,12 @@ const EmployeesPage = () => {
 
   useEffect(() => {
     refresh();
+    setFilteredEmployees(enrichedEmployees);
   }, []);
+
+  useEffect(() => {
+    handleSearch(searchTerm);
+  }, [searchTerm]);
 
   const handleAddEmployee = async () => {
     setLoading(true);
@@ -62,16 +71,35 @@ const EmployeesPage = () => {
     setLoading(false);
   };
 
-  const enrichedEmployees = Employees?.map((employee) => {
-    const equipmentOwned = Equipments?.filter(
-      (eq) => eq.handlerId === employee.id
-    ) || [];
+  const enrichedEmployees = useMemo(() => {
+    return Employees?.map((employee) => {
+      const equipmentOwned = Equipments?.filter(
+        (eq) => eq.handlerId === employee.id
+      ) || [];
 
-    return {
-      ...employee,
-      equipmentCount: equipmentOwned.length,
-    };
-  });
+      return {
+        ...employee,
+        equipmentCount: equipmentOwned.length,
+      };
+    }) ?? [];
+  }, [Employees, Equipments]);
+
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
+
+    const lowerTerm = term.toLowerCase();
+
+    const results = enrichedEmployees.filter((item: IEmployee) =>
+      [item.name, item.emailAddress, item.userName, item.surname]
+        .filter(Boolean)
+        .some((field) =>
+          field.toLowerCase().includes(lowerTerm)
+        )
+    );
+
+    setFilteredEmployees(results);
+  };
+
 
   const employeeEquipments = Equipments?.filter(
     (eq) => eq.handlerId === selectedEmployee?.id
@@ -133,42 +161,87 @@ const EmployeesPage = () => {
 
 
       <Modal
-        title="Employee Profile"
+        title={<Title level={4} style={{ marginBottom: 0, padding: 10 }}>Employee Profile</Title>}
         open={profileModalVisible}
         onCancel={() => setProfileModalVisible(false)}
         footer={[
-          <Button key="close" onClick={() => setProfileModalVisible(false)}>
+          <Button
+            key="close"
+            onClick={() => setProfileModalVisible(false)}
+            className={styles.CloseBtn}
+          >
             Close
           </Button>,
         ]}
+        bodyStyle={{
+          backgroundColor: "#2C2C2C",
+          color: "#E5E7EB",
+          borderRadius: "8px",
+          padding: "24px",
+        }}
       >
         {selectedEmployee ? (
-          <div>
-            <p><strong>Name:</strong> {selectedEmployee.name} {selectedEmployee.surname}</p>
-            <p><strong>Email:</strong> {selectedEmployee.emailAddress}</p>
-            <p><strong>Username:</strong> {selectedEmployee.userName}</p>
-            <p><strong>Equipment Count:</strong> {selectedEmployee.equipmentCount}</p>
-            <p><strong>Equipment:</strong></p>
-            <ul>
-              {employeeEquipments.map((eq) => (
-                <li key={eq.id}>{eq.name}</li>
-              ))}
-            </ul>
+          <div style={{ overflowX: "auto" }}>
+            <table style={{
+              width: "100%",
+              borderCollapse: "collapse",
+              backgroundColor: "#1F1F1F",
+              color: "#E5E7EB",
+              borderRadius: "6px",
+              overflow: "hidden",
+            }}>
+              <tbody>
+                <tr>
+                  <td className={styles.cellStyle}><strong>Name</strong></td>
+                  <td className={styles.cellStyle}>{selectedEmployee.name} {selectedEmployee.surname}</td>
+                </tr>
+                <tr>
+                  <td className={styles.cellStyle}><strong>Email</strong></td>
+                  <td className={styles.cellStyle}>{selectedEmployee.emailAddress}</td>
+                </tr>
+                <tr>
+                  <td className={styles.cellStyle}><strong>Username</strong></td>
+                  <td className={styles.cellStyle}>{selectedEmployee.userName}</td>
+                </tr>
+                <tr>
+                  <td className={styles.cellStyle}><strong>Equipment Count</strong></td>
+                  <td className={styles.cellStyle}>{selectedEmployee.equipmentCount}</td>
+                </tr>
+                <tr>
+                  <td className={styles.cellStyle}><strong>Equipment</strong></td>
+                  <td className={styles.cellStyle}>
+                    {employeeEquipments.length > 0 ? (
+                      <ul style={{ paddingLeft: "16px", margin: 0 }}>
+                        {employeeEquipments.map((eq) => (
+                          <li key={eq.id} style={{ color: "#A7D129", marginBottom: "4px" }}>
+                            {eq.name}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <span style={{ color: "#9CA3AF" }}>No equipment assigned.</span>
+                    )}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         ) : (
-          <p>No employee selected.</p>
+          <Paragraph>No employee selected.</Paragraph>
         )}
       </Modal>
 
+
       <Card className={styles.EmployeesContainer}>
+        <Search onSearch={handleSearch} allowClear placeholder="Search for Employees" style={{ border: "2px solid #84CC16" }} onChange={(e) => setSearchTerm(e.target.value)} />
         <Table
           columns={columns}
-          dataSource={enrichedEmployees}
+          dataSource={filteredEmployees}
           className={styles.EmployeesTable}
           rowKey={(record) => record.userName}
           pagination={{ pageSize: 5 }}
           scroll={{ x: "max-content" }}
-          loading={!enrichedEmployees}
+          loading={!Equipments || loading}
         />
       </Card>
 

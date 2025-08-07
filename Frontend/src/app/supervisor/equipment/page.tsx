@@ -10,6 +10,7 @@ import { useEquipmentState, useEquipmentActions } from "@/providers/equipment-pr
 import { useCategoryActions, useCategoryState } from "@/providers/category-provider"
 import { CheckSquareOutlined } from "@ant-design/icons";
 
+
 const EquipmentPage = () => {
     const { styles } = useStyles();
     const { Employees } = useEmployeeState();
@@ -25,6 +26,11 @@ const EquipmentPage = () => {
 
     const [selectedHandler, setSelectedHandler] = useState<IEmployee | null>(null);
     const [handlerModalVisible, setHandlerModalVisible] = useState(false);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [filteredEquipment, setFilteredEquipment] = useState<IEquipment[]>([]);
+    const hasReturningEquipment = Equipments?.some(eq => eq.status === "returning");
+
+    const { Search } = Input;
 
     const refresh = async () => {
         setLoading(true);
@@ -32,11 +38,31 @@ const EquipmentPage = () => {
         await getCategories();
         await getEquipments();
         setLoading(false);
+        setFilteredEquipment(Equipments || []);
     }
 
     useEffect(() => {
         refresh();
     }, []);
+
+    useEffect(() => {
+        handleSearch(searchTerm);
+    }, [searchTerm]);
+
+    const handleSearch = (term: string) => {
+        setSearchTerm(term);
+
+        const lowerTerm = term.toLowerCase();
+
+        const results = (Equipments ?? []).filter((item) =>
+            item.name.toLowerCase().includes(lowerTerm) ||
+            item.serialNumber.toLowerCase().includes(lowerTerm) ||
+            item.status.toLowerCase().includes(lowerTerm) ||
+            item.handlerEmail?.toLowerCase().includes(lowerTerm)
+        );
+
+        setFilteredEquipment(results);
+    };
 
     const handleAddEquipment = async () => {
         setLoading(true);
@@ -129,22 +155,35 @@ const EquipmentPage = () => {
                         ) : (
                             <span>Unassigned</span>
                         )}
-
-                        {record.status === "returning" && (
-                            <Tooltip title="Return Equipment">
-                                <Button
-                                    icon={<CheckSquareOutlined />}
-                                    type="primary"
-                                    style={{ backgroundColor: "#52c41a", borderColor: "#52c41a" }}
-                                    onClick={() => confirmReturn(record)}
-                                />
-                            </Tooltip>
-                        )}
                     </Space>
                 );
             },
-        }
+        },
+
+        ...(hasReturningEquipment
+            ? [
+                {
+                    title: "Actions",
+                    key: "actions",
+                    render: (_: IEquipment, record: IEquipment) => (
+                        <Space>
+                            {record.status === "returning" && (
+                                <Tooltip title="Return Equipment">
+                                    <Button
+                                        icon={<CheckSquareOutlined />}
+                                        type="primary"
+                                        style={{ backgroundColor: "#52c41a", borderColor: "#52c41a" }}
+                                        onClick={() => confirmReturn(record)}
+                                    />
+                                </Tooltip>
+                            )}
+                        </Space>
+                    ),
+                },
+            ]
+            : []),
     ];
+
 
     return (
 
@@ -157,21 +196,24 @@ const EquipmentPage = () => {
                     marginBottom: "16px",
                 }}
             >
+
                 <h2 style={{ margin: 0 }}>Equipment List</h2>
                 <Button type="primary" onClick={() => setModalVisible(true)}>
                     Add Equipment
                 </Button>
+
             </div>
 
             <Card className={styles.equipmentContainer}>
+                <Search onSearch={handleSearch} allowClear placeholder="Search for Equipment" style={{ border: "2px solid #84CC16" }} onChange={(e) => setSearchTerm(e.target.value)} />
                 <Table
                     columns={columns}
-                    dataSource={Equipments}
+                    dataSource={filteredEquipment}
                     className={styles.equipmentTable}
                     rowKey={(record) => record.id || record.serialNumber}
                     pagination={{ pageSize: 5 }}
                     scroll={{ x: "max-content" }}
-                    loading={!Equipments}
+                    loading={!Equipments || loading}
                 />
             </Card>
 
