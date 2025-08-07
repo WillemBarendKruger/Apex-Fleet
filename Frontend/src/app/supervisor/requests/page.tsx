@@ -9,6 +9,7 @@ import { useCategoryActions } from "@/providers/category-provider";
 import { useRequestState, useRequestActions } from "@/providers/request-provider";
 import { IRequest } from "@/providers/request-provider/models";
 import { useEquipmentState, useEquipmentActions } from "@/providers/equipment-provider";
+import Search from "antd/es/input/Search";
 
 const RequestListPage = () => {
     const { styles } = useStyles();
@@ -26,6 +27,9 @@ const RequestListPage = () => {
     const [declineModalVisible, setDeclineModalVisible] = useState(false);
     const [selectedRecord, setSelectedRecord] = useState<IRequest | null>(null);
     const [declineReason, setDeclineReason] = useState("");
+
+    const [searchTerm, setSearchTerm] = useState("");
+    const [filteredRequests, setFilteredRequests] = useState<IRequest[]>([]);
 
     const refresh = async () => {
         setLoading(true);
@@ -114,7 +118,28 @@ const RequestListPage = () => {
 
     useEffect(() => {
         refresh();
+        setFilteredRequests(Requests || []);
     }, []);
+
+    useEffect(() => {
+        handleSearch(searchTerm);
+    }, [searchTerm]);
+
+    const handleSearch = (term: string) => {
+        setSearchTerm(term);
+
+        const lowerTerm = term.toLowerCase();
+
+        const results = newRequests.filter((item: IRequest) =>
+            [item.description, item.equipmentName, item.requestingEmployeeEmail, item.status]
+                .filter(Boolean)
+                .some((field) =>
+                    field?.toLowerCase().includes(lowerTerm)
+                )
+        );
+
+        setFilteredRequests(results);
+    };
 
     const columns = [
         {
@@ -185,14 +210,15 @@ const RequestListPage = () => {
             </div>
 
             <Card className={styles.requestsContainer}>
+                <Search onSearch={handleSearch} allowClear placeholder="Search for Requests" style={{ border: "2px solid #84CC16" }} onChange={(e) => setSearchTerm(e.target.value)} />
                 <Table
                     columns={columns}
-                    dataSource={newRequests}
+                    dataSource={filteredRequests}
                     className={styles.requestsTable}
                     rowKey={(record) => record.id?.toString() || ""}
                     pagination={{ pageSize: 5 }}
                     scroll={{ x: "max-content" }}
-                    loading={!newRequests}
+                    loading={!Requests || loading}
                 />
             </Card>
 

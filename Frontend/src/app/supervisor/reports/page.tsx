@@ -9,6 +9,7 @@ import Loader from "@/components/loader/loader";
 import { useEmployeeActions } from "@/providers/employee-provider";
 import { useConditionReportState, useConditionReportActions } from "@/providers/condition-report-provider/";
 import { IConditionReport } from "@/providers/condition-report-provider/models";
+import Search from "antd/es/input/Search";
 
 const ReportsListPage = () => {
     const { styles } = useStyles();
@@ -24,6 +25,9 @@ const ReportsListPage = () => {
     const [declineReason, setDeclineReason] = useState("");
     const [selectedRecord, setSelectedRecord] = useState<IConditionReport | null>(null);
 
+    const [searchTerm, setSearchTerm] = useState("");
+    const [filteredReports, setFilteredReports] = useState<IConditionReport[]>([]);
+
     const refresh = async () => {
         setLoading(true);
         await Promise.all([getConditionReports(), getEmployees(), getEquipments()]);
@@ -32,7 +36,28 @@ const ReportsListPage = () => {
 
     useEffect(() => {
         refresh();
+        setFilteredReports(ConditionReports || []);
     }, []);
+
+    useEffect(() => {
+        handleSearch(searchTerm);
+    }, [searchTerm]);
+
+    const handleSearch = (term: string) => {
+        setSearchTerm(term);
+
+        const lowerTerm = term.toLowerCase();
+
+        const results = pendingReports.filter((item: IConditionReport) =>
+            [item.description, item.equipmentName, item.status]
+                .filter(Boolean)
+                .some((field) =>
+                    field.toLowerCase().includes(lowerTerm)
+                )
+        );
+
+        setFilteredReports(results);
+    };
 
     const handleMaintenance = async (report: IConditionReport) => {
         const equipment = Equipments?.find(eq => eq.name === report.equipmentName);
@@ -187,14 +212,15 @@ const ReportsListPage = () => {
             </div>
 
             <Card className={styles.reportsContainer}>
+                <Search onSearch={handleSearch} allowClear placeholder="Search for Reports" style={{ border: "2px solid #84CC16" }} onChange={(e) => setSearchTerm(e.target.value)} />
                 <Table
                     columns={columns}
-                    dataSource={pendingReports}
+                    dataSource={filteredReports}
                     className={styles.reportsTable}
                     rowKey={(record) => record.id?.toString() || record.equipmentName}
                     pagination={{ pageSize: 5 }}
                     scroll={{ x: "max-content" }}
-                    loading={!pendingReports}
+                    loading={!ConditionReports || loading}
                 />
             </Card>
             {/* Maintenance modal */}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Table, Button, Modal, Form, Space, message, Select, Input, Tooltip } from "antd";
+import { Table, Button, Modal, Form, Space, message, Select, Input, Tooltip, Card, DatePicker } from "antd";
 import { RollbackOutlined, FileProtectOutlined } from "@ant-design/icons";
 import { useStyles } from "./style/styles";
 import { IEquipment } from "@/providers/equipment-provider/models";
@@ -13,6 +13,7 @@ import { useConditionReportActions } from "@/providers/condition-report-provider
 import { IRequest } from "@/providers/request-provider/models";
 import { IConditionReport } from "@/providers/condition-report-provider/models";
 import GeminiImageAnalysis from "@/components/Gemini/gemini";
+import Search from "antd/es/input/Search";
 
 const EquipmentPage = () => {
     const { styles } = useStyles();
@@ -35,6 +36,14 @@ const EquipmentPage = () => {
 
     const [returnModalVisible, setReturnModalVisible] = useState(false);
     const [selectedRecord, setSelectedRecord] = useState<IEquipment | null>(null);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [filteredEquipment, setFilteredEquipment] = useState<IEquipment[]>([]);
+
+    const refresh = async () => {
+        setLoading(true);
+        await Promise.all([getEmployees(), getCategories(), getEquipments(), getRequests()]);
+        setFilteredEquipment(myEquipment ?? []);
+    };
 
     useEffect(() => {
         const storedId = sessionStorage.getItem("userId");
@@ -42,10 +51,34 @@ const EquipmentPage = () => {
             setUserId(parseInt(storedId));
         }
         refresh();
+        setLoading(false);
     }, []);
 
-    const refresh = async () => {
-        await Promise.all([getEmployees(), getCategories(), getEquipments(), getRequests()]);
+    useEffect(() => {
+        setFilteredEquipment(myEquipment ?? []);
+    }, [Equipments, userId]);
+
+    const myEquipment = Equipments?.filter(eq =>
+        eq.handlerId === userId
+    );
+
+    useEffect(() => {
+        handleSearch(searchTerm);
+    }, [searchTerm]);
+
+    const handleSearch = (term: string) => {
+        setSearchTerm(term);
+
+        const lowerTerm = term.toLowerCase();
+
+        const results = (myEquipment ?? []).filter((item) =>
+            item.name.toLowerCase().includes(lowerTerm) ||
+            item.serialNumber.toLowerCase().includes(lowerTerm) ||
+            item.status.toLowerCase().includes(lowerTerm) ||
+            item.handlerEmail?.toLowerCase().includes(lowerTerm)
+        );
+
+        setFilteredEquipment(results);
     };
 
     const handleAddRequest = async () => {
@@ -215,10 +248,6 @@ const EquipmentPage = () => {
         },
     ];
 
-    const filteredEquipments = Equipments?.filter(eq =>
-        eq.handlerId === userId
-    );
-
     return (
         <div className={styles.equipmentContainer}>
             <div
@@ -235,15 +264,18 @@ const EquipmentPage = () => {
                 </Button>
             </div>
 
-            <Table
-                columns={columns}
-                dataSource={filteredEquipments}
-                className={styles.equipmentTable}
-                rowKey={(record) => record.id?.toString() || `temp-${record.serialNumber}`}
-                pagination={{ pageSize: 5 }}
-                scroll={{ x: "max-content" }}
-                loading={!filteredEquipments}
-            />
+            <Card className={styles.equipmentContainer}>
+                <Search onSearch={handleSearch} allowClear placeholder="Search for Equipment" style={{ border: "2px solid #84CC16" }} onChange={(e) => setSearchTerm(e.target.value)} />
+                <Table
+                    columns={columns}
+                    dataSource={filteredEquipment}
+                    className={styles.equipmentTable}
+                    rowKey={(record) => record.id || record.serialNumber}
+                    pagination={{ pageSize: 5 }}
+                    scroll={{ x: "max-content" }}
+                    loading={!Equipments || loading}
+                />
+            </Card>
 
             {/* Return model */}
             <Modal
@@ -329,7 +361,7 @@ const EquipmentPage = () => {
                             {
                                 validator: (_, value) => {
                                     if (!value) return Promise.resolve();
-                                    const selectedDate = new Date(value);
+                                    const selectedDate = value && value.toDate ? value.toDate() : value;
                                     const today = new Date();
                                     today.setHours(0, 0, 0, 0);
                                     if (selectedDate < today) {
@@ -340,7 +372,7 @@ const EquipmentPage = () => {
                             },
                         ]}
                     >
-                        <Input type="date" placeholder="Select due date" />
+                        <DatePicker style={{ width: "100%" }} placeholder="Select due date" />
                     </Form.Item>
                 </Form>
             </Modal>
