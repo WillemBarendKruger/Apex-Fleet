@@ -9,6 +9,9 @@ import { useEmployeeState, useEmployeeActions } from "@/providers/employee-provi
 import { useEquipmentState, useEquipmentActions } from "@/providers/equipment-provider";
 import { useCategoryActions, useCategoryState } from "@/providers/category-provider"
 import { CheckSquareOutlined } from "@ant-design/icons";
+import Title from "antd/es/typography/Title";
+import Paragraph from "antd/es/typography/Paragraph";
+import { useAuthActions, useAuthState } from "@/providers/auth-provider";
 
 
 const EquipmentPage = () => {
@@ -19,6 +22,8 @@ const EquipmentPage = () => {
     const { getEquipments, createEquipment, updateEquipment } = useEquipmentActions();
     const { getCategories } = useCategoryActions();
     const { Categories } = useCategoryState();
+    const { getCurrentUser } = useAuthActions();
+    const { user } = useAuthState();
 
     const [modalVisible, setModalVisible] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -37,6 +42,7 @@ const EquipmentPage = () => {
         await getEmployees();
         await getCategories();
         await getEquipments();
+        await getCurrentUser();
         setLoading(false);
     }
 
@@ -101,6 +107,7 @@ const EquipmentPage = () => {
                 ...equipment,
                 status: "inventory",
                 returnDate: new Date().toISOString(),
+                handlerEmail: user?.emailAddress ?? "",
             });
 
             message.success("Equipment return confirmed.");
@@ -308,23 +315,58 @@ const EquipmentPage = () => {
 
             {/* Handler Info Modal */}
             <Modal
-                title="Handler Profile"
+                title={<Title level={4} style={{ marginBottom: 0, padding: 10 }}>Handler Profile</Title>}
                 open={handlerModalVisible}
                 onCancel={() => setHandlerModalVisible(false)}
                 footer={[
-                    <Button key="close" onClick={() => setHandlerModalVisible(false)}>
+                    <Button
+                        key="close"
+                        onClick={() => setHandlerModalVisible(false)}
+                        style={{
+                            backgroundColor: "#84CC16",
+                            borderColor: "#84CC16",
+                            color: "#1E1E1E",
+                            fontWeight: "bold",
+                        }}
+                    >
                         Close
                     </Button>,
                 ]}
+                bodyStyle={{
+                    backgroundColor: "#2C2C2C",
+                    color: "#E5E7EB",
+                    borderRadius: "8px",
+                    padding: "24px",
+                }}
             >
                 {selectedHandler ? (
-                    <div>
-                        <p><strong>Name:</strong> {selectedHandler.name} {selectedHandler.surname}</p>
-                        <p><strong>Email:</strong> {selectedHandler.emailAddress}</p>
-                        <p><strong>Username:</strong> {selectedHandler.userName}</p>
+                    <div style={{ overflowX: "auto" }}>
+                        <table style={{
+                            width: "100%",
+                            borderCollapse: "collapse",
+                            backgroundColor: "#1F1F1F",
+                            color: "#E5E7EB",
+                            borderRadius: "6px",
+                            overflow: "hidden",
+                        }}>
+                            <tbody>
+                                <tr>
+                                    <td className={styles.cellStyle}><strong>Name</strong></td>
+                                    <td className={styles.cellStyle}>{selectedHandler.name} {selectedHandler.surname}</td>
+                                </tr>
+                                <tr>
+                                    <td className={styles.cellStyle}><strong>Email</strong></td>
+                                    <td className={styles.cellStyle}>{selectedHandler.emailAddress}</td>
+                                </tr>
+                                <tr>
+                                    <td className={styles.cellStyle}><strong>Username</strong></td>
+                                    <td className={styles.cellStyle}>{selectedHandler.userName}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 ) : (
-                    <p>No handler selected.</p>
+                    <Paragraph>No handler selected.</Paragraph>
                 )}
             </Modal>
         </div >

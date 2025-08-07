@@ -131,7 +131,6 @@ const EquipmentPage = () => {
             const updatedEquipment: IEquipment = {
                 ...record,
                 status: "returning",
-                handlerEmail: "supervisor1@example.com", // Update this logic in the near future
             };
 
             await updateEquipment(updatedEquipment);

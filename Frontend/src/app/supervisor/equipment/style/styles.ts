@@ -9,4 +9,10 @@ export const useStyles = createStyles({
     equipmentTable: css`
         width: 100%;
     `,
+    cellStyle: css`
+        padding: 12px 16px;
+        border-bottom: 1px solid #3F3F3F;
+        vertical-align: top;
+`,
+
 });

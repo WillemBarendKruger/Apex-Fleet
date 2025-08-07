@@ -130,6 +130,11 @@ const ReportsListPage = () => {
             title: "Description",
             dataIndex: "description",
             key: "description",
+            render: (text: string) => (
+                <Tooltip title={text}>
+                    <div className={styles.descriptionCell}>{text}</div>
+                </Tooltip>
+            )
         },
         {
             title: "Equipment",
