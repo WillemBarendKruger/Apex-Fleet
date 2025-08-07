@@ -25,5 +25,4 @@ export const useStyles = createStyles({
         border-bottom: 1px solid #3F3F3F;
         vertical-align: top;
 `,
-
 });

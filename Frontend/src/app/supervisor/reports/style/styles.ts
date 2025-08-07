@@ -9,4 +9,12 @@ export const useStyles = createStyles({
     reportsTable: css`
         width: 100%;
     `,
+    descriptionCell: css` 
+        white-space: normal;
+        word-break: break-word;
+        max-width: 300px;
+        overflow-wrap: anywhere;
+        line-height: 1.5;`
+    ,
+
 });
