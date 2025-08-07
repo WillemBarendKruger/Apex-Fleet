@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Apex_IT.Migrations
 {
     /// <inheritdoc />
-    public partial class ReCreate : Migration
+    public partial class DBsetup : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -796,6 +796,9 @@ namespace Apex_IT.Migrations
                     SerialNumber = table.Column<string>(type: "text", nullable: true),
                     MaintenancePeriod = table.Column<int>(type: "integer", nullable: false),
                     Status = table.Column<string>(type: "text", nullable: true),
+                    GetDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    ReturnDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    LastMaintenanceDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     CategoryId = table.Column<Guid>(type: "uuid", nullable: false),
                     HandlerId = table.Column<long>(type: "bigint", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -933,6 +936,9 @@ namespace Apex_IT.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Status = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    GetDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    ReturnDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     EquipmentId = table.Column<Guid>(type: "uuid", nullable: false),
                     RequestingEmployeeId = table.Column<long>(type: "bigint", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -966,7 +972,7 @@ namespace Apex_IT.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true),
-                    Priority = table.Column<string>(type: "text", nullable: true),
+                    Status = table.Column<string>(type: "text", nullable: true),
                     EquipmentId = table.Column<Guid>(type: "uuid", nullable: false),
                     ReportingEmployeeName = table.Column<string>(type: "text", nullable: true),
                     ReportingEmployeeId = table.Column<long>(type: "bigint", nullable: false),

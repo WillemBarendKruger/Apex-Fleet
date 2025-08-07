@@ -10,6 +10,8 @@ namespace Apex_IT.CRUDAppServices.RequestingService.Dto
     {
         public virtual string Status { get; set; }
         public virtual string? Description { get; set; }
+        public virtual DateTime? GetDate { get; set; }
+        public virtual DateTime? ReturnDate { get; set; }
 
         public virtual Guid EquipmentId { get; set; }
         public virtual string EquipmentName { get; set; }

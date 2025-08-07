@@ -83,7 +83,9 @@ const EquipmentPage = () => {
                 name: values.name,
                 serialNumber: values.serialNumber,
                 maintenancePeriod: values.maintenancePeriod,
-                LastMaintenanceDate: new Date(),
+                getDate: "",
+                returnDate: "",
+                LastMaintenanceDate: new Date().toISOString(),
                 status: "inventory",
                 categoryName: values.categoryName,
                 handlerEmail: values.handlerEmail,
@@ -106,6 +108,7 @@ const EquipmentPage = () => {
             await updateEquipment({
                 ...equipment,
                 status: "inventory",
+                getDate: "",
                 returnDate: new Date().toISOString(),
                 handlerEmail: user?.emailAddress ?? "",
             });

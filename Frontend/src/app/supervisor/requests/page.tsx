@@ -83,7 +83,8 @@ const RequestListPage = () => {
                 handlerId: handler.id,
                 handlerEmail: handler.emailAddress,
                 status: "assigned",
-                returnDate: returnDate.toISOString(),
+                returnDate: record.returnDate,
+                getDate: record.getDate,
             });
 
             await deleteRequest(record.id);
