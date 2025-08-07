@@ -96,7 +96,7 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
                                 if (info.key === "1") router.push("/employee/dashboard");
                                 if (info.key === "2") router.push("/employee/equipment");
                                 if (info.key === "3") router.push("/employee/settings");
-                                if (info.key === "") router.push("/employee/troubleshoot-ai");
+                                if (info.key === "4") router.push("/employee/troubleshoot-ai");
                             }}
                             items={[
                                 {
