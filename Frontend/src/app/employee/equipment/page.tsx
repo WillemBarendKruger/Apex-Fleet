@@ -98,7 +98,7 @@ const EquipmentPage = () => {
         try {
             const updatedEquipment: IEquipment = {
                 ...record,
-                status: "inventory",
+                status: "returning",
                 handlerEmail: "supervisor1@example.com", // Update this logic in the near future
             };
 

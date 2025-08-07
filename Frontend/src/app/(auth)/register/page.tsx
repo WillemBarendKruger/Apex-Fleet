@@ -78,7 +78,7 @@ const RegistrationForm = () => {
                     <div className={styles.splitLeft}>
                         <div className={styles.centered}>
                             <Image
-                                src="/Apex-IT-Logo-orange.png"
+                                src="/ApexIT-Green.png"
                                 alt="Profile"
                                 width={300}
                                 height={300}
@@ -92,7 +92,7 @@ const RegistrationForm = () => {
                             <div className={styles.page}>
                                 <div className={styles.mobileLogo}>
                                     <Image
-                                        src="/Apex-IT-Logo.png"
+                                        src="/ApexIT-Green.png"
                                         alt="Potholio Logo"
                                         width={300}
                                         height={300}

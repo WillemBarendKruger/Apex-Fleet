@@ -75,7 +75,10 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
                         breakpoint="lg"
                         collapsedWidth="80"
                         onBreakpoint={(broken) => setCollapsed(broken)}
-                        style={{ position: "relative", height: "100%" }}
+                        style={{
+                            position: "relative", height: "100%", backgroundColor: "#1E1E1E",
+                            borderRight: "2px solid #84CC16",
+                        }}
                     >
                         <div className={styles.imageContainer}>
                             <Image
@@ -91,6 +94,7 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
                         <Menu
                             theme="dark"
                             mode="inline"
+                            style={{ backgroundColor: "#1E1E1E" }}
                             selectedKeys={[getSelectedKey()]}
                             onClick={(info) => {
                                 if (info.key === "1") router.push("/supervisor/dashboard");
@@ -137,7 +141,11 @@ const SupervisorLayout = ({ children }: { children: React.ReactNode }) => {
 
                     <Layout>
                         <Header className={styles.headerTitle}>
-                            <Title level={2} className={styles.title}>
+                            <Title
+                                level={2}
+                                className={styles.title}
+
+                            >
                                 Welcome {loggedInUser}
                             </Title>
                         </Header>

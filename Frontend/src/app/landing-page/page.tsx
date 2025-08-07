@@ -13,7 +13,7 @@ const LandingPage: React.FC = () => {
     return (
         <div className={styles.page}>
             <div className={styles.logo}>
-                <Image src="/Apex-IT-Logo-orange.png" alt="Apex IT Logo" width={200} height={200} />
+                <Image src="/ApexIT-Green-Name.png" alt="Apex IT Logo" width={200} height={200} />
                 <div className={styles.sinceText}>Since 2025</div>
             </div>
             <h1 className={styles.heading}>Welcome to Apex IT</h1>

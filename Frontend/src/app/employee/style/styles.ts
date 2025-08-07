@@ -46,7 +46,7 @@ export const useStyles = createStyles(({ token }) => ({
     height: calc(100vh - 64px);
     overflow: hidden;
     padding: 16px;
-    background: #374151;
+    background: #3F3F3F;
   `,
 
   scrollableContent: css`
@@ -63,6 +63,9 @@ export const useStyles = createStyles(({ token }) => ({
     text-overflow: ellipsis;
     text-align: center;
     width: 100%;
+    @media (max-width: 508px) {
+      font-size: 1.2rem;
+    }
   `,
 
   logoutBtn: css`

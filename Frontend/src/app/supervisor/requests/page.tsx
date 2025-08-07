@@ -147,7 +147,7 @@ const RequestListPage = () => {
                         <Button
                             icon={<CheckCircleOutlined />}
                             type="default"
-                            style={{ backgroundColor: "#52c41a", borderColor: "#52c41a" }}
+                            style={{ borderColor: "#52c41a" }}
                             onClick={() => {
                                 setSelectedRecord(record);
                                 setApproveModalVisible(true);

@@ -73,14 +73,16 @@ export const useStyles = createStyles({
   `,
 
   orangeButton: css`
-    background-color: #A7D129 !important;
+    background-color: #84CC16 !important;
     border: none !important;
     font-weight: bold;
     width: 200px;
     margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(247, 247, 247, 1) !important;
 
     &:hover {
-      background-color: #616F39 !important;
+      background-color: #2C2C2C !important;
+      box-shadow: 0 6px 10px #84CC16 !important;
     }
   `,
 
@@ -92,13 +94,15 @@ export const useStyles = createStyles({
 
   button: css`
     width: 200px;
-    background-color: #A7D129 !important;
+    background-color: #84CC16 !important;
+    box-shadow: 0 2px 8px rgba(247, 247, 247, 1) !important;
     border: none !important;
     font-weight: bold;
     margin-top: 10px;
 
     &:hover {
-      background-color: #616F39 !important;
+      background-color: #2C2C2C !important;
+      box-shadow: 0 6px 10px #84CC16 !important;
     }
   `,
 });

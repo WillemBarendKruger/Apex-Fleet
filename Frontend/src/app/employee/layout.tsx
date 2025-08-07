@@ -9,6 +9,7 @@ import {
     LogoutOutlined,
     HomeOutlined,
     FileTextOutlined,
+    RobotOutlined,
 } from "@ant-design/icons";
 import { Button, Layout, Menu, Modal, theme, Image } from "antd";
 import Title from "antd/es/typography/Title";
@@ -48,6 +49,7 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
         if (pathname.includes("/dashboard")) return "1";
         if (pathname.includes("/equipment")) return "2";
         if (pathname.includes("/settings")) return "3";
+        if (pathname.includes("/employee/troubleshoot-ai")) return "";
         return "1";
     };
 
@@ -69,7 +71,10 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
                         breakpoint="lg"
                         collapsedWidth="80"
                         onBreakpoint={(broken) => setCollapsed(broken)}
-                        style={{ position: "relative", height: "100%" }}
+                        style={{
+                            position: "relative", height: "100%", backgroundColor: "#1E1E1E",
+                            borderRight: "2px solid #84CC16",
+                        }}
                     >
                         <div className={styles.imageContainer}>
                             <Image
@@ -85,11 +90,13 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
                         <Menu
                             theme="dark"
                             mode="inline"
+                            style={{ backgroundColor: "#1E1E1E" }}
                             selectedKeys={[getSelectedKey()]}
                             onClick={(info) => {
                                 if (info.key === "1") router.push("/employee/dashboard");
                                 if (info.key === "2") router.push("/employee/equipment");
                                 if (info.key === "3") router.push("/employee/settings");
+                                if (info.key === "") router.push("/employee/troubleshoot-ai");
                             }}
                             items={[
                                 {
@@ -106,6 +113,11 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
                                     key: "3",
                                     icon: <ToolOutlined />,
                                     label: "Settings",
+                                },
+                                {
+                                    key: "",
+                                    icon: <RobotOutlined />,
+                                    label: "Troubleshoot AI",
                                 },
                             ]}
                         />
@@ -137,7 +149,7 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
 
                     <Layout>
                         <Header className={styles.headerTitle}>
-                            <Title level={2} className={styles.title}>
+                            <Title level={2} className={styles.title} >
                                 Welcome {loggedInUser}
                             </Title>
                         </Header>
