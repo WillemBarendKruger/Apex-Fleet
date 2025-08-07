@@ -8,7 +8,7 @@ import { IEquipment } from "@/providers/equipment-provider/models";
 import { useEmployeeState, useEmployeeActions } from "@/providers/employee-provider";
 import { useEquipmentState, useEquipmentActions } from "@/providers/equipment-provider";
 import { useCategoryActions, useCategoryState } from "@/providers/category-provider"
-import { CheckCheckIcon } from "lucide-react";
+import { CheckSquareOutlined } from "@ant-design/icons";
 
 const EquipmentPage = () => {
     const { styles } = useStyles();
@@ -133,7 +133,7 @@ const EquipmentPage = () => {
                         {record.status === "returning" && (
                             <Tooltip title="Return Equipment">
                                 <Button
-                                    icon={<CheckCheckIcon />}
+                                    icon={<CheckSquareOutlined />}
                                     type="primary"
                                     style={{ backgroundColor: "#52c41a", borderColor: "#52c41a" }}
                                     onClick={() => confirmReturn(record)}
