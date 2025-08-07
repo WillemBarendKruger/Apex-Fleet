@@ -115,7 +115,7 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
                                     label: "Settings",
                                 },
                                 {
-                                    key: "",
+                                    key: "4",
                                     icon: <RobotOutlined />,
                                     label: "Troubleshoot AI",
                                 },
