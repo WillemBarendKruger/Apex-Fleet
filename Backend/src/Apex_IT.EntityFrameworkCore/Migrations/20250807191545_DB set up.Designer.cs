@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Apex_IT.Migrations
 {
     [DbContext(typeof(Apex_ITDbContext))]
-    [Migration("20250804092210_updated condition report")]
-    partial class updatedconditionreport
+    [Migration("20250807191545_DB set up")]
+    partial class DBsetup
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1601,8 +1601,14 @@ namespace Apex_IT.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
                     b.Property<Guid>("EquipmentId")
                         .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("GetDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
@@ -1615,6 +1621,9 @@ namespace Apex_IT.Migrations
 
                     b.Property<long>("RequestingEmployeeId")
                         .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("ReturnDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Status")
                         .HasColumnType("text");
@@ -1682,6 +1691,9 @@ namespace Apex_IT.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("GetDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<long>("HandlerId")

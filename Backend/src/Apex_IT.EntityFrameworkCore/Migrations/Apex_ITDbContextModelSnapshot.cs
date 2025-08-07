@@ -1604,6 +1604,9 @@ namespace Apex_IT.Migrations
                     b.Property<Guid>("EquipmentId")
                         .HasColumnType("uuid");
 
+                    b.Property<DateTime?>("GetDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
@@ -1615,6 +1618,9 @@ namespace Apex_IT.Migrations
 
                     b.Property<long>("RequestingEmployeeId")
                         .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("ReturnDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Status")
                         .HasColumnType("text");
@@ -1682,6 +1688,9 @@ namespace Apex_IT.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("GetDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<long>("HandlerId")

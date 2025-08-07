@@ -13,6 +13,7 @@ namespace Apex_IT.Entities.EquimentItem
         public virtual string SerialNumber { get; set; }
         public virtual int MaintenancePeriod { get; set; }
         public virtual string Status { get; set; }
+        public virtual DateTime? GetDate { get; set; }
         public virtual DateTime? ReturnDate { get; set; }
         public virtual DateTime? LastMaintenanceDate { get; set; }
 

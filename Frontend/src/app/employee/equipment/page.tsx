@@ -106,6 +106,8 @@ const EquipmentPage = () => {
             const requestPayload: IRequest = {
                 status: "pending",
                 description: values.description || "",
+                getDate: values.getDate.toISOString(),
+                returnDate: values.returnDate.toISOString(),
                 equipmentId: selectedEquipment.id,
                 equipmentName: selectedEquipment.name,
                 requestingEmployeeEmail: requester.emailAddress,
@@ -203,9 +205,21 @@ const EquipmentPage = () => {
             key: "maintenancePeriod",
         },
         {
-            title: "Due date",
-            dataIndex: "returnDate",
+            title: "Due Date",
             key: "returnDate",
+            render: (_: IEquipment, record: IEquipment) => {
+                const getDate = record.getDate ? new Date(record.getDate) : null;
+                const returnDate = record.returnDate ? new Date(record.returnDate) : null;
+
+                if (!getDate || !returnDate || isNaN(getDate.getTime()) || isNaN(returnDate.getTime())) {
+                    return <span style={{ color: "#9CA3AF" }}>N/A</span>;
+                }
+
+                const diffInMs = returnDate.getTime() - getDate.getTime();
+                const diffInDays = Math.ceil(diffInMs / (1000 * 60 * 60 * 24));
+
+                return <span>{diffInDays} day{diffInDays !== 1 ? "s" : ""}</span>;
+            },
         },
         {
             title: "Category",
@@ -353,8 +367,29 @@ const EquipmentPage = () => {
                         </Select>
                     </Form.Item>
                     <Form.Item
-                        name="dueDate"
-                        label="Due Date"
+                        name="getDate"
+                        label="Get From Date"
+                        rules={[
+                            { required: true, message: "Please select a get date" },
+                            {
+                                validator: (_, value) => {
+                                    if (!value) return Promise.resolve();
+                                    const selectedDate = value && value.toDate ? value.toDate() : value;
+                                    const today = new Date();
+                                    today.setHours(0, 0, 0, 0);
+                                    if (selectedDate < today) {
+                                        return Promise.reject("Get date cannot be before today");
+                                    }
+                                    return Promise.resolve();
+                                },
+                            },
+                        ]}
+                    >
+                        <DatePicker style={{ width: "100%" }} placeholder="Select return date" />
+                    </Form.Item>
+                    <Form.Item
+                        name="returnDate"
+                        label="Return Date"
                         rules={[
                             { required: true, message: "Please select a due date" },
                             {
@@ -364,7 +399,7 @@ const EquipmentPage = () => {
                                     const today = new Date();
                                     today.setHours(0, 0, 0, 0);
                                     if (selectedDate < today) {
-                                        return Promise.reject("Due date cannot be before today");
+                                        return Promise.reject("Return date cannot be before today");
                                     }
                                     return Promise.resolve();
                                 },
