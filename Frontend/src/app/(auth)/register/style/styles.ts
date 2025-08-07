@@ -41,7 +41,7 @@ export const useStyles = createStyles({
   right: 0;
   overflow-x: hidden;
   padding-top: 20px;
-  background-color: #616F39;
+  background-color: #2C2C2C;
 
   clip-path: polygon(35% 0%, 100% 0%, 100% 100%, 0% 100%);
   
@@ -111,16 +111,15 @@ export const useStyles = createStyles({
   `,
   input: css`
     width: 300px;
-    border-color: #ff6500;
-    background: #0B192C;
+    border-color: #84CC16;
     &:hover {
-      background-color: #0B192C !important;
+      background-color: #3F3F3F !important;
     }
       &:active {
-      background-color: #0B192C !important;
+      background-color: #83cc1652 !important;
     }
       &:focus {
-      background-color: #0B192C !important;
+      background-color: #83cc1652 !important;
     }
 
     @media (max-width: 480px) {
@@ -150,7 +149,7 @@ export const useStyles = createStyles({
     align: center;
   `,
   link: css`
-    color: #ff6500;
+    color: #F59E0B;
   `,
   mobileLogo: css`
     display: none;
@@ -176,7 +175,7 @@ export const useStyles = createStyles({
   `,
 
   logoText: css`
-    color: #ff6500;
+    color: #F59E0B;
     font-size: 24px;
     font-weight: bold;
     margin: 0;

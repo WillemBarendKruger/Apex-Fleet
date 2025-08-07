@@ -12,11 +12,11 @@ export const useStyles = createStyles({
   `,
   left: css`
     left: 0;
-    background-color: #0b192c;
+    background-color: #2C2C2C;
   `,
   right: css`
     right: 0;
-    background-color: #0b192c;
+    background-color: #2C2C2C;
   `,
   splitLeft: css`
     height: 100%;
@@ -27,7 +27,7 @@ export const useStyles = createStyles({
     overflow-x: hidden;
     padding-top: 20px;
     left: 0;
-    background: #616F39;
+    background: #1E1E1E;
     clip-path: polygon(0% 0%, 65% 0%, 100% 100%, 0% 100%);
 
     @media (max-width: 768px) {
@@ -78,7 +78,7 @@ export const useStyles = createStyles({
     text-align: center;
   `,
   subHeading: css`
-    color: #ff6500;
+    color: #F59E0B;
   `,
   page: css`
     height: 100%;
@@ -112,16 +112,15 @@ export const useStyles = createStyles({
   `,
   input: css`
     width: 300px;
-    border-color: #ff6500;
-    background: #0B192C;
+    border-color: #84CC16;
     &:hover {
-      background-color: #0B192C !important;
+      background-color: #3F3F3F !important;
     }
       &:active {
-      background-color: #0B192C !important;
+      background-color: #83cc1652 !important;
     }
       &:focus {
-      background-color: #0B192C !important;
+      background-color: #83cc1652 !important;
     }
 
     @media (max-width: 480px) {
@@ -135,6 +134,17 @@ export const useStyles = createStyles({
   loginButton: css`
     min-width: 300px;
     font-weight: bold;
+
+    background-color: #84CC16 !important;
+    border: none !important;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(247, 247, 247, 1) !important;
+
+    &:hover {
+      background-color: #2C2C2C !important;
+      box-shadow: 0 6px 10px #84CC16 !important;
+    }
+
     @media (max-width: 360px) {
       min-width: 250px;
     }
@@ -144,7 +154,10 @@ export const useStyles = createStyles({
     align: center;
   `,
   link: css`
-    color: #ff6500;
+    color: #F59E0B;
+    &:hover {
+      color: #84CC16 !important;
+    }
   `,
   mobileLogo: css`
     display: none;
@@ -170,7 +183,7 @@ export const useStyles = createStyles({
   `,
 
   logoText: css`
-    color: #ff6500;
+    color: #F59E0B;
     font-size: 24px;
     font-weight: bold;
     margin: 0;

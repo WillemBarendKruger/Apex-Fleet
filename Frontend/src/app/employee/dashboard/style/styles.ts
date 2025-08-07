@@ -31,10 +31,4 @@ export const useStyles = createStyles({
   quickActionButton: css`
     width: 100%;
   `,
-  incidentCard: css`
-    padding: 16px;
-    min-height: 200px;
-    width: 100%;
-  `,
-
 });

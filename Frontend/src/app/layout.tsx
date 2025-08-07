@@ -21,38 +21,37 @@ export default function RootLayout({
       <ConfigProvider
         theme={{
           token: {
-            colorPrimary: "#A7D129",
-            colorInfo: "#e55c00",
-            colorTextBase: "#ffffff",
-            colorBgBase: "#374151",
+            colorPrimary: "#84CC16",       // Lime green
+            colorInfo: "#F59E0B",          // Amber
+            colorTextBase: "#E5E7EB",      // Light gray
+            colorBgBase: "#1E1E1E",        // Charcoal
             fontSize: 15,
+            fontWeightStrong: 600,
           },
           components: {
-            Input: {
-              colorText: "rgb(255,255,255)",
-            },
             Card: {
-              colorBorderSecondary: "#e55c00",
-              colorBgContainer: "transparent",
+              colorBgContainer: "#2C2C2C",
+              colorBorderSecondary: "#84CC16",
             },
             Table: {
-              colorBgContainer: "#374151",
-              colorText: "#ffffff",
-              colorBgTextHover: "#616F39",
-              colorBgTextActive: "#616F39",
-              headerBg: "#616F39",
-            },
-            Divider: {
-              colorSplit: "#ffffff"
+              headerBg: "#3F3F3F",
+              colorBgContainer: "#2C2C2C",
+              colorText: "#E5E7EB",
             },
             Modal: {
-              contentBg: "#616F39",
-              headerBg: "#616F39",
-              colorText: "#ffffff",
-            }
+              contentBg: "#2C2C2C",
+              headerBg: "#2C2C2C",
+              colorText: "#E5E7EB",
+            },
+            Button: {
+              colorPrimary: "#84CC16",
+              colorText: "#E5E7EB",
+              colorBgTextHover: "#F59E0B",
+            },
           },
           algorithm: darkAlgorithm,
         }}
+
       >
         <body>
           <AuthProvider>

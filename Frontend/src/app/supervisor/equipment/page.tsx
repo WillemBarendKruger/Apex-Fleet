@@ -1,22 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Table, Button, Modal, Form, Input, Space, message, Select, InputNumber, Card } from "antd";
+import { Table, Button, Modal, Form, Input, Space, message, Select, InputNumber, Card, Tooltip } from "antd";
 import { useStyles } from "./style/styles";
 import { IEmployee } from "@/providers/employee-provider/models";
 import { IEquipment } from "@/providers/equipment-provider/models";
-import Loader from "@/components/loader/loader";
 import { useEmployeeState, useEmployeeActions } from "@/providers/employee-provider";
 import { useEquipmentState, useEquipmentActions } from "@/providers/equipment-provider";
 import { useCategoryActions, useCategoryState } from "@/providers/category-provider"
-import SummaryCard from "@/components/SummaryCard/SummaryCard";
+import { CheckSquareOutlined } from "@ant-design/icons";
 
 const EquipmentPage = () => {
     const { styles } = useStyles();
     const { Employees } = useEmployeeState();
     const { Equipments } = useEquipmentState();
     const { getEmployees } = useEmployeeActions();
-    const { getEquipments, createEquipment } = useEquipmentActions();
+    const { getEquipments, createEquipment, updateEquipment } = useEquipmentActions();
     const { getCategories } = useCategoryActions();
     const { Categories } = useCategoryState();
 
@@ -67,6 +66,22 @@ const EquipmentPage = () => {
         setLoading(false);
     };
 
+    const confirmReturn = async (equipment: IEquipment) => {
+        try {
+            await updateEquipment({
+                ...equipment,
+                status: "inventory",
+                returnDate: new Date().toISOString(),
+            });
+
+            message.success("Equipment return confirmed.");
+            refresh();
+        } catch (error) {
+            console.error("Return confirmation failed:", error);
+            message.error("Failed to confirm return.");
+        }
+    };
+
     const columns = [
         {
             title: "Name",
@@ -98,21 +113,37 @@ const EquipmentPage = () => {
             key: "handler",
             render: (_: IEquipment, record: IEquipment) => {
                 const handler = Employees?.find(emp => emp.emailAddress === record.handlerEmail);
-                return handler ? (
-                    <Button
-                        type="link"
-                        onClick={() => {
-                            setSelectedHandler(handler);
-                            setHandlerModalVisible(true);
-                        }}
-                    >
-                        View Handler
-                    </Button>
-                ) : (
-                    <span>Unassigned</span>
+
+                return (
+                    <Space>
+                        {handler ? (
+                            <Button
+                                type="link"
+                                onClick={() => {
+                                    setSelectedHandler(handler);
+                                    setHandlerModalVisible(true);
+                                }}
+                            >
+                                View Handler
+                            </Button>
+                        ) : (
+                            <span>Unassigned</span>
+                        )}
+
+                        {record.status === "returning" && (
+                            <Tooltip title="Return Equipment">
+                                <Button
+                                    icon={<CheckSquareOutlined />}
+                                    type="primary"
+                                    style={{ backgroundColor: "#52c41a", borderColor: "#52c41a" }}
+                                    onClick={() => confirmReturn(record)}
+                                />
+                            </Tooltip>
+                        )}
+                    </Space>
                 );
             },
-        },
+        }
     ];
 
     return (
@@ -164,14 +195,14 @@ const EquipmentPage = () => {
                         label="Name"
                         rules={[{ required: true, message: "Please enter equipment name" }]}
                     >
-                        <Input />
+                        <Input placeholder="John" />
                     </Form.Item>
                     <Form.Item
                         name="serialNumber"
                         label="Serial Number"
                         rules={[{ required: true, message: "Please enter serial number" }]}
                     >
-                        <Input />
+                        <Input placeholder="s2df4ds654ds5c3sd" />
                     </Form.Item>
                     <Form.Item
                         name="maintenancePeriod"
@@ -181,7 +212,7 @@ const EquipmentPage = () => {
                             { pattern: /^\d+$/, message: "Only numeric values are allowed" },
                         ]}
                     >
-                        <InputNumber min={0} style={{ width: "100%" }} />
+                        <InputNumber min={0} style={{ width: "100%" }} placeholder="0" />
                     </Form.Item>
 
                     <Form.Item

@@ -148,7 +148,7 @@ const ReportsListPage = () => {
                         <Button
                             icon={<ToolOutlined />}
                             type="default"
-                            style={{ borderColor: "#ff9900ff", backgroundColor: "#ff9900ff" }}
+                            style={{ borderColor: "#ff9900ff" }}
                             onClick={() => {
                                 setSelectedRecord(record);
                                 setMaintenanceModalVisible(true);
@@ -194,10 +194,7 @@ const ReportsListPage = () => {
                     rowKey={(record) => record.id?.toString() || record.equipmentName}
                     pagination={{ pageSize: 5 }}
                     scroll={{ x: "max-content" }}
-                    loading={{
-                        spinning: loading,
-                        indicator: <Loader />,
-                    }}
+                    loading={!pendingReports}
                 />
             </Card>
             {/* Maintenance modal */}

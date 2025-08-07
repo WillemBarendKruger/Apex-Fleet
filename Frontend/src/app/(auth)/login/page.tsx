@@ -57,7 +57,7 @@ const Login = () => {
                             <div className={styles.page}>
                                 <div className={styles.mobileLogo}>
                                     <Image
-                                        src="/Apex-IT-Logo.png"
+                                        src="/ApexIT-Green-Name.png"
                                         alt="Potholio Logo"
                                         width={300}
                                         height={300}
@@ -137,7 +137,7 @@ const Login = () => {
                     <div className={styles.splitRight}>
                         <div className={styles.centered}>
                             <Image
-                                src="/Apex-IT-Logo-orange.png"
+                                src="/ApexIT-Green.png"
                                 alt="Profile"
                                 width={300}
                                 height={300}

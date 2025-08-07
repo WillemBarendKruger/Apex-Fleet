@@ -11,7 +11,7 @@ export const useStyles = createStyles(({ token }) => ({
         max-width: 600px;
         margin: 40px auto;
         padding: 24px;
-        background: #616F39;
+        background: #2C2C2C;
         border-radius: ${token.borderRadiusLG};
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 `,
