@@ -8,50 +8,96 @@
 
 - ✅ Add and categorize office equipment (PCs, printers, projectors, etc.)
 - 📍 Track equipment usage, status, and location
-- 🛠️ Schedule maintenance reminders
-- 📎 Attach documents (e.g., purchase receipts, user manuals)
 - 📝 Submit and track issue reports
-- 👤 Role-based access for admins and regular users
-- 🌗 Supports light and dark mode
+- 👤 Role-based access for supervisors and employees users
 - 🔐 Secure login and registration (JWT)
+- 🤖 AI chatbot for equipment troubleshooting (image and text)
+- 📰 Condition reporting and maintenance tracking
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer           | Technology                            |
-|----------------|----------------------------------------|
+| Layer           | Technology                             |
+|-----------------|----------------------------------------|
 | Backend         | ASP.NET Boilerplate (ABP v9)           |
-| Frontend        | Next.js (TypeScript) + Ant Design      |
+| Frontend        | Next.js v15 (TypeScript) + Ant Design  |
 | Database        | PostgreSQL / SQL Server                |
 | Auth            | JWT / Identity                         |
-| Styling         | Tailwind CSS / Ant Design Theming     |
-| Storage         | Local file system / Blob Storage       |
-| Maps (Optional) | Google Maps API / OpenStreetMap        |
+| Styling         | CSS / Ant Design Theming               |
 
 ---
 
-## 📦 Installation
+# 📦 Installation
 
-### Backend
-```bash
-cd aspnet-core
-dotnet run
-```
-### Frontend
-``` bash
-cd react
-npm install
-npm run dev
+## Running Locally
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18+ recommended)
+- [Yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/)
+- A valid Google Gemini API key for AI features
+
+### Setup
+
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/WillemBarendKruger/Apex-IT.git
+   cd Apex-IT/Frontend
+   ```
+
+2. **Install dependencies:**
+   ```sh
+   yarn install
+   # or
+   npm install
+   ```
+
+3. **Configure environment variables:**
+   - Create a `.env.local` file in the `Frontend` directory.
+   - Add your Gemini API key:
+     ```
+     NEXT_PUBLIC_GOOGLE_CLOUD_API=your-gemini-api-key
+     ```
+
+4. **Run the development server:**
+   ```sh
+   yarn dev
+   # or
+   npm run dev
+   ```
+
+5. **Open the app:**
+   - Visit [http://localhost:3000](http://localhost:3000) or open the one shown in the terminal in your browser.
+
 ```
 ### Folder structure
 Apex IT/
-├── aspnet-core/         # Backend ABP project
-├── react/               # Next.js frontend
+├── Backend/         # Backend ABP project
+├── Frontend/        # Next.js frontend
 ├── README.md
-└── database/            # DB scripts / seed data
+
+---
+
+## Figma Design
+
+> _Paste your Figma design link here:_
+>
+> [Figma Design](https://www.figma.com/design/torUGjC3PtWRRmVdMl28P7/Apex-IT?node-id=0-1&t=2tM7m3cZqZQAGGk9-1)
+
+---
+
+## Domain Model
+
+> [Domian model](https://drive.google.com/file/d/1pZFZEN1ZNz7tCKQhRWzZ_vO1K_HddPJh/view?usp=sharing)
+
+---
 
 ###👤 Author
 Willem Kruger – Graduate Software Engineer @ Boxfusion
 
 📍 South Africa
+
+## Contact
+
+For questions or support, contact [your-email@example.com](mailto:Willem.Kruger@boxfusion.io).
