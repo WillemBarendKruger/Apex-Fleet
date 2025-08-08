@@ -67,6 +67,12 @@
    npm run dev
    ```
 
+   ### Backend
+   ```bash
+   cd Backend
+   dotnet run
+   ```
+
 5. **Open the app:**
    - Visit [http://localhost:3000](http://localhost:3000) or open the one shown in the terminal in your browser.
 
