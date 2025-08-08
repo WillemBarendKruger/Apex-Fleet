@@ -58,7 +58,7 @@ const Login = () => {
                                 <div className={styles.mobileLogo}>
                                     <Image
                                         src="/ApexIT-Green-Name.png"
-                                        alt="Potholio Logo"
+                                        alt="Apex  IT Logo"
                                         width={300}
                                         height={300}
                                         className={styles.logoImage}
@@ -141,7 +141,7 @@ const Login = () => {
                                 alt="Profile"
                                 width={300}
                                 height={300}
-                            ></Image>
+                            />
                             <Title> Welcome to Apex IT</Title>
                             <h2 className={styles.subHeading}>
                                 Never Lose Track of What Keeps You Working.

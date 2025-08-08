@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import "@ant-design/v5-patch-for-react-19";
-// import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useStyles } from "./style/styles";
 import Image from "next/image";
@@ -14,7 +13,7 @@ import {
     EyeTwoTone,
     EyeInvisibleOutlined,
 } from "@ant-design/icons";
-import { Form, Input, Button, FormProps, message, Flex, Spin } from "antd/es";
+import { Form, Input, Button, FormProps, message } from "antd/es";
 import { useAuthActions } from "@/providers/auth-provider";
 import Link from "next/link";
 import Loader from "@/components/loader/loader";
@@ -82,7 +81,7 @@ const RegistrationForm = () => {
                                 alt="Profile"
                                 width={300}
                                 height={300}
-                            ></Image>
+                            />
                             <Title>To Get Started, please register to Apex IT.</Title>
                         </div>
                     </div>
@@ -93,7 +92,7 @@ const RegistrationForm = () => {
                                 <div className={styles.mobileLogo}>
                                     <Image
                                         src="/ApexIT-Green.png"
-                                        alt="Potholio Logo"
+                                        alt="APexIT Logo"
                                         width={300}
                                         height={300}
                                         className={styles.logoImage}
