@@ -59,6 +59,11 @@
      ```
      NEXT_PUBLIC_GOOGLE_CLOUD_API=your-gemini-api-key
      ```
+   - Create a `.env` file in the `Backend` directory.
+   - Add SendGrid API Key:
+   - ```
+     NEXT_PUBLIC_SENDGRID_API_KEY=your-gemini-api-key
+     ```
 
 4. **Run the development server:**
    ```sh
@@ -70,11 +75,13 @@
    ### Backend
    ```bash
    cd Backend
+   set Apex-IT.Web.Host as the active project
+   build a solution
    dotnet run
    ```
 
 5. **Open the app:**
-   - Visit [http://localhost:3000](http://localhost:3000) or open the one shown in the terminal in your browser.
+   - Visit [http://localhost:3000](http://localhost:3000) or open the link shown in the terminal in your browser.
 
 ```
 ### Folder structure
