@@ -57,7 +57,7 @@ const Login = () => {
                             <div className={styles.page}>
                                 <div className={styles.mobileLogo}>
                                     <Image
-                                        src="/ApexIT-Green-Name.png"
+                                        src="/APEXIT-Green-Name.png"
                                         alt="Apex  IT Logo"
                                         width={300}
                                         height={300}

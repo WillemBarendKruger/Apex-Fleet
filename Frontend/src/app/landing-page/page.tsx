@@ -53,7 +53,7 @@ const LandingPage: React.FC = () => {
                 <div className={styles.rightSection}>
                     <div className={styles.logo}>
                         <Image
-                            src="/ApexIT-Green-Name.png"
+                            src="/APEXIT-Green-Name.png"
                             alt="Apex IT Logo"
                             width={250}
                             height={250}
