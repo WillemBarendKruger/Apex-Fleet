@@ -124,7 +124,7 @@ const RequestListPage = () => {
     }, []);
 
     useEffect(() => {
-        setFilteredRequests(Requests || []);
+        setFilteredRequests(newRequests || []);
     }, [Requests]);
 
     useEffect(() => {

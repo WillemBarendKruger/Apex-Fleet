@@ -88,7 +88,7 @@ const EquipmentPage = () => {
                 LastMaintenanceDate: new Date().toISOString(),
                 status: "inventory",
                 categoryName: values.categoryName,
-                handlerEmail: values.handlerEmail,
+                handlerEmail: user?.emailAddress ?? "",
             };
 
             await createEquipment(payload);
@@ -291,28 +291,6 @@ const EquipmentPage = () => {
                             ))}
                         </Select>
                     </Form.Item>
-                    <Form.Item
-                        name="handlerEmail"
-                        label="Assign to Handler"
-                        rules={[{ required: true, message: "Please select a handler" }]}
-                    >
-                        <Select
-                            showSearch
-                            placeholder="Select an employee"
-                            optionFilterProp="children"
-                            filterOption={(input, option) =>
-                                typeof option?.label === "string" &&
-                                option.label.toLowerCase().includes(input.toLowerCase())
-                            }
-                        >
-                            {Employees?.map((emp) => (
-                                <Select.Option key={emp.emailAddress} value={emp.emailAddress}>
-                                    {emp.name} {emp.surname} ({emp.emailAddress})
-                                </Select.Option>
-                            ))}
-                        </Select>
-                    </Form.Item>
-
                 </Form>
             </Modal>
 
